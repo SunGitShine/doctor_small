@@ -1,0 +1,19 @@
+<template name="doctorIndex">
+  <view  class="doctor-info">
+    <view class="doctor-info-title">title</view>
+    <view class="doctor-info-index">
+      <view>条目一</view>
+      <view>条目一</view>
+      <view>条目一</view>
+    </view>
+  </view>
+  <view class="doctor-publish">
+    <view class="doctor-publish-title">title</view>
+    <view class="doctor-publish-index">
+      <view>条目一</view>
+    </view>
+  </view>
+  <view class="doctor-recommend">
+    <view>2</view>
+  </view>
+</template>

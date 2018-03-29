@@ -1,0 +1,19 @@
+
+<import src="../../templates/infoListItem.wxml"/>
+<view class="list-page">
+  <view class="navbar">
+    <view wx:for="{{navbar}}" data-idx="{{index}}" wx:key="unique" class="item {{currentTab == index?'active':''}}" bindtap="navbarTap">
+    <!-- <view class="notice" wx:if="{{count[index]>0}}">{{count[index]}}</view> -->
+    <text>{{item}}</text>
+    </view>
+  </view>
+  <!--项目一-->
+  <view hidden="{{currentTab !== 0}}" id="one" class="block-item">
+    <template wx:for="{{listItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab}}"/>
+  </view>
+
+  <!--项目二-->
+  <view hidden="{{currentTab !== 1}}" id="two" class="block-item">
+    <template wx:for="{{listDoctorItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab}}"/>
+  </view>
+</view>

@@ -1,0 +1,41 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/personal/personal",
+    "pages/infoList/infoList",
+    "pages/infoDetail/infoDetail",
+    "pages/hospitalDetail/hospitalDetail",
+    "pages/doctorDetail/doctorDetail",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "撸饭",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar":{
+    "selectedColor": "#2ba246",
+    "backgroundColor":"#f1f1f1",
+    "list":[
+      {
+        "pagePath":"pages/index/index",
+        "text":"首页",        
+        "selectedIconPath": "images/index_green.png",
+        "iconPath":"images/index_gray.png"
+      },{
+        "pagePath":"pages/personal/personal",
+        "text":"我的",
+        "selectedIconPath":"images/user_green.png",
+        "iconPath": "images/user_gray.png"
+      }
+    ],
+    "color": "#000000",
+    "backgroundColor": "#fff"
+  },
+  "networkTimeout":{
+    "request":10000,
+    "downFile":10000
+  },
+  "debug":true
+}

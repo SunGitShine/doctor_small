@@ -1,0 +1,82 @@
+/*圆点数字标注*/
+page{
+  height: 100%;
+  background: ;
+}
+.list-page{
+  height: 100%;
+  background: #f1f1f1;
+}
+.notice {
+  width:28rpx;
+  height:28rpx;
+  color:#fff;
+  text-align:center;
+  background-color:#ec9e14;
+  border-radius:50%;
+  position:absolute;
+  float:left;
+  /* margin-top: 8rpx;*/
+  top:5rpx;
+  font-size: 15rpx;
+  right:30rpx;
+  line-height:30rpx; 
+}
+/*顶部导航样式*/
+.navbar{
+  flex: none;
+  display: flex;
+  background: #fff;
+  z-index: 50;
+  margin-bottom: 15px;
+}
+.navbar .item{
+  position: relative;
+  flex: auto;
+  padding: 5px;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 12px;
+  color: #666666;
+  font-family: Microsoft YaHei;
+}
+.navbar .item.active{
+  color: #2ba246;
+  font-size: 12px;
+  font-family: Microsoft YaHei;
+}
+/* .navbar .item.active:after{
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: #2ba246;
+  font-size: 12px;
+  color: #666666;
+  font-family: Microsoft YaHei;
+}  */
+.list-info-route{
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx;
+  border-bottom: 1px solid #f1f1f1;
+}
+.list-info image{
+  width: 120rpx;
+  height: 120rpx;
+  flex: 0 0 auto;
+}
+.list-info .list-info-item{
+  flex: 1 1 auto;
+  font-size: 30rpx;
+  padding-left: 16rpx;
+}
+camera{
+  height: 1000rpx;
+}
+.block-item{
+  background: #fff;
+}

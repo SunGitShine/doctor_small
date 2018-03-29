@@ -1,0 +1,6 @@
+<import src="../../templates/roleItem.wxml"/>
+<import src="../../templates/phoneItem.wxml"/>
+<view class="container">
+<template is="roleItem"/>
+<template is="phoneItem"/>
+</view>

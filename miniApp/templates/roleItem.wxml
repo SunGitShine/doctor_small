@@ -1,0 +1,12 @@
+<template name="roleItem">
+<view class="role-item">
+  <view>
+    <image src="../../images/doctor.png"/>
+    <text>我是医生</text>
+  </view>
+    <view>
+      <image src="../../images/hospital.png"/>  
+    <text>我是医院</text>
+    </view>
+</view>
+</template>

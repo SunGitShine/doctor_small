@@ -1,0 +1,14 @@
+<template name="hospitalIndex">
+  <view class="hospital-info">
+    <view class="hospital-publish">
+      <view class="hospital-publish-itme">
+        <image src=""/>
+        <view>标题一</view>
+      </view>
+      <view class="hospital-publish-itme">
+        <image />
+        <view>标题一</view>
+      </view>
+    </view>
+  </view>
+</template>

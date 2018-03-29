@@ -1,0 +1,26 @@
+/**index.wxss**/
+.role-item{
+  width: 100%;
+  text-align: center;
+}
+.role-item image{
+  display: block;
+  margin: 15px auto;
+  width: 160rpx;
+  height: 160rpx;
+}
+.phone-item{
+  width: 100%;
+}
+.bind-title{
+  color: #2ba246;
+  text-align: center;
+}
+.bind-btn button{
+  width: 80%;
+  height: 36px;
+  font-size: 15px;
+  border-radius: 18px;
+  color: #fff;
+  background: #2ba246;
+}

@@ -1,0 +1,16 @@
+<template name="phoneItem">
+<view class="phone-item">
+  <view class="bind-title">绑定手机</view>
+  <view class="bind-phone">
+    <text>手机号：</text>
+    <input type="text" placeholder="请输入手机号"/>
+  </view>
+  <view class="bind-code">
+    <text>验证码：</text>
+    <input type="text" placeholder="请输入手机号"/>
+  </view>
+  <view class="bind-btn">
+    <button>注册</button>
+  </view>
+</view>
+</template>

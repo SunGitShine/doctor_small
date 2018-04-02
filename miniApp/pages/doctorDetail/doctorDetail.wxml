@@ -1,3 +1,112 @@
 <view class="doctor-page">
-  <view>医生</view>
+  <view class="doctor-info">
+    <view class="doctor-photo">
+      <image src="../../images/doctor/doctor_01.png"/>
+    </view>
+    <view class="doctor-content">
+      <view>李海波</view>
+      <view class="job-title">美容外科　　主任医师</view>
+      <view>
+        <text class="border-tip">美容协会会长</text>
+        <text class="border-tip">从业8年</text>
+      </view>
+    </view>
+  </view>
+  <view class="doctor-item">
+    <image class="icon-btn" src="../../images/doctor/doctor_02.png"/>
+    <text class="doctor-item-title">空闲时间：2018.3.7～2018.4.1</text>
+  </view>
+  <view class="doctor-item">    
+    <view class="doctor-item-title">
+      <image class="icon-btn" src="../../images/doctor/doctor_03.png"/>
+      基本信息：
+    </view>
+    <view class="doctor-item-info">
+      <view class="item-info">姓　　名：谢强</view>
+      <view class="item-info">性　　别：男</view>
+      <view class="item-info">学　　历：本科</view>
+      <view class="item-info">工作年限：3年</view>
+      <view class="item-info">出生年月：1992.06</view>
+      <view class="item-info">所在城市：成都</view>
+      <view class="item-info">联系电话：18380448932</view>
+      <view class="item-info">科  室：骨科</view>
+    </view>
+  </view>
+  <view class="doctor-item">
+    <view class="doctor-item-title">
+      <image class="icon-btn" src="../../images/doctor/doctor_04.png"/>
+      教育经历：
+    </view>
+    <view class="doctor-item-info">
+      <view>
+        <image class="icon-tip" src="../../images/doctor/doctor_07.png"/>
+
+      </view>
+      <view>
+         <image class="icon-tip" src="../../images/doctor/doctor_07.png"/>
+      </view>
+    </view>
+  </view>  
+  <view class="doctor-item">
+    <view class="doctor-item-title">
+      <image class="icon-btn" src="../../images/doctor/doctor_05.png"/>
+      工作经历：
+    </view>
+    <view class="doctor-item-info">
+      <view>
+        <image class="icon-tip" src="../../images/doctor/doctor_07.png"/>
+      </view>
+      <view>
+         <image class="icon-tip" src="../../images/doctor/doctor_07.png"/>
+      </view>
+    </view>
+  </view>
+  <view class="doctor-item">
+    <view class="doctor-item-title">
+      <image class="icon-btn" src="../../images/doctor/doctor_06.png"/>
+      证件信息：
+    </view>
+    <view class="doctor-item-info">
+      <view class="card-content">
+        医师职称证：
+        <image class="card-info" src="../../images/doctor/doctor_07.png"/>
+      </view>
+      <view class="card-content">
+        医师职称证：
+         <image class="card-info" src="../../images/doctor/doctor_07.png"/>
+      </view>
+    </view>
+  </view>
+  <view class="doctor-item">
+    <view class="doctor-item-title">
+      <image class="icon-btn" src="../../images/doctor/doctor_08.png"/>
+      作品展示：
+    </view>
+    <view class="doctor-item-info">
+      <view>
+        <image class="icon-tip" src="../../images/doctor/doctor_07.png"/>
+      </view>
+      <view>
+         <image class="icon-tip" src="../../images/doctor/doctor_07.png"/>
+      </view>
+    </view>
+  </view>
+  <view class="doctor-item">
+    <view class="doctor-item-title">
+      <image class="icon-btn" src="../../images/doctor/doctor_09.png"/>
+      擅长领域：
+    </view>
+    <view class="doctor-item-info">
+      如果你无法简介表达你的想法，那只能说明你不够了解它。
+    </view>
+  </view>
+  <view class="doctor-item">
+    <view class="doctor-item-title">
+      <image class="icon-btn" src="../../images/doctor/doctor_10.png"/>
+      个人简介
+    </view>
+    <view class="doctor-item-info">
+      如果你无法简介表达你的想法，那只能说明你不够了解它。
+    </view>
+  </view>        
 </view>

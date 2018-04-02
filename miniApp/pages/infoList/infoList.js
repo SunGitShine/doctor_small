@@ -10,19 +10,19 @@ Page({
     msg:"this id tabBar",
     listItems:[
       {
-        name:"胡萝卜"
+        name:"刘海波"
       },{
-        name: "青菜"
+        name: "刘海波"
       },{
-        name:"茄子"
+        name:"刘海波"
       }
     ],
     listDoctorItems:[
       {
-        name:"西瓜"
+        name:"刘海波"
       },
       {
-        name: "菠萝"
+        name: "刘海波"
       }
     ]
   },

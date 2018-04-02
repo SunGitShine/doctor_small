@@ -1,0 +1,60 @@
+/* pages/doctorRecommend/doctorRecommend.wxss */
+.block-item{
+  padding-top:45px;
+  height: 100%;
+}
+.list-info{
+  padding: 15px;
+}
+.list-info-title{
+  font-size: 15px;
+}
+.ask-icon{
+  margin-left: 25px;
+  width: 80rpx;
+  height: 36rpx;
+  vertical-align: middle;
+}
+.list-info-route{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  padding: 10rpx;
+  border-bottom: 1px solid #f1f1f1;
+}
+.user-icon{
+  width: 100rpx;
+  height: 100rpx;
+}
+.reservation-icon{
+  display: block;
+  margin: 0 auto;
+  width: 80rpx;
+  height: 32rpx;
+}
+.list-info-item0{
+    flex: 0 0 auto;
+}
+.list-info-item{
+  flex: 1 1 auto;
+  font-size: 30rpx;
+  padding-left: 16rpx;
+}
+.item-tilte{
+  position: relative;
+}
+.item-tilte text{
+  padding-right: 10px;
+}
+.date-tip{
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  color: #ff7800;
+}
+.item-tip{
+  text-align: right;
+  font-size: 12px;
+  color: #ff7800;
+}

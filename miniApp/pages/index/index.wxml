@@ -12,7 +12,7 @@
     </view>
   </view>
   <view class="list-title">
-    <navigator open-type="navigate" url="/pages/infoList/infoList?id=0">
+    <navigator hover-class="none" open-type="navigate" url="/pages/infoList/infoList?id=0">
       <image src="../../images/t1.png"/>
     </navigator>
   </view>
@@ -27,7 +27,7 @@
     </view>
   </view>
   <view class="list-title">
-    <navigator open-type="navigate" url="/pages/infoList/infoList?id=1">
+    <navigator hover-class="none" open-type="navigate" url="/pages/infoList/infoList?id=1">
       <image src="../../images/t2.png"/>
       <text></text>
     </navigator>
@@ -51,8 +51,9 @@
     </view>
   </view>
   <view class="list-title">
-    <navigator open-type="navigate" url="/pages/infoList/infoList?id=2">
+    <navigator hover-class="none" open-type="navigate" url="/pages/infoList/infoList?id=2">
       <image src="../../images/t3.png"/>
+      <text class="route-tip">更多>></text>
     </navigator>
   </view>
   <view class="list-col">

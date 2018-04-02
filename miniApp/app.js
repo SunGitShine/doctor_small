@@ -35,7 +35,10 @@ App({
   },
   //定义整个项目的全局变量或者常量
   globalData: {
-    userInfo: "豆瓣儿",
+    userInfo: {
+      avatarUrl: "../../images/hospital_icon.png",
+      nickName:"Kevin"
+    },
     commonBaseUrl:""
   }
 })

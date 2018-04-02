@@ -1,82 +1,96 @@
 /* pages/hospitalDetail/hospitalDetail.wxss */
-page{
-  height: 100%;
+hospital-detail{
+  
 }
-.hospital-page{
-  height: 100%;
+.hospital-logo{
+  height: 160rpx;
+  background: #2ba246;
+}
+.hospital-logo image{
+  display: block;
+  margin: 0 auto;
+  padding: 10px 0;
+  width: 80rpx;
+  height: 80rpx;
+}
+.info-title{
+  position: relative;
   padding: 10px;
+  font-size: 15px;
+  background: #fff;
+  border-bottom: 1px solid #f1f1f1;
+}
+.info-title image{
+  width: 16px;
+  height: 14px;
+}
+.modify-icon{
+  position: absolute;
+  right: 10px;
+}
+.hospital-detail-info{
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-bottom:48px;  
   background: #f1f1f1;
 }
-.page-block-one{
-  margin-top: 10px;
-  padding: 5px;
+.index-info{
+  margin-top: 10px;  
+  border-radius:5px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px; 
+}
+.index-info:first-child{
+  margin-top: 0;
+}
+.info-index-content{
+  overflow: auto;
+  padding: 10px;
   background: #fff;
-  border-radius: 3px;
-  -webkit-border-radius:3px;
-  -moz-border-radius:3px;
-}
-.block-one-title{
-  position: relative;
-  font-size: 15px;
-}
-.salaries{
-  position: absolute;
-  top: 15px;
-  right: 10px;
-  color: #ff7800;
-}
-.block-one-info{
-  margin-top: 10px;
-  padding-bottom: 10px;
   font-size: 12px;
-  color: #818181;
-  border-bottom: 1px solid #f1f1f1;
+  color: #808080;
 }
-.block-one-logo{
-  margin-top: 15px;
+.info-content-item{
   display: flex;
-  align-items: bottom;
+  display: -webkit-flex;
+  align-items: center;
+  font-size: 12px;
+  color: #808080;
+
 }
-.logo-url{
+.item-title{
   flex:  0 0 auto;
 }
-.logo-url image{
-    width: 80rpx;
-    height: 80rpx;
+.item-input{
+  flex:  0 0 auto;
 }
-.logo-info{
-  flex:  1 1 auto;
-  padding-left: 10px
+.image-item{
+  position: relative;
+  float: left;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 33.33%;
+  height: 100rpx;
 }
-.logo-info-title{
+.image-item-info{
+  height: 100%;
+  background: #f1f1f1;
+}
+.remove-icon{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16px;
+  height: 14px;
+}
+.update-btn{
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
   font-size: 15px;
-}
-.logo-info-content text{
-  margin-right: 10px;
-  padding: 0 5px;
-  font-size: 10px;
-  color: #2ba246;
-  border: 1px dotted #2ba246;
-  border-radius: 10px;
-  -webkit-border-radius:10px;
-  -moz-border-radius:10px;
-}
-.block-two-title{
-  padding-bottom: 10px;
-  font-size: 15px;
-  border-bottom: 1px solid #f1f1f1;
-}
-.block-two-info{
-  margin-top: 15px;
-  padding-left: 25px;
-  color: #818181;
-  font-size: 12px;
-}
-.block-two-info view{
-  margin-bottom: 10px;
-}
-.block-two-des{
-  margin-top: 15px;
-  padding-left: 25px;
-  font-size: 12px;
+  color: #fff;
+  background: #2ba246;
 }

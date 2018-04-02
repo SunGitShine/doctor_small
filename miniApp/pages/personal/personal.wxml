@@ -1,6 +1,18 @@
 <import src="../../templates/roleItem.wxml"/>
 <import src="../../templates/phoneItem.wxml"/>
-<view class="container">
-<template is="roleItem"/>
-<template is="phoneItem"/>
+<import src="../../templates/doctorIndex.wxml"/>
+<import src="../../templates/hospitalIndex.wxml"/>
+<view class="userinfo">
+  <button wx:if="{{!hasUserInfo && canIUse}}"> 获取头像昵称 </button>
+  <block wx:else>
+    <image src="{{userInfo.avatarUrl}}" class="userinfo-avatar" background-size="cover" bindtap="takePhoto"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </block>
 </view>
+<view class="container" wx:if="{{typechoose && roleType==''}}">
+  <template is="roleItem"/>
+</view>
+<view class="page-wrapper" wx:if="{{!typechoose}}"><template is="phoneItem"/></view>
+<view wx:if="{{roleType == ''}}"></view>
+<view wx:elif="{{roleType ==0}}"><template is="doctorIndex" data="{{date}}"/></view>
+<view wx:else><template is="hospitalIndex"/></view>

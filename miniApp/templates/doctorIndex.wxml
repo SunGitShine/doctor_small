@@ -1,19 +1,39 @@
 <template name="doctorIndex">
-  <view  class="doctor-info">
-    <view class="doctor-info-title">title</view>
-    <view class="doctor-info-index">
-      <view>条目一</view>
-      <view>条目一</view>
-      <view>条目一</view>
-    </view>
+  <view class="doctor-info">
+    <navigator hover-class="none" url="/pages/doctorDetail/doctorDetail" open-type="navigate">
+      <view class="doctor-info-title">
+        <image src="../../images/index_icon.png"/>
+        基本信息
+      </view>
+      <view class="doctor-info-index">
+        <view>姓　　名：谢强</view>
+        <view>出生年月：1992.06</view>
+        <view>联系电话：18380448932</view>
+      </view>
+    </navigator>  
   </view>
-  <view class="doctor-publish">
-    <view class="doctor-publish-title">title</view>
+  <view class="doctor-info">
+    <view class="doctor-info-title">
+      <image src="../../images/index_icon.png"/>
+      我的发布
+    </view>
     <view class="doctor-publish-index">
-      <view>条目一</view>
-    </view>
+      <view class="section">
+          <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01"        bindchange="bindDateChange">
+            <view class="picker">
+            可接单时间：{{date}} 
+            </view>
+          </picker>
+        </view>
+      </view>
   </view>
-  <view class="doctor-recommend">
-    <view>2</view>
+  <view class="doctor-info">
+    <navigator hover-class="none" url="/pages/doctorRecommend/doctorRecommend?currentTab=0">
+      <view class="doctor-info-title">
+        <image src="../../images/index_icon.png"/>
+        推荐医院
+        <view class="recommend-tip">2家</view>
+      </view>      
+    </navigator>
   </view>
 </template>

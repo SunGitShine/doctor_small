@@ -2,13 +2,27 @@
   <view class="hospital-info">
     <view class="hospital-publish">
       <view class="hospital-publish-itme">
-        <image src=""/>
-        <view>标题一</view>
+        <navigator hover-class="none" open-type="navigate" url="/pages/hospitalPublish/hospitalPublish">
+          <image src=""/>
+          <view>我的发布</view>
+        </navigator>
       </view>
       <view class="hospital-publish-itme">
-        <image />
-        <view>标题一</view>
+        <navigator hover-class="none" open-type="navigate" url="/pages/doctorRecommend/doctorRecommend?currentTab=1">
+          <image src/>
+          <view>医生推荐</view>
+        </navigator>
       </view>
+    </view>
+    <view class="hospital-info-content">
+      <navigator hover-class="none" open-type="navigate" url="/pages/hospitalDetail/hospitalDetail">
+        <view class="info-title"><image src="../../images/index_icon.png"/>基本信息</view>
+        <view class="info-content">
+          <view>名　　称：四川华美紫馨美容整形医院</view>
+          <view>地　　址：四川省成都市高新区中和镇</view>
+          <view>联系电话：028-85155025</view>
+        </view>
+      </navigator>
     </view>
   </view>
 </template>

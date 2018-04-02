@@ -1,6 +1,6 @@
 {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "撸饭",
-    "navigationBarTextStyle": "black"
+    "backgroundTextStyle": "#2ba246",
+    "navigationBarTitleText": "医咖",
+    "navigationBarTextStyle": "#fff",
+    "navigationBarBackgroundColor": "#2ba246"
 }

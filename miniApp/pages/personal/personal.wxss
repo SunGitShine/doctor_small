@@ -1,4 +1,28 @@
 /**index.wxss**/
+page{
+  height: 100%;
+}
+.userinfo {
+  width: 100%;
+  height: 280rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background:#2ba246;
+
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #fff;
+  font-size: 25rpx;
+}
+
 .role-item{
   width: 100%;
   text-align: center;
@@ -9,18 +33,139 @@
   width: 160rpx;
   height: 160rpx;
 }
+.page-wrapper{
+  position: relative;
+
+}
+/* bind phone */
 .phone-item{
-  width: 100%;
+  width: 640rpx;
+  padding: 15px;
+  box-sizing: border-box;
+}
+.bind-phone{
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  margin-top: 15px;
 }
 .bind-title{
-  color: #2ba246;
+  flex: 0 0 auto;
+  font-size: 12px;
+}
+.bind-input{
+  flex: 1 1 auto;
+  padding:3px 5px;
+  font-size: 12px;
+  border: 1px solid #f1f1f1;
+}
+.bind-qr{
+  flex: 0 0 auto;
+  margin-left: 5px;
+  padding: 6px;
+  font-size: 12px;
+  background: #f1f1f1;
+}
+.bind-black{
+  flex: 0 0 auto;
+  margin-left: 5px;
+  padding: 3px 5px;
+  font-size: 12px;
+  background: #fff;
+  color: #fff;
+}
+.bind-title{
   text-align: center;
 }
+.bind-btn{
+  margin-top: 25px;
+}
 .bind-btn button{
-  width: 80%;
+  width: 100%;
   height: 36px;
   font-size: 15px;
-  border-radius: 18px;
   color: #fff;
   background: #2ba246;
+}
+
+/* hospital */
+.hospital-publish{
+  display: flex;
+  display: -webkit-flex;
+  padding: 15px 0;
+}
+.hospital-publish-itme{
+  flex: 1 1 auto;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 15px;
+  border-top: 1px solid #f1f1f1;
+  border-bottom: 1px solid #f1f1f1;
+}
+.hospital-publish-itme:first-child{
+  border-right: 1px solid #f1f1f1;
+}
+.hospital-publish-itme image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.hospital-info-content{
+  padding: 15px;
+}
+.info-title{
+  color: #2ba246;
+  font-size: 15px;
+}
+.info-title image{
+  width: 16px;
+  height: 14px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.info-content{
+  padding-left: 25px;
+  font-size: 12px;
+  color: #808080;
+}
+.info-content view{
+  margin-top: 5px;
+}
+
+/* doctor */
+.doctor-info{
+  padding:15px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.doctor-info:last-child{
+  border-bottom:none;
+}
+.doctor-info-title{
+  position: relative;
+  font-size: 15px;
+  color: #2ba246;
+}
+.doctor-info-title image{
+  width: 16px;
+  height: 14px;
+  vertical-align: middle;
+}
+.doctor-info-index{
+  padding-left: 25px;
+  color: #808080;
+  font-size: 12px;
+}
+.doctor-info-index view{
+  margin-top: 10px;
+}
+.recommend-tip{
+  position: absolute;
+  top:0;
+  right: 0;
+  color:  #ff7800;
+}
+.doctor-publish-index{
+  margin-top: 10px;
+  padding-left: 25px;
+  color: #808080;
+  font-size: 12px;
 }

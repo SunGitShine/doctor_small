@@ -1,11 +1,16 @@
 {
   "pages":[
-    "pages/index/index",
     "pages/personal/personal",
+    "pages/index/index",
     "pages/infoList/infoList",
+
+    "pages/hospitalPublish/hospitalPublish",
     "pages/infoDetail/infoDetail",
     "pages/hospitalDetail/hospitalDetail",
     "pages/doctorDetail/doctorDetail",
+    
+    "pages/doctorRecommend/doctorRecommend",
+    "pages/jobDetail/jobDetail",
     "pages/logs/logs"
   ],
   "window":{
@@ -30,8 +35,7 @@
         "iconPath": "images/user_gray.png"
       }
     ],
-    "color": "#000000",
-    "backgroundColor": "#fff"
+    "color": "#000000"
   },
   "networkTimeout":{
     "request":10000,

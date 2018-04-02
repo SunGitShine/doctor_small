@@ -1,19 +1,35 @@
 <template name="listItem">
   <view class="list-info">
-    <navigator class="list-info-route" open-type="navigate" 
-    url="{{currentTab == 0?'/pages/doctorDetail/doctorDetail':'/pages/hospitalDetail/hospitalDetail'}}">
-      <image src="http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg"/>
-      <view class="list-info-item">
-        <view>
-          <text>{{item.name}}</text>
-          <text>3</text>
+    <navigator hover-class="none" open-type="navigate" 
+    url="{{currentTab == 0?'/pages/doctorDetail/doctorDetail':'/pages/jobDetail/jobDetail'}}">
+      <view wx:if="{{currentTab !== 0}}" class="list-info-title">
+      急需美容外科主任医师
+      <image class="ask-icon" src="../../images/ask_icon.png"/>
+      </view>
+      <view class="list-info-route">
+        <view class="list-info-item0">
+          <image class="user-icon" src="../../images/hospital_icon.png"/>
+          <image wx:if="{{currentTab == 0}}" class="reservation-icon" src="../../images/reservation_icon.png"/>
+        </view>        
+        <view class="list-info-item">
+          <view class="item-tilte">
+            <text>{{item.name}}</text>
+            <text>3年</text>
+            <text class="date-tip" wx:if="{{currentTab == 0}}">2018.3.2~2018.4.2</text>
+          </view>
+          <view class="item-content">
+            <text>美容外科</text>
+            <text>主任医师</text>            
+          </view>
+          <view wx:if="{{currentTab == 0}}" class="item-content">
+            <text>中国美容协会会长</text>
+            <text>中国十佳医师</text>
+          </view>     
         </view>
-        <view>
-          <text>语文</text>
+        <view class="list-info-item" wx:if="{{currentTab !== 0}}">
+          <view class="item-tip">6k</view>
+          <view class="item-tip">2018.03.08</view>
         </view>
-        <view>
-          <text>十佳</text>
-        </view>     
       </view>
     </navigator>
   </view>

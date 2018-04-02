@@ -1,0 +1,78 @@
+<view class="publish-page">
+  <view class="publish-title">
+      <image src="../../images/index_icon.png"/>
+      基本信息要求
+  </view>
+  <view class="publish-content">
+    <view class="content-item">
+      <image class="item-icon" src="../../images/modify_icon2.png"/>
+      <text class="item-title">标题</text>
+      <input class="item-input"/>
+    </view>
+    <view class="content-item">
+      <image class="item-icon" src="../../images/modify_icon2.png"/>
+      <text class="item-title">科室</text>
+      <input class="item-input"/>    
+    </view>
+    <view class="content-item">
+      <image class="item-icon" src="../../images/modify_icon2.png"/>
+      <text class="item-title">职称</text>
+      <input class="item-input"/>    
+    </view>
+    <view class="content-item">
+      <image class="item-icon" src="../../images/modify_icon2.png"/>
+      <text class="item-title">学历</text>
+      <input class="item-input"/>    
+    </view>
+    <view class="content-item">
+      <image class="item-icon" src="../../images/modify_icon2.png"/>
+      <text class="item-title">工作年限</text>
+      <input class="item-input"/>    
+    </view>
+    <view class="content-item">
+      <image class="item-icon" src="../../images/modify_icon2.png"/>
+      <text class="item-title">时间</text>
+      <input class="item-input"/>    
+    </view>
+    <view class="content-item">
+      <image class="item-icon" src="../../images/modify_icon2.png"/>
+      <text class="item-title">地点</text>
+      <input class="item-input"/>    
+    </view>
+  </view>
+  <view class="publish-title">
+    <image src="../../images/money_icon.png"/>
+       薪资福利
+  </view>
+  <view class="publish-content">
+    <view class="content-item">
+      <text class="item-title">薪资福利：</text>
+      <checkbox-group bindchange="">
+        <label class="checkbox">
+          <checkbox value="" />面议
+        </label>
+      </checkbox-group>
+      <text class="item-title">具体金额</text>
+      <input class="item-input" value="" />       
+    </view>
+  </view>
+  <view class="publish-title">
+      <image src="../../images/des_icon.png"/>
+      职位描述
+  </view>
+  <view class="publish-content">
+    <view class="section">
+      <textarea bindblur="bindTextAreaBlur" auto-height placeholder="自动变高" />
+    </view>
+  </view>
+    <view class="publish-title">
+      <image src="../../images/job_icon.png"/>
+      职位要求
+  </view>
+  <view class="publish-content">
+    <view class="section">
+      <textarea bindblur="bindTextAreaBlur" auto-height placeholder="自动变高" />
+    </view>
+  </view>
+  <view class="update-btn">发布</view>
+</view>

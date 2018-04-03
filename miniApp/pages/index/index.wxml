@@ -16,13 +16,15 @@
       <image src="../../images/t1.png"/>
     </navigator>
   </view>
-  <view class="list-wrapper">
+  <view class="list-wrapper list-hot-wrap">
     <view class="list-item-hot">
       <image src="../../images/meirongneike.png"/>
+      <image class='list-item-hot-icon' src='../../images/hot.png'></image>
       <text>美容外科</text>    
     </view>
     <view class="list-item-hot">
       <image src="../../images/meirong.png"/>
+      <image class='list-item-hot-icon' src='../../images/hot.png'></image>
       <text>美容皮肤</text>
     </view>
   </view>
@@ -34,26 +36,29 @@
   </view>
   <view class="list-wrapper">
     <view class="list-item">
-      <image src="../../images/neike.png"/>
+      <image src="../../images/neike.png" mode='aspectFit'/>
       <text>内科</text>
     </view>
     <view class="list-item">
-      <image src="../../images/guke.png"/>
+      <image src="../../images/guke.png" mode='aspectFit'/>
       <text>骨科</text>
     </view>
     <view class="list-item">
-      <image src="../../images/yanke.png"/>
+      <image src="../../images/yanke.png" mode='aspectFit'/>
       <text>眼科</text>
     </view>
       <view class="list-item">
-      <image src="../../images/erbi.png"/>
+      <image src="../../images/erbi.png" mode='aspectFit'/>
       <text>耳鼻喉科</text>
     </view>
   </view>
   <view class="list-title">
     <navigator hover-class="none" open-type="navigate" url="/pages/infoList/infoList?id=2">
       <image src="../../images/t3.png"/>
-      <text class="route-tip">更多>></text>
+      <view class='list-title-more'>
+        <text>更多</text>
+         <image src='../../images/more.png' mode='aspectFit'></image> 
+      </view>
     </navigator>
   </view>
   <view class="list-col">
@@ -66,9 +71,6 @@
         <text>|</text>
         <text>3-4年经验</text>
       </div>
-      <div class="user-logo">
-        <image src="../../images/timg.png"/>
-      </div>
       <text class="salaries">6-8k</text>
     </view>
     <view class="list-col-item">
@@ -79,9 +81,6 @@
         <text>具有资质 </text>
         <text>|</text>
         <text>3-4年经验</text>
-      </div>
-      <div class="user-logo">
-        <image src="../../images/timg.png"/>
       </div>
       <text class="salaries">6-8k</text>
     </view>

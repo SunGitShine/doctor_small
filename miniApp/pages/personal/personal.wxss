@@ -39,7 +39,7 @@ page{
 }
 /* bind phone */
 .phone-item{
-  width: 640rpx;
+  width: 100%;
   padding: 15px;
   box-sizing: border-box;
 }

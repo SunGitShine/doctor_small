@@ -20,19 +20,36 @@ image{
   text-align: center;
 }
 .list-title image{
-  width: 35%;
-  height: 30rpx;
+  width: 250rpx;
+  height: 32.5rpx;
+}
+.list-title-more{
+  position: absolute;
+  right: 30rpx;
+  top: 18rpx;
+  color: #9a9a9a;
+  display: flex;
+  align-items: center;
+}
+.list-title-more image{
+  width: 26rpx;
+  height: 27rpx;
+  margin-left: 12rpx;
 }
 .list-wrapper{
   display: flex;
   padding: 10px;
   margin-bottom: 10px;
   flex-direction: row;
-  height: 200rpx;
+  height: 150rpx;
   color: #303030;
   background: #fff;
 }
+.list-hot-wrap{
+  height: 200rpx;
+}
 .list-item-hot{
+  position: relative;
   flex: 1 1 auto;
   padding: 10px;
   text-align: center;
@@ -48,6 +65,11 @@ image{
   width: 80rpx;
   height: 80rpx;
 }
+.list-item-hot .list-item-hot-icon{
+  position: absolute;
+  right: 0;
+  top: 0
+}
 .list-item{
   flex: 1 1 auto;
   text-align: center;
@@ -57,7 +79,7 @@ image{
   display: block;
   margin: 0 auto 10px auto;
   width: 80rpx;
-  height: 60rpx;
+  height: 80rpx;
 }
 .list-col{
   background: #fff;
@@ -94,10 +116,4 @@ image{
   top: 15px;
   right: 10px;
   color: #ff7800;
-}
-.route-tip{
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  color: #2ba246;
 }

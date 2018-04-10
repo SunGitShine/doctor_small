@@ -2,7 +2,7 @@
 <view class="page-wrapper">
   <view class="container">
     <view class="swiper-contain">
-      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#fff" indicator-active-color="#2ba246">
+      <swiper class="img-swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#fff" indicator-active-color="#2ba246">
         <block wx:for="{{imgUrls}}" wx:key="{{index}}">
           <swiper-item>
             <image src="{{item}}" class="slide-image" width="355" height="180"/>
@@ -18,11 +18,13 @@
   </view>
   <view class="list-wrapper">
     <view class="list-item-hot">
-      <image src="../../images/meirongneike.png"/>
+      <image src="../../images/hot_icon.png" class="hot-icon"/>
+      <image src="../../images/meirongneike.png" class="index-icon"/>
       <text>美容外科</text>    
     </view>
     <view class="list-item-hot">
-      <image src="../../images/meirong.png"/>
+    <image src="../../images/hot_icon.png" class="hot-icon"/>
+      <image src="../../images/meirong.png" class="index-icon"/>
       <text>美容皮肤</text>
     </view>
   </view>
@@ -32,22 +34,62 @@
       <text></text>
     </navigator>
   </view>
-  <view class="list-wrapper">
-    <view class="list-item">
-      <image src="../../images/neike.png"/>
-      <text>内科</text>
-    </view>
-    <view class="list-item">
-      <image src="../../images/guke.png"/>
-      <text>骨科</text>
-    </view>
-    <view class="list-item">
-      <image src="../../images/yanke.png"/>
-      <text>眼科</text>
-    </view>
-      <view class="list-item">
-      <image src="../../images/erbi.png"/>
-      <text>耳鼻喉科</text>
+  <view class="icon-wrapper">
+    <view class="swiper-contain">
+      <swiper class="icon-swiper" indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#f1f1f1" indicator-active-color="#2ba246">
+        <block>
+          <swiper-item>
+            <view class="list-wrapper">
+              <view class="list-item">
+                <image src="../../images/neike.png"/>
+                <text>内科</text>
+              </view>
+              <view class="list-item">
+                <image src="../../images/guke.png"/>
+                <text>骨科</text>
+              </view>
+              <view class="list-item">
+                <image src="../../images/yanke.png"/>
+                <text>眼科</text>
+              </view>
+              <view class="list-item">
+                <image src="../../images/waike.png"/>
+                <text>外科</text>
+              </view>
+              <view class="list-item">
+                <image src="../../images/erbihou.png"/>
+                <text>耳鼻喉科</text>
+              </view>
+            </view>
+          </swiper-item>
+        </block>
+        <block>
+          <swiper-item>
+            <view class="list-wrapper">
+              <view class="list-item">
+                <image src="../../images/pifu.png"/>
+                <text>皮肤科</text>
+              </view>
+              <view class="list-item">
+                <image src="../../images/fuchan.png"/>
+                <text>妇产科</text>
+              </view>
+              <view class="list-item">
+                <image src="../../images/nanke.png"/>
+                <text>男科</text>
+              </view>
+              <view class="list-item">
+                <image src="../../images/erke.png"/>
+                <text>儿科</text>
+              </view>
+              <view class="list-item">
+                <image src="../../images/zhengxing.png"/>
+                <text>整型美容</text>
+              </view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
     </view>
   </view>
   <view class="list-title">
@@ -66,9 +108,13 @@
         <text>|</text>
         <text>3-4年经验</text>
       </div>
-      <div class="user-logo">
-        <image src="../../images/timg.png"/>
-      </div>
+      <view class="user-logo">
+        <image src="../../images/timg.png" class="logo-icon"/>
+        <view class="logo-text">
+          <view>中医院</view>
+          <view>成都市</view>
+        </view>
+      </view>
       <text class="salaries">6-8k</text>
     </view>
     <view class="list-col-item">
@@ -80,9 +126,13 @@
         <text>|</text>
         <text>3-4年经验</text>
       </div>
-      <div class="user-logo">
-        <image src="../../images/timg.png"/>
-      </div>
+      <view class="user-logo">
+        <image src="../../images/timg.png" class="logo-icon"/>
+        <view class="logo-text">
+          <view>中医院</view>
+          <view>成都市</view>
+        </view>
+      </view>
       <text class="salaries">6-8k</text>
     </view>
   </view>

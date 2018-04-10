@@ -5,8 +5,11 @@
 .swiper-contain{
   width: 100%;
 }
-swiper{
+.img-swiper{
   height: 300rpx;
+}
+.icon-swiper{
+  height: 240rpx;
 }
 image{
   width: 100%;
@@ -23,6 +26,9 @@ image{
   width: 35%;
   height: 30rpx;
 }
+.icon-wrapper{
+  margin-bottom: 10px;
+}
 .list-wrapper{
   display: flex;
   padding: 10px;
@@ -33,20 +39,29 @@ image{
   background: #fff;
 }
 .list-item-hot{
+  position: relative;
   flex: 1 1 auto;
   padding: 10px;
   text-align: center;
   font-size: 13px;
   border: 1px solid #f1f1f1;
 }
+
 .list-item-hot:first-child{
   border-right: none;
 }
-.list-item-hot image{
+.index-icon{
   display: block;
   margin: 0 auto 10px auto;
   width: 80rpx;
   height: 80rpx;
+}
+.hot-icon{
+  position: absolute;
+  width: 82rpx;
+  height: 67rpx;
+  top:0;
+  right: 0;
 }
 .list-item{
   flex: 1 1 auto;
@@ -83,11 +98,23 @@ image{
   padding-right:10px;
 }
 .user-logo{
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;  
+  -webkit-align-items: center;  
   margin-top: 10px;
 }
-.user-logo image{
+.logo-icon{
+  flex: 0 0 auto;
+  -webkit-flex:0 0 auto;
   width: 40rpx;
   height: 40rpx;
+}
+.logo-text{
+  padding-left: 5px;
+  flex: 1 1 auto;
+  -webkit-flex:1 1 auto;
+  font-size: 24rpx;
 }
 .salaries{
   position: absolute;

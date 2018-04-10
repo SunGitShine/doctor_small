@@ -2,16 +2,16 @@
 <view class="phone-item">
   <view class="bind-phone">
     <text class="bind-title">手机号：</text>
-    <input class="bind-input" type="text" placeholder="请输入手机号"/>
-    <text class="bind-qr">获取验证码</text>
+    <input class="bind-input" type="text" placeholder="请输入手机号" bindinput="phoneInput"/>
+    <text class="bind-qr"  bindtap="getSmsCode">获取验证码</text>
   </view>
   <view class="bind-phone">
     <text class="bind-title">验证码：</text>
-    <input class="bind-input" type="text" placeholder="请输入验证码"/>
+    <input class="bind-input" type="text" placeholder="请输入验证码" bindinput="codeInput"/>
     <text class="bind-black">获取验证码</text>
   </view>
   <view class="bind-btn">
-    <button bindtap="register">注册</button>
+    <button bindtap="bindAccount">注册</button>
   </view>
 </view>
 </template>

@@ -1,12 +1,10 @@
 const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  /* 页面的初始数据*/
   data: {
     navbar:["医生专栏","医院专栏"],
     currentTab:0,
+    currentClassify:0,
     msg:"this id tabBar",
     listItems:[
       {
@@ -24,6 +22,17 @@ Page({
       {
         name: "刘海波"
       }
+    ],
+    workClassify:[
+      {
+        name:"呼吸内科",
+      },
+      {
+        name: "心血管内科",
+      },
+      {
+        name: "神经内科",
+      },
     ]
   },
   // 响应点击导航栏
@@ -31,6 +40,12 @@ Page({
     var _this = this;
     _this.setData({
       currentTab:e.currentTarget.dataset.idx,
+    })
+  },
+  getClassify:function(e){
+    var _this = this;
+    _this.setData({
+      currentClassify: e.currentTarget.dataset.idy,
     })
   },
   /**

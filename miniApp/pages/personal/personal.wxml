@@ -12,7 +12,8 @@
 <view class="container" wx:if="{{typechoose && roleType==''}}">
   <template is="roleItem"/>
 </view>
-<view class="page-wrapper" wx:if="{{!typechoose}}"><template is="phoneItem"/></view>
+<view class="page-wrapper" wx:if="{{roleType==''}}"></view>
+<view wx:if="{{!typechoose}}"><template is="phoneItem"/></view>
 <view wx:if="{{roleType == ''}}"></view>
 <view wx:elif="{{roleType ==0}}"><template is="doctorIndex" data="{{date}}"/></view>
 <view wx:else><template is="hospitalIndex"/></view>

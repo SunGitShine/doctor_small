@@ -10,6 +10,29 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log(res);
+        if(res.code){
+          wx.request({
+            url: 'https://api.weixin.qq.com/sns/jscode2session',
+            data: {
+              //小程序唯一标识
+              appid: 'wxf02042140ebabb8f',
+              //小程序的 app secret
+              secret: '4164d0eabdee68c833fde99de731aa53',
+              grant_type: 'authorization_code',
+              js_code: res.code
+            },
+            method:'GET',
+            header: { 'content-type': 'application/json'},
+            success:function(openIdRes){
+              console.log(openIdRes);
+              if(openIdRes.data.openid != null & openIdRes.data.openid != undefined){
+                wx.setStorageSync('openid', openIdRes.data.openid);
+              }
+            }
+          })
+        }
+
       }
     })
     // 获取用户信息
@@ -39,6 +62,7 @@ App({
       avatarUrl: "../../images/hospital_icon.png",
       nickName:"Kevin"
     },
-    commonBaseUrl:""
+    commonBaseUrl:"http://112.74.57.165:8080/share_doctor",
+    userOpenId:""
   }
 })

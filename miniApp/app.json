@@ -1,14 +1,13 @@
 {
-  "pages":[
+  "pages":[ 
+    "pages/index/index",   
     "pages/personal/personal",
-    "pages/index/index",
     "pages/infoList/infoList",
 
     "pages/hospitalPublish/hospitalPublish",
     "pages/infoDetail/infoDetail",
     "pages/hospitalDetail/hospitalDetail",
-    "pages/doctorDetail/doctorDetail",
-    
+    "pages/doctorDetail/doctorDetail",   
     "pages/doctorRecommend/doctorRecommend",
     "pages/jobDetail/jobDetail",
     "pages/logs/logs"
@@ -16,7 +15,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "撸饭",
+    "navigationBarTitleText": "医袖",
     "navigationBarTextStyle":"black"
   },
   "tabBar":{

@@ -133,3 +133,24 @@ camera{
   font-size: 12px;
   color: #ff7800;
 }
+
+.classify-wrapper{
+  display: flex;
+  display: -webkit-flex;
+}
+.left-slide{
+  flex: 0 0 auto;
+  -webkit-flex:0 0 auto;
+  background: #f1f1f1;
+}
+.left-slide-item{
+  padding: 5px 2px;
+  font-size: 24rpx;
+}
+.left-slide-item.active{
+  background: #fff;
+}
+.right-slide{
+  flex: 1 1 auto;
+  -webkit-flex:1 1 auto;
+}

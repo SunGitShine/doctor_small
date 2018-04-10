@@ -1,21 +1,18 @@
 const app = getApp();
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  /* 页面的初始数据*/
   data: {
     userInfo: {     
     },
+    phoneNum:"",
+    qrCode:"",
     motto: "Hello world",
     roleType:"",
     typechoose:false,
     date:""
   },
-  /**
- * 生命周期函数--监听页面加载
- */
+  /*生命周期函数--监听页面加载*/
   onLoad: function (option) {
     if (app.globalData.userInfo) {
       this.setData({
@@ -35,6 +32,7 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
+          
           app.globalData.userInfo = res.userInfo;
           this.setData({
             userInfo: res.userInfo,
@@ -43,25 +41,9 @@ Page({
         }
       })
     }
+    console.log(this.data.userInfo);
   },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-  takePhoto: function () {
-    wx.chooseImage({
-      success: function (res) {
 
-      },
-    })
-  },
-  register:function(){
-    this.setData({ typechoose: true})
-  },
   chooseRole:function(e){
     let typeNum = e.currentTarget.dataset.idx;
     this.setData({ roleType:typeNum})
@@ -72,56 +54,68 @@ Page({
       date: e.detail.value
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
+  /* 生命周期函数--监听页面显示*/
   onShow: function () {
     this.setData({
       roleType: "",
       typechoose: false
     });
+    wx.request({
+      url: app.globalData.commonBaseUrl +'/common/findByOpneid.htm',
+      data: {d:{ "openid": "dew32" }},
+      success:function(res){
+        console.log(res);
+        
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  codeInput:function(e){
+    this.setData({
+      qrCode: e.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  phoneInput:function(e){
+    this.setData({
+      phoneNum:e.detail.value
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  //获取二维码
+  getSmsCode:function(){
+    var phoneReg = /^1[3|4|5|8][0-9]\d{4,8}$/;
+    if (phoneReg.test(this.data.phoneNum)){
+      wx.request({
+        url: app.globalData.commonBaseUrl + '/common/sendSmsCode.htm',
+        data: { d: { "phone": this.data.phoneNum } },
+        success: function (res) {
+          console.log(res);
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '号码不符合规范',
+        icon:'none'
+      })
+    }
   },
+  // 绑定账号
+  bindAccount: function () {
+    var openid;
+    wx.getStorageSync({
+      key: 'openid',
+      success:function(res){
+        openid = res.data;
+      }
+    })
+    wx.request({
+      url: app.globalData.commonBaseUrl + '/common/bindPhone',
+      method:'POST',
+      data:{
+        "phone": this.data.phoneNum,
+        "smsCode": this.data.qrCode,
+        openid: openid,
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+      }
+    })
+    this.setData({ typechoose: true })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

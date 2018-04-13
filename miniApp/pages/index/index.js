@@ -43,5 +43,25 @@ Page({
       url: '../logs/logs'
     })
   },
-
+  /**
+     * 获取一级科室
+     */
+  findParentDepartment: function () {
+      wx.request({
+          url: app.globalData.commonBaseUrl + "/department/findParentDepartment.htm",
+          method: "POST",
+          dataType: "json",
+          data: {},
+          success: function (res) {
+              console.log(res)
+          }
+      })
+  },
+  //路由：跳转到职位列表
+  goToJobListings: function (event) {
+      let id = event.currentTarget.id;
+      wx.navigateTo({
+          url: '../infoList/infoList?id='+id
+      })
+  }
 })

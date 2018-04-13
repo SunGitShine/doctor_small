@@ -1,19 +1,42 @@
-<import src="../../templates/roleItem.wxml"/>
-<import src="../../templates/phoneItem.wxml"/>
-<import src="../../templates/doctorIndex.wxml"/>
-<import src="../../templates/hospitalIndex.wxml"/>
-<view class="userinfo">
+<import src="../../templates/roleItem.wxml" />
+<import src="../../templates/phoneItem.wxml" />
+<import src="../../templates/doctorIndex.wxml" />
+<import src="../../templates/hospitalIndex.wxml" />
+<!-- 导向 -->
+<view class='guide-content'  wx:if="{{identity == 0 && guideShow}}">
+    <view class="guide-box" wx:if="{{!roleShow}}">
+        <image src="../../images/yindao.png" />
+        <view class="text">您的信息尚不完善，请先完善个人信息</view>
+        <button type="primary" class='btn' bindtap="goFillInformation"> 立即完善 </button>
+    </view>
+    <view class="role-bg" wx:if="{{roleShow}}"></view>
+    <view class="role-item" wx:if="{{roleShow}}">
+        <view data-idx="1" bindtap="chooseRole">
+            <image src="../../images/doctor.png" />
+            <text>我是医生</text>
+        </view>
+        <view data-idx="2" bindtap="chooseRole">
+            <image src="../../images/hospital.png" />
+            <text>我是医院</text>
+        </view>
+    </view>
+    <view class='role-close-btn' bindtap="closeChooseRole">
+        <image src="../../images/delete.png" />
+    </view>
+</view>
+<!-- <view class="userinfo">
   <button wx:if="{{!hasUserInfo && canIUse}}"> 获取头像昵称 </button>
   <block wx:else>
     <image src="{{userInfo.avatarUrl}}" class="userinfo-avatar" background-size="cover" bindtap="takePhoto"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </block>
+</view> -->
+<view wx:if="{{!typechoose}}">
+    <template is="phoneItem" />
 </view>
-<view class="container" wx:if="{{typechoose && roleType==''}}">
-  <template is="roleItem"/>
-</view>
-<view class="page-wrapper" wx:if="{{roleType==''}}"></view>
-<view wx:if="{{!typechoose}}"><template is="phoneItem"/></view>
+<view wx:elif="{{roleType ==1}}"><template is="doctorIndex" data="{{...doctorData}}"/></view>
+<!-- <view class="page-wrapper" wx:if="{{roleType==''}}"></view> -->
+<!-- <view wx:if="{{!typechoose}}"><template is="phoneItem"/></view>
 <view wx:if="{{roleType == ''}}"></view>
 <view wx:elif="{{roleType ==0}}"><template is="doctorIndex" data="{{date}}"/></view>
-<view wx:else><template is="hospitalIndex"/></view>
+<view wx:else><template is="hospitalIndex"/></view> -->

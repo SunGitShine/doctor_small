@@ -1,3 +1,4 @@
+
 /**index.wxss**/
 page{
   position: relative;
@@ -164,12 +165,17 @@ page{
 .doctor-info-title{
   position: relative;
   font-size: 15px;
+  display: flex;
+  align-items: center;
   color: #2ba246;
 }
 .doctor-info-title image{
   width: 16px;
   height: 14px;
   vertical-align: middle;
+}
+.doctor-info-title>view{
+    padding-left: 10px;
 }
 .doctor-info-index{
   padding-left: 25px;
@@ -184,10 +190,92 @@ page{
   top:0;
   right: 0;
   color:  #ff7800;
+  display: flex;
 }
 .doctor-publish-index{
   margin-top: 10px;
-  padding-left: 25px;
   color: #808080;
   font-size: 12px;
+}
+.role-bg{
+
+}
+.guide-content{
+     width: 100%;
+    height: 100%;
+}
+.guide-box{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.guide-box>image{
+   width: 105px;
+   height: 76px;
+   margin: 20px;
+}
+.guide-box>.text{
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+.guide-box>.btn{
+    width: 40%;
+    margin: 40px auto;
+}
+.p-role-box{
+    width: 100%;
+    height: 100%;
+}
+.role-bg{
+    width: 100%;
+    height: 100%;
+    background-color: #808080;
+}
+.role-close-btn{
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+.role-close-btn>image{
+    width: 30px;
+    height: 30px;
+    margin: auto;
+}
+.add-picker-box{
+    background-color: #F1F1F1;
+    border: 1px dashed #808080;
+     text-align: center;
+     margin-top: 10px;
+}
+.add-img-box{
+   
+}
+.add-img-box>image{
+    width: 30px;
+    height: 30px;
+    margin: 20px auto 0;
+}
+.add-picker-box>.text{
+    font-size: 0.8rem;
+    padding-bottom: 20px;
+}
+.sitting-time-list-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sitting-remove-icon{
+    width: 30px;
+    height: 30px;
+}
+.sitting-time-operation{
+    display: flex;
+    align-items: center;
+}
+.sitting-switch-btn,.sitting-remove-icon{
+    transform: scale(0.5)
+}
+.sitting-remove-icon{
+    margin-top:3px;
 }

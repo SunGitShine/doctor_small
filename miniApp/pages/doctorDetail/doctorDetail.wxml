@@ -14,7 +14,7 @@
   </view>
   <view class="doctor-item">
     <image class="icon-btn" src="../../images/doctor/doctor_02.png"/>
-    <text class="doctor-item-title">空闲时间：2018.3.7～2018.4.1</text>
+    <text class="doctor-item-title">坐诊时间：2018.3.7～2018.4.1</text>
   </view>
   <view class="doctor-item">    
     <view class="doctor-item-title">

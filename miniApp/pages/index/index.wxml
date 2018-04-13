@@ -40,23 +40,23 @@
         <block>
           <swiper-item>
             <view class="list-wrapper">
-              <view class="list-item">
+              <view class="list-item" id='1' bindtap="goToJobListings">
                 <image src="../../images/neike.png"/>
                 <text>内科</text>
               </view>
-              <view class="list-item">
+              <view class="list-item" id='5' bindtap="goToJobListings">
                 <image src="../../images/guke.png"/>
                 <text>骨科</text>
               </view>
-              <view class="list-item">
+              <view class="list-item" id='7' bindtap="goToJobListings">
                 <image src="../../images/yanke.png"/>
                 <text>眼科</text>
               </view>
-              <view class="list-item">
+              <view class="list-item" id='2' bindtap="goToJobListings">
                 <image src="../../images/waike.png"/>
                 <text>外科</text>
               </view>
-              <view class="list-item">
+              <view class="list-item" id='6' bindtap="goToJobListings">
                 <image src="../../images/erbihou.png"/>
                 <text>耳鼻喉科</text>
               </view>
@@ -66,23 +66,23 @@
         <block>
           <swiper-item>
             <view class="list-wrapper">
-              <view class="list-item">
+              <view class="list-item"  id='9' bindtap="goToJobListings">
                 <image src="../../images/pifu.png"/>
                 <text>皮肤科</text>
               </view>
-              <view class="list-item">
+              <view class="list-item"  id='8' bindtap="goToJobListings">
                 <image src="../../images/fuchan.png"/>
                 <text>妇产科</text>
               </view>
-              <view class="list-item">
+              <view class="list-item"  id='10' bindtap="goToJobListings">
                 <image src="../../images/nanke.png"/>
                 <text>男科</text>
               </view>
-              <view class="list-item">
+              <view class="list-item" id='4' bindtap="goToJobListings">
                 <image src="../../images/erke.png"/>
                 <text>儿科</text>
               </view>
-              <view class="list-item">
+              <view class="list-item" id='3' bindtap="goToJobListings">
                 <image src="../../images/zhengxing.png"/>
                 <text>整型美容</text>
               </view>

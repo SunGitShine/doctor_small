@@ -3,11 +3,11 @@
     "pages/index/index",   
     "pages/personal/personal",
     "pages/infoList/infoList",
-
     "pages/hospitalPublish/hospitalPublish",
     "pages/infoDetail/infoDetail",
     "pages/hospitalDetail/hospitalDetail",
-    "pages/doctorDetail/doctorDetail",   
+    "pages/doctorDetail/doctorDetail", 
+    "pages/doctorEdit/doctorEdit",  
     "pages/doctorRecommend/doctorRecommend",
     "pages/jobDetail/jobDetail",
     "pages/logs/logs"

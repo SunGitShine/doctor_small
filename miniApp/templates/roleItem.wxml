@@ -1,12 +1,3 @@
 <template name="roleItem">
-<view class="role-item">
-  <view data-idx="0"  bindtap="chooseRole">
-    <image src="../../images/doctor.png"/>
-    <text>我是医生</text>
-  </view>
-  <view data-idx="1" bindtap="chooseRole">
-    <image src="../../images/hospital.png"/>  
-  <text>我是医院</text>
-  </view>
-</view>
+
 </template>

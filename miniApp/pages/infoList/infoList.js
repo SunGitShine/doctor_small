@@ -1,114 +1,76 @@
 const app = getApp()
 Page({
-  /* 页面的初始数据*/
-  data: {
-    navbar:["医生专栏","医院专栏"],
-    currentTab:0,
-    currentClassify:0,
-    msg:"this id tabBar",
-    listItems:[
-      {
-        name:"刘海波"
-      },{
-        name: "刘海波"
-      },{
-        name:"刘海波"
-      }
-    ],
-    listDoctorItems:[
-      {
-        name:"刘海波"
-      },
-      {
-        name: "刘海波"
-      }
-    ],
-    workClassify:[
-      {
-        name:"呼吸内科",
-      },
-      {
-        name: "心血管内科",
-      },
-      {
-        name: "神经内科",
-      },
-    ]
-  },
-  // 响应点击导航栏
-  navbarTap:function(e){
-    var _this = this;
-    _this.setData({
-      currentTab:e.currentTarget.dataset.idx,
-    })
-  },
-  getClassify:function(e){
-    var _this = this;
-    _this.setData({
-      currentClassify: e.currentTarget.dataset.idy,
-    })
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    console.log(options.id);
-    // wx.request({
-    //   url: app.global.commonBaseUrl+"",
-    //   method:"GET",
-    //   dataType:"json",
-    //   data:{},
-    //   success:function(res){
-    //   }
-    // })    
-  },
+    /* 页面的初始数据*/
+    data: {
+        navbar: ["医生专栏", "医院专栏"],
+        currentTab: 0,
+        currentClassify: 0,
+        msg: "this id tabBar",
+        listItems: [
+            {
+                name: "刘海波"
+            }, {
+                name: "刘海波"
+            }, {
+                name: "刘海波"
+            }
+        ],
+        listDoctorItems: [
+            {
+                name: "刘海波"
+            },
+            {
+                name: "刘海波"
+            }
+        ],
+        workClassify: []
+    },
+    // 响应点击导航栏
+    navbarTap: function (e) {
+        var _this = this;
+        _this.setData({
+            currentTab: e.currentTarget.dataset.idx,
+        })
+    },
+    getClassify: function (e) {
+        var _this = this;
+        _this.setData({
+            currentClassify: e.currentTarget.dataset.idy,
+        })
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+        let _this = this;
+        let id = options.id;
+        _this.findSonDepartment(id);
+    },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    
-  },
+    /**
+     * 获取一级科室
+     */
+    findSonDepartment: function (id) {
+        let _this = this;
+        wx.request({
+            url: app.globalData.commonBaseUrl + "/department/findSonDepartment.htm",
+            method: "GET",
+            dataType: "json",
+            data: {
+                d:{
+                    parentId: id
+                }
+            },
+            success: function (res) {
+                console.log(res);
+                if (res.data.code == 'J000000' && res.data.resultMap){
+                    _this.setData({
+                        workClassify: res.data.resultMap.sonDepartments
+                })
+                    console.log(_this.data.workClassify)
+                }
+                
+            }
+        })
+    }
 })

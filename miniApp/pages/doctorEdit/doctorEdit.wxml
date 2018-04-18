@@ -10,7 +10,7 @@
         <view class="doctor-item-info">
             <view class="item-info">
                 <view class='item-info-tip'>姓　　名： </view>
-                <input class='item-info-in border-bottom' placeholder="请输入姓名" bindinput ="userNameInput"/>
+                <input class='item-info-in border-bottom' placeholder="请输入姓名" bindinput ="userNameInput" value="{{name}}"/>
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>性　　别： </view>
@@ -32,12 +32,12 @@
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>工作年限： </view>
-                <input class='item-info-in work-year-input' bindinput='getWorkYear' />年
+                <input class='item-info-in work-year-input' value='{{workTime}}' bindinput='getWorkYear' />年
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>出生年月： </view>
                 <view>
-                    <picker mode="date" bindchange="bindBirthdayChange">
+                    <picker mode="date" bindchange="bindBirthdayChange" value="{{selectedBirthday}}">
                         <view class="picker " wx-if="{{!selectedBirthday}}">点击选择</view>
                         <view class="picker " wx-if="{{selectedBirthday}}">{{selectedBirthday}}</view>
                     </picker>
@@ -46,7 +46,7 @@
             <view class="item-info">
                 <view class='item-info-tip'>所在城市： </view>
                 <view>
-                    <picker mode="region" bindchange="bindCityChange">
+                    <picker mode="region" class='region-picker' bindchange="bindCityChange" value="{{selectedCity}}">
                         <view class="picker " wx-if="{{!selectedCity}}">点击选择</view>
                         <view class="picker " wx-if="{{selectedCity}}">{{selectedCity}}</view>
                     </picker>
@@ -54,7 +54,7 @@
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>联系电话： </view>
-                <input class='item-info-in' placeholder="请输联系电话" focus="{{focus}}" />
+                <input class='item-info-in' placeholder="请输联系电话" disabled focus="{{focus}}"  value='{{phone}}'/>
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>科　　室： </view>
@@ -77,8 +77,8 @@
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>荣誉称号： </view>
-                <input class='item-info-in border-bottom honor-text' placeholder="荣誉称号1" bindinput='getHonor1' />
-                <input class='item-info-in border-bottom honor-text' placeholder="荣誉称号2" bindinput='getHonor2' />
+                <input class='item-info-in border-bottom honor-text' value='{{honor1}}' placeholder="荣誉称号1" bindinput='getHonor1' />
+                <input class='item-info-in border-bottom honor-text ' value='{{honor2}}' placeholder="荣誉称号2" bindinput='getHonor2' />
             </view>
         </view>
     </view>
@@ -101,8 +101,8 @@
                 </view>
                 <view class='single-experience-box'>
                     <view class="experience-info">
-                        <input class='border-bottom ' placeholder="请输入学校" value='{{item.school}}'></input>
-                        <input class='border-bottom ' placeholder="请输入专业" value='{{item.major}}'></input>
+                        <input class='border-bottom ' placeholder="请输入学校" bindinput='getSchool' data-index="{{index}}" value='{{item.school}}'></input>
+                        <input class='border-bottom ' placeholder="请输入专业" bindinput='getMajor' data-index="{{index}}"  value='{{item.major}}'></input>
                     </view>
                 </view>
             </view>
@@ -127,8 +127,8 @@
                 </view>
                 <view class='single-experience-box'>
                     <view class="experience-info">
-                        <input class='border-bottom ' placeholder="请输入医院" value='{{item.hospital}}'></input>
-                        <input class='border-bottom ' placeholder="请输入科室" value='{{item.department}}'></input>
+                        <input class='border-bottom ' placeholder="请输入医院" value='{{item.hospital}}' bindinput='getHospital' data-index="{{index}}"></input>
+                        <input class='border-bottom ' placeholder="请输入科室" value='{{item.department}}' bindinput='getDepartment' data-index="{{index}}"></input>
                     </view>
                 </view>
             </view>
@@ -176,7 +176,7 @@
                 </view>
                 <view class='single-experience-box'>
                     <view class="experience-info">
-                        <input class='border-bottom ' placeholder="请输入介绍" value='{{item.description}}'></input>
+                        <input class='border-bottom ' placeholder="请输入介绍" bindinput='getGalleryDescription' data-index="{{index}}" value='{{item.description}}'></input>
                     </view>
                 </view>
             </view>
@@ -188,7 +188,7 @@
             <view class='padding-left-10'>擅长领域：</view>
         </view>
         <view class="doctor-item-info">
-            <textarea  placeholder="请输入擅长领域，控制在100字以内" bindinput="getGoodField"/>
+            <textarea  placeholder="请输入擅长领域，控制在100字以内" bindinput="getGoodField" value='{{goodField}}'/>
         </view>
     </view>
     <view class="doctor-item">
@@ -197,7 +197,7 @@
             <view class='padding-left-10'>个人简介</view>
         </view>
         <view class="doctor-item-info">
-              <textarea placeholder="请输入个人简历，控制在100字以内"  bindinput="getProfile"/>
+              <textarea placeholder="请输入个人简历，控制在100字以内"  bindinput="getProfile" value='{{profile}}'/>
         </view>
     </view>
     <view class='submit-doctor-btn' bindtap='submitDoctorInfo' >提交审核</view>

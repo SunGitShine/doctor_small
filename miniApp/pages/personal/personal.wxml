@@ -1,3 +1,4 @@
+<wxs module="common" src="../../filter/common.wxs"></wxs>
 <import src="../../templates/roleItem.wxml" />
 <import src="../../templates/phoneItem.wxml" />
 <import src="../../templates/doctorIndex.wxml" />

@@ -1,13 +1,15 @@
+<wxs module="common" src="../filter/common.wxs"></wxs>
+<import src="../templates/infoListItem.wxml" />
 <template name="doctorIndex">
     <view class="doctor-info">
         <view bindtap='goToDoctorInfo'>
             <view class="doctor-info-title">
-                <image src="../../images/index_icon.png" /> 
+                <image src="../../images/index_icon.png" />
                 <view>基本信息</view>
             </view>
             <view class="doctor-info-index">
                 <view>姓　　名：{{name}}</view>
-                <view>出生年月：{{birthday}}</view>
+                <view>出生年月：{{common.sliceStringFont(birthday)}}</view>
                 <view>联系电话：{{phone}}</view>
             </view>
         </view>
@@ -19,14 +21,14 @@
         </view>
         <view class="doctor-publish-index">
             <view class="section">
-                <view class='sitting-time-list-box' wx-if="{{sittingTimeShow}}">
-                    <view class='sitting-time'>{{sittingStartTime}}~{{sittingEndTime}}</view>
+                <view class='sitting-time-list-box' wx-if="{{startTime || endTime}}">
+                    <view class='sitting-time'>坐诊时间:{{common.sliceStringFont(startTime)}}~{{common.sliceStringFont(endTime)}}</view>
                     <view class='sitting-time-operation'>
-                        <switch class='sitting-switch-btn' checked='{{sittingSwitch}}' bindchange="switchChange" />
-                        <image class="sitting-remove-icon" src="../../images/remove.png"  bindtap='deleteSittingTime'/>
+                        <switch class='sitting-switch-btn' checked='{{doctorReleseId && status}}' bindchange="updateReleseStatus" />
+                        <image class="sitting-remove-icon" src="../../images/remove.png" bindtap='deleteSittingTime' />
                     </view>
                 </view>
-                <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+                <picker wx-if="{{!doctorReleseId}}" mode="date" value="{{date}}" bindchange="bindDateChange">
                     <view class="picker add-picker-box">
                         <view class='add-img-box'>
                             <image src='../../images/add.png'></image>
@@ -40,12 +42,15 @@
     <view class="doctor-info">
         <navigator hover-class="none" url="/pages/doctorRecommend/doctorRecommend?currentTab=0">
             <view class="doctor-info-title">
-                <image src="../../images/index_icon.png" /> 
+                <image src="../../images/index_icon.png" />
                 <view>推荐医院</view>
                 <view class="recommend-tip">
                     <view>{{iTotalDisplayRecords}}</view>
                     <view wx:if="{{iTotalDisplayRecords}}">家</view>
                 </view>
+            </view>
+            <view>
+                <template wx:for="{{listDoctorItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab}}" />
             </view>
         </navigator>
     </view>

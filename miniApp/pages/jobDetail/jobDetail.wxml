@@ -1,34 +1,39 @@
+<wxs module="common" src="../../filter/common.wxs"></wxs>
 <view class="hospital-page">
-  <view class="page-block-one">
-    <view class="block-one-title">急需美容外科主任医师<text class="salaries">8k</text></view>
-    <view class="block-one-info">
-      <text>美容外科</text>
-      <text>3～5年</text>
-      <text>本科</text>
+    <view class="page-block-one">
+        <view class="block-one-title">{{jobInfo.title}}
+            <text class="salaries">{{common.moneyTypeFilter(jobInfo.moneyType)}}</text>
+        </view>
+        <view class="block-one-info">
+            <text>{{jobInfo.departmentName}}</text>
+            <text>{{jobInfo.workTime}}年</text>
+            <text>{{common.educationFilter(jobInfo.education)}}</text>
+        </view>
+        <view class="block-one-logo">
+            <view class="logo-url">
+                <image src="../../images/timg.png" />
+            </view>
+            <view class="logo-info">
+                <view class="logo-info-title">{{jobInfo.hospitalName}}</view>
+                <view class="logo-info-content">
+                    <text wx:for="{{jobInfo.tag}}" wx:key="item">{{item}}</text>
+                </view>
+            </view>
+        </view>
     </view>
-    <view class="block-one-logo">
-      <view class="logo-url">
-        <image src="../../images/timg.png"/>
-      </view>
-      <view class="logo-info">
-        <view class="logo-info-title">四川华美美容医院</view>
-        <view class="logo-info-content"><text>美容整形</text><text>6得不行</text></view>
-      </view>
+    <view class="page-block-one">
+        <view class="block-two-title">基本要求</view>
+        <view class="block-two-info">
+            <view>科　　室：{{jobInfo.departmentName}}</view>
+            <view>职　　称：{{common.titleFilter(jobInfo.doctorTitle)}}</view>
+            <view>学　　历：{{common.educationFilter(jobInfo.education)}}</view>
+            <view>工作年限：{{jobInfo.workTime}}年</view>
+        </view>
     </view>
-  </view>
-  <view class="page-block-one">
-    <view class="block-two-title">基本要求</view>
-    <view class="block-two-info">
-      <view>科　　室：美容外科</view>
-      <view>职　　称：主任医师</view>
-      <view>学　　历：本科</view>
-      <view>工作年限：3～5年</view>
+    <view class="page-block-one">
+        <view class="block-two-title">职位描述</view>
+        <view class="block-two-des">
+            {{jobInfo.jobDescription}}
+        </view>
     </view>
-  </view>
-  <view class="page-block-one">
-    <view class="block-two-title">职位描述</view>
-    <view class="block-two-des">
-      如果你无法简介表达你的想法，那只能说明你不够了解它。
-    </view>
-  </view>
 </view>

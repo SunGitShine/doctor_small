@@ -1,60 +1,115 @@
 /* pages/doctorRecommend/doctorRecommend.wxss */
-.block-item{
-  padding-top:45px;
-  height: 100%;
+
+.recommend-page {
+    padding: 15px;
 }
-.list-info{
-  padding: 15px;
+
+.block-item {
+    padding-top: 45px;
+    height: 100%;
 }
-.list-info-title{
-  font-size: 15px;
+
+.list-info {
+    padding: 15px 0;
 }
-.ask-icon{
-  margin-left: 25px;
-  width: 80rpx;
-  height: 36rpx;
-  vertical-align: middle;
+
+.list-info-title {
+    font-size: 15px;
 }
-.list-info-route{
-  display: flex;
-  display: -webkit-flex;
-  flex-direction: row;
-  padding: 10rpx;
-  border-bottom: 1px solid #f1f1f1;
+
+.block-item {
+    padding-top: 45px;
+    height: 100%;
 }
-.user-icon{
-  width: 100rpx;
-  height: 100rpx;
+
+.list-info {
+    padding: 15px 0;
 }
-.reservation-icon{
-  display: block;
-  margin: 0 auto;
-  width: 80rpx;
-  height: 32rpx;
+
+.list-info-title {
+    font-size: 15px;
 }
-.list-info-item0{
+
+.ask-icon {
+    margin-left: 25px;
+    width: 80rpx;
+    height: 36rpx;
+    vertical-align: middle;
+}
+
+.list-info-route {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    padding: 10rpx;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.user-icon {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+}
+
+.reservation-icon {
+    display: block;
+    margin: 0 auto;
+    width: 80rpx;
+    height: 32rpx;
+}
+
+.list-info-item0 {
     flex: 0 0 auto;
+    vertical-align: middle;
 }
-.list-info-item{
-  flex: 1 1 auto;
-  font-size: 30rpx;
-  padding-left: 16rpx;
+
+.list-info-item {
+    flex: 1 1 auto;
+    font-size: 30rpx;
+    vertical-align: middle;
+    padding:0 5px;
 }
-.item-tilte{
-  position: relative;
+
+.item-tilte {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 12px;
+    margin-top: 5px;
 }
-.item-tilte text{
-  padding-right: 10px;
+
+.item-tilte text {
+    padding-right: 10px;
 }
-.date-tip{
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 12px;
-  color: #ff7800;
+
+.list-info-text {
+    padding-right: 0 !important;
 }
-.item-tip{
-  text-align: right;
-  font-size: 12px;
-  color: #ff7800;
+
+.date-tip {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    color: #ff7800;
+}
+
+.item-tip {
+    text-align: right;
+    font-size: 12px;
+    color: #ff7800;
+}
+
+.item-c-hospital-line {
+    padding: 0 5px;
+}
+
+.item-content-hospital-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 12px;
+}
+.item-content{
+    margin-top: 5px;
 }

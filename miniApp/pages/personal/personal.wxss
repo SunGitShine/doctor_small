@@ -1,4 +1,4 @@
-
+@import "../doctorRecommend/doctorRecommend.wxss";
 /**index.wxss**/
 page{
   position: relative;

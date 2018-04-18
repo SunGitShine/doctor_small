@@ -1,6 +1,7 @@
 // pages/doctorDetail/doctorDetail.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
+const common = require('../../filter/common');
 Page({
 
     /**
@@ -9,10 +10,12 @@ Page({
     data: {
         //姓名
         name:"",
+        //电话号码
+        phone:"",
         //性别列表
         sexItems: [
             { name: '0', value: '男', checked: 'true' },
-            { name: '1', value: '女' }
+            { name: '1', value: '女'}
         ],
         //选中的性别
         sex:"0",//0为男，1为女
@@ -115,7 +118,137 @@ Page({
      */
     onLoad: function (options) {
         let _this = this;
-        _this.findParentDepartment()
+        _this.findParentDepartment();
+
+    },
+    //获取身份
+    findByOpneid: function () {
+        let _this = this;
+        let openId = wx.getStorageSync('openid');
+        wx.request({
+            url: app.globalData.commonBaseUrl + "/common/findByOpneid.htm",
+            method: "GET",
+            dataType: "json",
+            data: {
+                d: {
+                    openid: openId
+                }
+            },
+            success: function (res) {
+                if (res.data.code == 'J000000' && res.data.resultMap) {
+                    //设置身份标志
+                    _this.setData({
+                        identity: res.data.resultMap.identity
+                    })
+                    //未注册的引导去注册
+                    if (res.data.resultMap.identity == 0) {
+                        _this.setData({
+                            guideShow: true
+                        })
+                    }
+                    //医生
+                    if (res.data.resultMap.identity == 1) {
+                        //去除null的数据
+                        for (var key in res.data.resultMap.response) {
+                            if (res.data.resultMap.response[key] == null) {
+                                res.data.resultMap.response[key] = "";
+                            }
+                        }
+                        let info = res.data.resultMap.response;
+                        //恢复性别数据
+                        if (info.sex == 0){
+                            _this.setData({
+                                sexItems: [
+                                    { name: '0', value: '男', checked: 'true' },
+                                    { name: '1', value: '女' }
+                                ],
+                            })
+                        }else{
+                            _this.setData({
+                                sexItems: [
+                                    { name: '0', value: '男' },
+                                    { name: '1', value: '女', checked: 'true' }
+                                ],
+                            }) 
+                        }
+                        //恢复eduExperienceList
+                        let tempEdduList = [];
+                        if (info.educationExperience){
+                            for (let i = 0; i < (info.educationExperience).length; i++) {
+                                tempEdduList.push({
+                                    start: (info.educationExperience[i].time).split('~')[0],
+                                    end: (info.educationExperience[i].time).split('~')[1],
+                                    school: info.educationExperience[i].school,
+                                    major: info.educationExperience[i].major
+                                })
+                            }
+                        }
+                      
+                        //恢复workExperienceList
+                        let tempWorkList = [];
+                        if (info.workExperience){
+                           for (let i = 0; i < (info.workExperience).length; i++) {
+                               tempWorkList.push({
+                                   start: (info.workExperience[i].time).split('~')[0],
+                                   end: (info.workExperience[i].time).split('~')[1],
+                                   hospital: info.workExperience[i].company,
+                                   department: info.workExperience[i].department
+                               })
+                           }
+                       }
+                        //恢复galleryList
+                        let tempGalleryList = [];
+                        if (info.works){
+                           for (let i = 0; i < (info.works).length; i++) {
+                               tempGalleryList.push({
+                                   url: info.works[i].url,
+                                   description: info.works[i].description
+                               })
+                           }
+                       }
+                        _this.setData({
+                            //姓名
+                            name: info.name,
+                            //选中的性别
+                            sex: (info.sex == 1)?('1'):('0'),//0为男，1为女
+                            //工作时长
+                            workTime: info.workTime,
+                            //电话号码
+                            phone:info.phone,
+                            selectedEducation: info.education,//当前选中的学历
+                            selectedEducationText: common.educationFilter(info.education),//当前学历的text
+                            selectedBirthday: common.sliceStringFont(info.birthday),//当前选中的生日
+                            selectedCity: [info.province,info.city],//当前选中的城市
+                            honor1: (typeof info.call == 'string') ? ("") : (info.call[0]),//荣誉称号
+                            honor2: (typeof info.call == 'string') ? ("") : (info.call[1]),
+                            selectedParentDepartment: info.departmentName,//选择的一级科室
+                            selectedSonDepartment: "",//选择的二级科室
+                            departmentId: info.departmentId,
+                            //教育经历
+                            eduExperienceList: tempEdduList,
+                            //工作经历
+                            workExperienceList: tempWorkList,
+                            //作品展示
+                            galleryList: tempGalleryList,
+                            //医师职称证url
+                            physicianSrc: info.professionCardUrl,
+                            //医师资格证url
+                            qualificationSrc: info.qualificationCardUrl,
+                            //医师执业证url
+                            licenseSrc: info.practiceCardUrl,
+                            //擅长领域
+                            goodField: info.goodField,
+                            //个人简绍
+                            profile: info.profile,
+                            //职称
+                            title: info.title,
+                            //职称text显示
+                            titleText: common.titleFilter(info.title)
+                        })
+                    }
+                }
+            }
+        })
     },
     //获取姓名
     userNameInput: function (event){
@@ -156,6 +289,46 @@ Page({
             workTime: event.detail.value
         })
     },
+    //获取教育经历的学校
+    getSchool: function (event) {
+        let _this = this;
+        let index = event.currentTarget.dataset.index;
+        _this.data.eduExperienceList[index].school = event.detail.value;
+        //加入基本数据里
+        _this.setData({
+            eduExperienceList: _this.data.eduExperienceList
+        });
+    },
+    //获取教育经历的专业
+    getMajor: function (event) {
+        let _this = this;
+        let index = event.currentTarget.dataset.index;
+        _this.data.eduExperienceList[index].major = event.detail.value;
+        //加入基本数据里
+        _this.setData({
+            eduExperienceList: _this.data.eduExperienceList
+        });
+    },
+    //获取工作经历的医院(公司)
+    getHospital: function (event) {
+        let _this = this;
+        let index = event.currentTarget.dataset.index;
+        _this.data.workExperienceList[index].hospital = event.detail.value;
+        //加入基本数据里
+        _this.setData({
+            workExperienceList: _this.data.workExperienceList
+        });
+    },
+    //获取工作经历的部门
+    getDepartment: function (event) {
+        let _this = this;
+        let index = event.currentTarget.dataset.index;
+        _this.data.workExperienceList[index].department = event.detail.value;
+        //加入基本数据里
+        _this.setData({
+            workExperienceList: _this.data.workExperienceList
+        });
+    },
     //学历picker改变的时候获取学历
     bindEducationChange: function (event) {
         console.log(event);
@@ -189,7 +362,7 @@ Page({
         let _this = this;
         let index = event.currentTarget.dataset.index;
         //设置picker得到的值
-        if (!_this.data.eduExperienceList[index].start) {
+        if (!_this.data.eduExperienceList[index].start || _this.data.eduExperienceList[index].start == "undefined") {
             _this.data.eduExperienceList[index].start = event.detail.value;
         } else {
             _this.data.eduExperienceList[index].end = event.detail.value;
@@ -205,7 +378,7 @@ Page({
         let _this = this;
         let index = event.currentTarget.dataset.index;
         //设置picker得到的值
-        if (!_this.data.workExperienceList[index].start) {
+        if (!_this.data.workExperienceList[index].start || _this.data.workExperienceList[index].start == "undefined") {
             _this.data.workExperienceList[index].start = event.detail.value;
         } else {
             _this.data.workExperienceList[index].end = event.detail.value;
@@ -235,7 +408,8 @@ Page({
                         parentDepartments: res.data.resultMap.parentDepartments
                     })
                 }
-
+                //获取用户身份
+                _this.findByOpneid();
             },
             fail: function (res) {
                 console.log(res)
@@ -455,7 +629,7 @@ Page({
     //获取擅长领域
     getGoodField: function (event) {
         this.setData({
-            googField: event.detail.value
+            goodField: event.detail.value
         })
     },
     //获取个人介绍
@@ -464,12 +638,22 @@ Page({
             profile: event.detail.value
         })
     },
+    //获取作品描述
+    getGalleryDescription: function (event) {
+        let _this = this;
+        let index = event.currentTarget.dataset.index;
+        _this.data.galleryList[index].description = event.detail.value;
+        //加入基本数据里
+        _this.setData({
+            workExperienceList: _this.data.galleryList
+        });
+    },
     //提交审核
     submitDoctorInfo: function (){
         let _this = this;
         //教育经历
         let educationExperience = [];
-        for (let i = 0; i < (_this.data.eduExperienceList).legnth ; i++){
+        for (let i = 0; i < (_this.data.eduExperienceList).length ; i++){
             educationExperience.push({
                 "major": _this.data.eduExperienceList[i].major,
                 "school": _this.data.eduExperienceList[i].school,
@@ -478,8 +662,8 @@ Page({
         }
         //工作经历
         let workExperience = [];
-        for (let j = 0; j < (_this.data.workExperienceList).legnth; j++) {
-            educationExperience.push({
+        for (let j = 0; j < (_this.data.workExperienceList).length; j++) {
+            workExperience.push({
                 "department": _this.data.workExperienceList[j].department,
                 "company": _this.data.workExperienceList[j].hospital,
                 "time": _this.data.workExperienceList[j].start + "~" + _this.data.workExperienceList[j].end
@@ -499,8 +683,8 @@ Page({
             "practiceCardUrl": _this.data.licenseSrc,
             "professionCardUrl": _this.data.physicianSrc,
             "profile": _this.data.profile,
-            "province": _this.data.selectedCity[0],
-            "city": _this.data.selectedCity[1],
+            "province": (typeof _this.data.selectedCity == "string") ? (""): (_this.data.selectedCity[0]),
+            "city": (typeof _this.data.selectedCity == "string") ? (_this.data.selectedCity) : (_this.data.selectedCity[1]) ,
             "qualificationCardUrl": _this.data.qualificationSrc,
             "sex": _this.data.sex,
             "title": _this.data.title,
@@ -522,7 +706,14 @@ Page({
             },
             success: function (res) {
                 if (res.data.code == 'J000000') {
-
+                    wx.showToast({
+                        title: res.data.description,
+                        icon: 'none',
+                        time:2000
+                    });  
+                    wx.navigateTo({
+                        url: '../doctorDetail/doctorDetail'
+                    })
                 } else {
                     wx.showToast({
                         title: res.data.description,

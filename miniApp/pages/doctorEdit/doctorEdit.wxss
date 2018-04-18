@@ -88,7 +88,9 @@
 .item-info>picker {
     padding-left: 80px;
 }
-
+.region-picker{
+    min-width: 200px;
+}
 .item-info-tip {
     width: 100px;
     height: 40px;
@@ -141,6 +143,9 @@
 
 .honor-text {
     color: #f4a21a;
+    margin-right:10px;
+    text-align: center;
+
 }
 
 .experience-info-box {

@@ -54,20 +54,20 @@ Page({
     bindDateChange: function (e) {
         let _this = this;
         let time = e.detail.value;
-        if (!_this.data.doctorData.sittingStartTime) {
+        if (_this.data.doctorData.doctorReleseId) return;
+        if (!_this.data.doctorData.startTime) {
             this.setData({
                 doctorData: Object.assign(_this.data.doctorData, {
-                    sittingStartTime: time,
-                    sittingTimeShow: true
+                    startTime: time
                 })
             })
         } else {
             this.setData({
                 doctorData: Object.assign(_this.data.doctorData, {
-                    sittingEndTime: time,
-                    sittingTimeShow: true
+                    endTime: time
                 })
             })
+            _this.switchChange();
         }
     },
     //发布坐诊时间
@@ -76,8 +76,8 @@ Page({
         let _this = this;
         let params = {
             "openid": wx.getStorageSync('openid'),
-            "startTime": _this.data.doctorData.sittingStartTime,
-            "endTime": _this.data.doctorData.sittingEndTime
+            "startTime": _this.data.doctorData.startTime,
+            "endTime": _this.data.doctorData.endTime
         }
         wx.request({
             header: {
@@ -92,20 +92,56 @@ Page({
             },
             success: function (res) {
                 if (res.data.code == 'J000000') {
-                    
+                    _this.findByOpneid();
                 } else {
                     wx.showToast({
                         title: res.data.description,
                         icon: 'none'
                     });
-                    _this.setData({
-                        doctorData: Object.assign(_this.data.doctorData, {
-                            sittingSwitch: false
-                        })
-                    })
+                    
                 }
             },
             fail:function (res) {
+               
+            }
+        })
+    },
+    //更新坐诊时间
+    updateReleseStatus: function (event) {
+        console.log(event);
+        let _this = this;
+        let status = (event.detail.value)?('1'):('0')
+        let params = {
+            doctorReleseId: _this.data.doctorData.doctorReleseId,
+            status: status
+        }
+        wx.request({
+            header: {
+                "accept": 'application/json',
+                "content-Type": "application/x-www-form-urlencoded"
+            },
+            method: 'GET',
+            dataType: 'json',
+            url: app.globalData.commonBaseUrl + '/doctor/updateReleseStatus.htm',
+            data: {
+                d: JSON.stringify(params)
+            },
+            success: function (res) {
+                if (res.data.code == 'J000000') {
+
+                } else {
+                    wx.showToast({
+                        title: res.data.description,
+                        icon: 'none'
+                    });
+                    // _this.setData({
+                    //     doctorData: Object.assign(_this.data.doctorData, {
+                    //         sittingSwitch: false
+                    //     })
+                    // })
+                }
+            },
+            fail: function (res) {
                 _this.setData({
                     doctorData: Object.assign(_this.data.doctorData, {
                         sittingSwitch: false
@@ -118,7 +154,7 @@ Page({
     deleteSittingTime: function () {
         console.log(event);
         let _this = this;
-        let doctorReleseId = "";
+        let doctorReleseId = _this.data.doctorData.doctorReleseId;
         let params = {
             "doctorReleseId": doctorReleseId
         }
@@ -136,7 +172,11 @@ Page({
             },
             success: function (res) {
                 if (res.data.code == 'J000000') {
-
+                    _this.findByOpneid();
+                    wx.showToast({
+                        title: '删除成功',
+                        icon: 'none'
+                    });
                 } else {
                     wx.showToast({
                         title: res.data.description,
@@ -219,7 +259,7 @@ Page({
             success: function (res) {
                 if (res.data.code == 'J000000') {
                     wx.navigateTo({
-                        url: '../doctorDetail/doctorDetail'
+                        url: '../doctorEdit/doctorEdit'
                     })
                 } else {
                     wx.showToast({
@@ -249,6 +289,12 @@ Page({
     //选择身份
     chooseRole: function (e) {
         let typeNum = e.currentTarget.dataset.idx;
+        // if (typeNum == 1){
+        //     wx.navigateTo({
+        //         url: '../doctorEdit/doctorEdit'
+        //     })
+        // }
+    
         this.setData({
             roleType: typeNum,
             roleShow: true,
@@ -287,7 +333,7 @@ Page({
                         //去除null的数据
                         for (var key in res.data.resultMap.response) {
                             if (res.data.resultMap.response[key] == null){
-                                res.data.resultMap.response[key] = "----";
+                                res.data.resultMap.response[key] = "";
                             }
                         }
                         _this.setData({
@@ -333,7 +379,8 @@ Page({
                 if (res.data.code == 'J000000' && res.data.resultMap) {
                     _this.setData({
                         doctorData: Object.assign(_this.data.doctorData, {
-                            iTotalDisplayRecords: res.data.resultMap.iTotalDisplayRecords
+                            iTotalDisplayRecords: res.data.resultMap.iTotalDisplayRecords,
+                            listDoctorItems: res.data.resultMap.rows
                         })
                     })  
                 }else{

@@ -56,7 +56,7 @@
                 <view class='item-info-tip'>联系电话： </view>
                 <input class='item-info-in' placeholder="请输联系电话" disabled focus="{{focus}}"  value='{{phone}}'/>
             </view>
-            <view class="item-info">
+            <view class="item-info"> 
                 <view class='item-info-tip'>科　　室： </view>
                 <view>
                     <picker mode="multiSelector" bindchange="bindDepartmentChange" range="{{departmentItems}}" bindcolumnchange="bindFirstDepartmentChange" range-key="{{'departmentName'}}">

@@ -36,6 +36,7 @@
     <template is="phoneItem" />
 </view>
 <view wx:elif="{{roleType ==1}}"><template is="doctorIndex" data="{{...doctorData}}"/></view>
+<view wx:elif="{{roleType ==2}}"><template is="hospitalIndex" data="{{...hospitalData}}"/></view>
 <!-- <view class="page-wrapper" wx:if="{{roleType==''}}"></view> -->
 <!-- <view wx:if="{{!typechoose}}"><template is="phoneItem"/></view>
 <view wx:if="{{roleType == ''}}"></view>

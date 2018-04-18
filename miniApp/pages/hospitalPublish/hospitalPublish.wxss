@@ -43,15 +43,14 @@
   display: -webkit-flex;
   font-size: 12px;
 }
-.content-item-money:last-child{
-  padding-left: 60px;
-}
 .item-title-money{
   flex:  0 0 auto; 
 }
 .item-input-money{
-   flex:  1 1 auto; 
+  display: inline-block;
   border: 1px solid #f1f1f1;
+  width: 45px;
+  margin-left: 5px;
 }
 .checkbox{
   flex:  0 0 auto;
@@ -71,4 +70,19 @@
   color: #fff;
   background: #2ba246;
   z-index: 99;
+}
+.parentDepartment-picker{
+    display: flex;
+    align-items: center;
+}
+.work-year-input {
+    flex: 0.2;
+    text-align: center;
+    border-bottom: 1px solid #f3f3f3;
+}
+radio {
+    transform: scale(0.6);
+}
+.job-description{
+  min-height: 200px;
 }

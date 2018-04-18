@@ -1,79 +1,98 @@
 <view class="publish-page">
   <view class="publish-title">
-      <image src="../../images/index_icon.png"/>
-      基本信息要求
+    <image src="../../images/index_icon.png" /> 基本信息要求
   </view>
   <view class="publish-content">
     <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png"/>
+      <image class="item-icon" src="../../images/modify_icon2.png" />
       <text class="item-title">标题</text>
-      <input class="item-input"/>
+      <input class="item-input" />
     </view>
     <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png"/>
+      <image class="item-icon" src="../../images/modify_icon2.png" />
       <text class="item-title">科室</text>
-      <input class="item-input"/>    
-    </view>
-    <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png"/>
-      <text class="item-title">职称</text>
-      <input class="item-input"/>    
-    </view>
-    <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png"/>
-      <text class="item-title">学历</text>
-      <input class="item-input"/>    
-    </view>
-    <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png"/>
-      <text class="item-title">工作年限</text>
-      <input class="item-input"/>    
-    </view>
-    <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png"/>
-      <text class="item-title">时间</text>
-      <input class="item-input"/>    
-    </view>
-    <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png"/>
-      <text class="item-title">地点</text>
-      <input class="item-input"/>    
-    </view>
-  </view>
-  <view class="publish-title">
-    <image src="../../images/money_icon.png"/>
-       薪资福利
-  </view>
-  <view class="publish-content">
-      <view class="content-item-money">
-        <text class="item-title-money">薪资福利：</text>
-        <label class="checkbox">
-          <checkbox  value="" />面议
-        </label>
+      <view>
+        <picker mode="multiSelector" bindchange="bindDepartmentChange" range="{{departmentItems}}" bindcolumnchange="bindFirstDepartmentChange" range-key="{{'departmentName'}}">
+          <view class="picker" wx-if="{{!selectedParentDepartment}}">点击选择</view>
+          <view class="picker parentDepartment-picker" wx-if="{{selectedParentDepartment}}">{{selectedParentDepartment}}
+            <view wx-if="{{selectedSonDepartment}}">></view>{{selectedSonDepartment}}</view>
+        </picker>
       </view>
-      <view class="content-item-money">
-        <label class="checkbox">
-          <checkbox  value="" />具体金额         
-        </label>
-        <input class="item-input-money" value="" />
-      </view>        
-  </view>
-  <view class="publish-title">
-      <image src="../../images/des_icon.png"/>
-      职位描述
-  </view>
-  <view class="publish-content">
-    <view class="section">
-      <textarea bindblur="bindTextAreaBlur" auto-height placeholder="" />
+    </view>
+    <view class="content-item">
+      <image class="item-icon" src="../../images/modify_icon2.png" />
+      <text class="item-title">职称</text>
+      <view>
+        <picker mode="selector" bindchange="bindTitleChange" range="{{titleItems}}" range-key="{{'name'}}">
+          <view class="picker" wx-if="{{!titleText}}">点击选择</view>
+          <view class="picker" wx-if="{{titleText}}">{{titleText}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="content-item">
+      <image class="item-icon" src="../../images/modify_icon2.png" />
+      <text class="item-title">学历</text>
+      <view>
+        <picker mode="selector" bindchange="bindEducationChange" range="{{educationItems}}" range-key="name">
+          <view class="picker education-picher" wx-if="{{!selectedEducationText}}">点击选择</view>
+          <view class="picker education-picher" wx-if="{{selectedEducationText}}">{{selectedEducationText}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="content-item">
+      <image class="item-icon" src="../../images/modify_icon2.png" />
+      <text class="item-title">工作年限</text>
+      <input class='item-info-in work-year-input' value='{{workTime}}' bindinput='getWorkYear' />年
+    </view>
+    <view class="content-item">
+      <image class="item-icon" src="../../images/modify_icon2.png" />
+      <text class="item-title">时间</text>
+      <view class='job-picker-box'>
+        <picker mode="date" bindchange="jobDayChange" data-index='{{index}}'>
+          <view class="picker" wx:if="{{!jobDay}}">点击选择</view>
+          <view class="picker" wx:if="{{jobDay}}">{{jobDay}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="content-item">
+      <image class="item-icon" src="../../images/modify_icon2.png" />
+      <text class="item-title">地点</text>
+      <view>
+        <picker mode="region" class='region-picker' bindchange="bindCityChange" value="{{selectedCity}}">
+          <view class="picker " wx-if="{{!selectedCity}}">点击选择</view>
+          <view class="picker " wx-if="{{selectedCity}}">{{selectedCity}}</view>
+        </picker>
+      </view>
     </view>
   </view>
-    <view class="publish-title">
-      <image src="../../images/job_icon.png"/>
-      职位要求
+  <view class="publish-title">
+    <image src="../../images/money_icon.png" /> 薪资福利
+  </view>
+  <view class="publish-content">
+    <view class="content-item-money">
+      <text class="item-title-money">薪资福利：</text>
+      <radio-group class="radio-group" bindchange="jobMoneyChange">
+        <label class="radio" wx:for="{{moneyItems}}">
+          <radio value="{{item.value}}" checked="{{item.checked}}" />{{item.name}}
+        </label>
+      </radio-group>
+       <input class="item-input-money" value="" disabled='{{moneyInputDisable}}'/>
+    </view>
+  </view>
+  <view class="publish-title">
+    <image src="../../images/des_icon.png" /> 职位描述
   </view>
   <view class="publish-content">
     <view class="section">
-      <textarea bindblur="bindTextAreaBlur" auto-height placeholder="" />
+      <textarea class='job-description' bindinput="getJobDescription" auto-height placeholder="请输入职位信息" />
+    </view>
+  </view>
+  <view class="publish-title">
+    <image src="../../images/job_icon.png" /> 职位要求
+  </view>
+  <view class="publish-content">
+    <view class="section">
+      <textarea  class='job-description' bindinput="getJobRequire" auto-height placeholder="请输入岗位要求" />
     </view>
   </view>
   <view class="update-btn" bindtap="publishInfo">发布</view>

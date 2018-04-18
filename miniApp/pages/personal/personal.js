@@ -15,6 +15,7 @@ Page({
         guideShow: false,//导向显示
         identity: "",//身份标志
         doctorData: {},//医生个人中心
+        hospitalData: {},//医院个人中心
         sittingStartTime: "",//坐诊开始时间
         sittingEndTime: ""//坐诊结束时间
     },
@@ -342,6 +343,20 @@ Page({
                         });
                         _this.findReleaseListPage(1);
                     }
+                    //医院
+                    if (res.data.resultMap.identity == 2) {
+                      //去除null的数据
+                      for (var key in res.data.resultMap.response) {
+                        if (res.data.resultMap.response[key] == null) {
+                          res.data.resultMap.response[key] = "";
+                        }
+                      }
+                      _this.setData({
+                        roleType: 2,
+                        hospitalData: res.data.resultMap.response
+                      });
+                      _this.findReleaseListPage(2);
+                    }
                 }
             }
         })
@@ -378,7 +393,7 @@ Page({
             success: function (res) {
                 if (res.data.code == 'J000000' && res.data.resultMap) {
                     _this.setData({
-                        doctorData: Object.assign(_this.data.doctorData, {
+                      hospitalData: Object.assign(_this.data.hospitalData, {
                             iTotalDisplayRecords: res.data.resultMap.iTotalDisplayRecords,
                             listDoctorItems: res.data.resultMap.rows
                         })

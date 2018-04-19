@@ -1,167 +1,168 @@
 <wxs module="common" src="../../filter/common.wxs">
 </wxs>
 <view class="doctor-page">
-    <view class="doctor-info">
-        <view class="doctor-photo">
-            <image src="../../images/doctor/doctor_01.png" />
-        </view>
-        <view class="doctor-content">
-            <view>{{info.name}}</view>
-            <view class="job-title">{{info.departmentName}}　　{{common.titleFilter(info.title)}}</view>
-            <view>
-                <text class="border-tip" wx:for="{{info.call}}" wx:key="item">{{item}}</text>
-            </view>
-        </view>
+  <view class="doctor-info">
+    <view class="doctor-photo">
+      <image src="../../images/doctor/doctor_01.png" />
     </view>
-    <view class="doctor-item doctor-time-during">
-        <image class="icon-btn" src="../../images/doctor/doctor_02.png" />
-        <text wx:if="{{info.doctorReleseId}}" class="">坐诊时间：{{common.sliceStringFont(info.startTime)}}～{{common.sliceStringFont(info.endTime)}}</text>
-        <text wx:else class="">坐诊时间：暂无</text>
+    <view class="doctor-content">
+      <view>{{info.name}}</view>
+      <view class="job-title">{{info.departmentName}}　　{{common.titleFilter(info.title)}}</view>
+      <view>
+        <text class="border-tip" wx:for="{{info.call}}" wx:key="item">{{item}}</text>
+      </view>
     </view>
-    <view class="doctor-item">
-        <view class="doctor-item-title">
-            <view class='doctor-i-t-text'>
-                <image class="icon-btn" src="../../images/doctor/doctor_03.png" />
-                <view>基本信息：</view>
-            </view>
-            <view class='doctor-i-t-img' bindtap='goToEdit'>
-                <image src='../../images/detail_icon.png'></image>
-            </view>
-        </view>
-        <view class="doctor-item-info">
-            <view class="item-info">姓　　名：{{info.name}}</view>
-            <view class="item-info">性　　别：{{common.sexFilter(info.sex)}}</view>
-            <view class="item-info">学　　历：{{common.educationFilter(info.education)}}</view>
-            <view class="item-info">工作年限：{{info.workTime}}年</view>
-            <view class="item-info">出生年月：{{common.sliceStringFont(info.birthday)}}</view>
-            <view class="item-info">所在城市：{{info.province}}{{info.city}}</view>
-            <view class="item-info">联系电话：{{info.phone}}</view>
-            <view class="item-info">科　　室：{{info.departmentName}}</view>
-        </view>
+  </view>
+  <view class="doctor-item doctor-time-during">
+    <image class="icon-btn" src="../../images/doctor/doctor_02.png" />
+    <text wx:if="{{info.doctorReleseId}}" class="">坐诊时间：{{common.sliceStringFont(info.startTime)}}～{{common.sliceStringFont(info.endTime)}}</text>
+    <text wx:else class="">坐诊时间：暂无</text>
+  </view>
+  <view class="doctor-item">
+    <view class="doctor-item-title">
+      <view class='doctor-i-t-text'>
+        <image class="icon-btn" src="../../images/doctor/doctor_03.png" />
+        <view>基本信息：</view>
+      </view>
+      <view class='doctor-i-t-img' bindtap='goToEdit'>
+        <image src='../../images/detail_icon.png'></image>
+      </view>
     </view>
-    <view class="doctor-item">
-        <view class="doctor-item-title">
-            <view class='doctor-i-t-text'>
-                <image class="icon-btn" src="../../images/doctor/doctor_04.png" />
-                <view>教育经历：</view>
-            </view>
-            <view class='doctor-i-t-img' bindtap='goToEdit'>
-                <image src='../../images/detail_icon.png'></image>
-            </view>
-        </view>
-        <view class="doctor-item-info">
-            <view wx:for="{{info.educationExperience}}" wx:key="item" class='doctor-i-i-item'>
-                <image class="icon-tip" src="../../images/doctor/doctor_07.png" />
-                <view class='single-info-box'>
-                    <view class='single-info-time'>
-                        {{item.time}}
-                    </view>
-                    <view class='single-info-text'>
-                         {{item.school}}  {{item.major}}
-                    </view>
-                </view>
-            </view>
-        </view>
+    <view class="doctor-item-info">
+      <view class="item-info">姓　　名：{{info.name}}</view>
+      <view class="item-info">性　　别：{{common.sexFilter(info.sex)}}</view>
+      <view class="item-info">学　　历：{{common.educationFilter(info.education)}}</view>
+      <view class="item-info">工作年限：{{info.workTime}}年</view>
+      <view class="item-info">出生年月：{{common.sliceStringFont(info.birthday)}}</view>
+      <view class="item-info">所在城市：{{info.province}}{{info.city}}</view>
+      <view class="item-info">联系电话：{{info.phone}}</view>
+      <view class="item-info">科　　室：{{info.departmentName}}</view>
     </view>
-    <view class="doctor-item">
-        <view class="doctor-item-title">
-            <view class='doctor-i-t-text'>
-                <image class="icon-btn" src="../../images/doctor/doctor_05.png" />
-                <view> 工作经历：</view>
-            </view>
-            <view class='doctor-i-t-img' bindtap='goToEdit'>
-                <image src='../../images/detail_icon.png'></image>
-            </view>
-        </view>
-        <view class="doctor-item-info">
-            <view wx:for="{{info.workExperience}}" wx:key="item" class='doctor-i-i-item'>
-                <image class="icon-tip" src="../../images/doctor/doctor_07.png" />
-                <view class='single-info-box'>
-                    <view class='single-info-time'>
-                        {{item.time}}
-                    </view>
-                    <view class='single-info-text'>
-                         <text>{{item.company}}</text><text>{{item.department}}</text>
-                    </view>
-                </view>
-            </view>
-        </view>
+  </view>
+  <view class="doctor-item">
+    <view class="doctor-item-title">
+      <view class='doctor-i-t-text'>
+        <image class="icon-btn" src="../../images/doctor/doctor_04.png" />
+        <view>教育经历：</view>
+      </view>
+      <view class='doctor-i-t-img' bindtap='goToEdit'>
+        <image src='../../images/detail_icon.png'></image>
+      </view>
     </view>
-    <view class="doctor-item">
-        <view class="doctor-item-title">
-            <view class='doctor-i-t-text'>
-                <image class="icon-btn" src="../../images/doctor/doctor_06.png" />
-                <view> 证件信息：</view>
-            </view>
-            <view class='doctor-i-t-img' bindtap='goToEdit'>
-                <image src='../../images/detail_icon.png'></image>
-            </view>
+    <view class="doctor-item-info">
+      <view wx:for="{{info.educationExperience}}" wx:key="item" class='doctor-i-i-item'>
+        <image class="icon-tip" src="../../images/doctor/doctor_07.png" />
+        <view class='single-info-box'>
+          <view class='single-info-time'>
+            {{item.time}}
+          </view>
+          <view class='single-info-text'>
+            {{item.school}} {{item.major}}
+          </view>
         </view>
-        <view class="doctor-item-info">
-            <view class="card-content">
-                医师职称证：
-                <image class="card-info" src="{{info.professionCardUrl}}" />
-            </view>
-            <view class="card-content">
-                医师资格证：
-                <image class="card-info" src="{{info.qualificationCardUrl}}" />
-            </view>
-            <view class="card-content">
-                医师执业证：
-                <image class="card-info" src="{{info.practiceCardUrl}}" />
-            </view>
-        </view>
+      </view>
     </view>
-    <view class="doctor-item">
-        <view class="doctor-item-title">
-            <view class='doctor-i-t-text'>
-                <image class="icon-btn" src="../../images/doctor/doctor_08.png" />
-                <view> 作品展示：</view>
-            </view>
-            <view class='doctor-i-t-img' bindtap='goToEdit'>
-                <image src='../../images/detail_icon.png'></image>
-            </view>
-        </view>
-        <view class="doctor-item-info">
-            <view wx:for="{{info.works}}" wx:key="item" class='doctor-i-i-item'>
-                <image class="icon-tip" src="../../images/doctor/doctor_07.png" />
-                <view class='single-info-box'>
-                    <view class='single-info-time'>
-                        <image src='{{item.url}}'></image>
-                    </view>
-                    <view class='single-info-text'>
-                         {{item.description}}
-                    </view>
-                </view>
-            </view>
-        </view>
+  </view>
+  <view class="doctor-item">
+    <view class="doctor-item-title">
+      <view class='doctor-i-t-text'>
+        <image class="icon-btn" src="../../images/doctor/doctor_05.png" />
+        <view> 工作经历：</view>
+      </view>
+      <view class='doctor-i-t-img' bindtap='goToEdit'>
+        <image src='../../images/detail_icon.png'></image>
+      </view>
     </view>
-    <view class="doctor-item">
-        <view class="doctor-item-title">
-            <view class='doctor-i-t-text'>
-                <image class="icon-btn" src="../../images/doctor/doctor_09.png" />
-                <view> 擅长领域：</view>
-            </view>
-            <view class='doctor-i-t-img' bindtap='goToEdit'>
-                <image src='../../images/detail_icon.png'></image>
-            </view>
+    <view class="doctor-item-info">
+      <view wx:for="{{info.workExperience}}" wx:key="item" class='doctor-i-i-item'>
+        <image class="icon-tip" src="../../images/doctor/doctor_07.png" />
+        <view class='single-info-box'>
+          <view class='single-info-time'>
+            {{item.time}}
+          </view>
+          <view class='single-info-text'>
+            <text>{{item.company}}</text>
+            <text>{{item.department}}</text>
+          </view>
         </view>
-        <view class="doctor-item-info">
-             {{info.goodField}}
-        </view>
+      </view>
     </view>
-    <view class="doctor-item">
-        <view class="doctor-item-title">
-             <view class='doctor-i-t-text'>
-                <image class="icon-btn" src="../../images/doctor/doctor_10.png" />
-                <view> 个人简介：</view>
-            </view>
-            <view class='doctor-i-t-img' bindtap='goToEdit'>
-                <image src='../../images/detail_icon.png'></image>
-            </view>
-        </view>
-        <view class="doctor-item-info">
-             {{info.profile}}
-        </view>
+  </view>
+  <view class="doctor-item">
+    <view class="doctor-item-title">
+      <view class='doctor-i-t-text'>
+        <image class="icon-btn" src="../../images/doctor/doctor_06.png" />
+        <view> 证件信息：</view>
+      </view>
+      <view class='doctor-i-t-img' bindtap='goToEdit'>
+        <image src='../../images/detail_icon.png'></image>
+      </view>
     </view>
+    <view class="doctor-item-info">
+      <view class="card-content">
+        医师职称证：
+        <image class="card-info" src="{{info.professionCardUrl}}" />
+      </view>
+      <view class="card-content">
+        医师资格证：
+        <image class="card-info" src="{{info.qualificationCardUrl}}" />
+      </view>
+      <view class="card-content">
+        医师执业证：
+        <image class="card-info" src="{{info.practiceCardUrl}}" />
+      </view>
+    </view>
+  </view>
+  <view class="doctor-item">
+    <view class="doctor-item-title">
+      <view class='doctor-i-t-text'>
+        <image class="icon-btn" src="../../images/doctor/doctor_08.png" />
+        <view> 作品展示：</view>
+      </view>
+      <view class='doctor-i-t-img' bindtap='goToEdit'>
+        <image src='../../images/detail_icon.png'></image>
+      </view>
+    </view>
+    <view class="doctor-item-info">
+      <view wx:for="{{info.works}}" wx:key="item" class='doctor-i-i-item'>
+        <image class="icon-tip" src="../../images/doctor/doctor_07.png" />
+        <view class='single-info-box'>
+          <view class='single-info-time'>
+            <image src='{{item.url}}'></image>
+          </view>
+          <view class='single-info-text'>
+            {{item.description}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="doctor-item">
+    <view class="doctor-item-title">
+      <view class='doctor-i-t-text'>
+        <image class="icon-btn" src="../../images/doctor/doctor_09.png" />
+        <view> 擅长领域：</view>
+      </view>
+      <view class='doctor-i-t-img' bindtap='goToEdit'>
+        <image src='../../images/detail_icon.png'></image>
+      </view>
+    </view>
+    <view class="doctor-item-info">
+      {{info.goodField}}
+    </view>
+  </view>
+  <view class="doctor-item">
+    <view class="doctor-item-title">
+      <view class='doctor-i-t-text'>
+        <image class="icon-btn" src="../../images/doctor/doctor_10.png" />
+        <view> 个人简介：</view>
+      </view>
+      <view class='doctor-i-t-img' bindtap='goToEdit'>
+        <image src='../../images/detail_icon.png'></image>
+      </view>
+    </view>
+    <view class="doctor-item-info">
+      {{info.profile}}
+    </view>
+  </view>
 </view>

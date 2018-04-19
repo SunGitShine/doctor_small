@@ -6,7 +6,7 @@
     <view class="content-item">
       <image class="item-icon" src="../../images/modify_icon2.png" />
       <text class="item-title">标题</text>
-      <input class="item-input" />
+      <input class="item-input"  value='{{jobTitle}}' bindinput='getJobTitle' />
     </view>
     <view class="content-item">
       <image class="item-icon" src="../../images/modify_icon2.png" />
@@ -72,11 +72,11 @@
     <view class="content-item-money">
       <text class="item-title-money">薪资福利：</text>
       <radio-group class="radio-group" bindchange="jobMoneyChange">
-        <label class="radio" wx:for="{{moneyItems}}">
+        <label class="radio" wx:for="{{moneyItems}}" wx:key="item">
           <radio value="{{item.value}}" checked="{{item.checked}}" />{{item.name}}
         </label>
       </radio-group>
-       <input class="item-input-money" value="" disabled='{{moneyInputDisable}}'/>
+       <input class="item-input-money" value="" disabled='{{moneyInputDisable}}' value='{{moneyVal}}' bindinput='getMoneyVal'/>
     </view>
   </view>
   <view class="publish-title">

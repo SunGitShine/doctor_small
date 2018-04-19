@@ -135,11 +135,6 @@ Page({
                         title: res.data.description,
                         icon: 'none'
                     });
-                    // _this.setData({
-                    //     doctorData: Object.assign(_this.data.doctorData, {
-                    //         sittingSwitch: false
-                    //     })
-                    // })
                 }
             },
             fail: function (res) {
@@ -425,5 +420,18 @@ Page({
                 url: '../doctorDetail/doctorDetail'
             })
         }
+    },
+    //路由：跳转到医院详情或者完善信息
+    goToHospitalInfo: function () {
+      let _this = this;
+      if (_this.data.hospitalData.completeStatus == 0) {//未完善信息
+        wx.navigateTo({
+          url: '../hospitalEdit/hospitalEdit'
+        })
+      } else if (_this.data.hospitalData.completeStatus == 1) {//已有信息
+        wx.navigateTo({
+          url: '../hospitalDetail/hospitalDetail'
+        })
+      }
     }
 })

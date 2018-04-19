@@ -1,88 +1,64 @@
+<wxs module="common" src="../../filter/common.wxs"></wxs>
 <view class="hospital-detail">
   <view class="hospital-logo">
-    <image src="../../images/hospital_icon.png"/>
+    <image src="{{info.logoImgUrl}}" />
   </view>
   <view class="hospital-detail-info">
     <view class="index-info">
       <view class="info-title">
-        <image src="../../images/index_icon.png"/>
-      基本信息
-        <image class="modify-icon" src="../../images/detail_icon.png"/>
+        <image src="../../images/index_icon.png" /> 基本信息
+        <image class="modify-icon" src="../../images/detail_icon.png" bindtap='goToEdit'/>
       </view>
       <view class="info-index-content">
         <view class="info-content-item">
           <text class="item-title">名　　称：</text>
-          <input class="item-input" value="四川爱华美容医院"/>
+          <text>{{info.name}}</text>
         </view>
         <view class="info-content-item">
           <text class="item-title">地　　址：</text>
-          <input class="item-input" value="四川成都市高新区"/>
+          <text>{{info.province}}{{info.city}}{{info.address}}</text>
         </view>
         <view class="info-content-item">
           <text class="item-title">联系电话：</text>
-          <input class="item-input" value="028-85155025"/>
+          <text>{{info.phone}}</text>
         </view>
         <view class="info-content-item">
           <text class="item-title">规　　模：</text>
-          <input class="item-input" value="50～100"/>
+          <text>{{common.scaleFilter(info.scale)}}</text>
         </view>
         <view class="info-content-item">
           <text class="item-title">标　　签：</text>
-          <input class="item-input" value="美容整形 6得不行"/>
+          <text wx:for="{{info.tag}}" wx:for-item="item" wx:key="index">
+            <text class='tag-text'>{{item}}</text>
+          </text>
         </view>
       </view>
     </view>
     <view class="index-info">
-        <view class="info-title">
-          <image src="../../images/card_icon.png"/>
-        医院证件
-        </view>
-        <view class="info-index-content">
-          <view class="image-item">
-            <view class="image-item-info"></view>
-            <image class="remove-icon" src="../../images/remove.png" />
-          </view>
-          <view class="image-item">
-            <view class="image-item-info">
-              <image />
-            </view>
-          </view>
-        </view>
-    </view>
-    <view class="index-info">
-        <view class="info-title">
-          <image src="../../images/modify_icon.png"/>
-        医院简介
-        <image class="modify-icon" src="../../images/detail_icon.png"/>
+      <view class="info-title">
+        <image src="../../images/card_icon.png" /> 医院证件
       </view>
       <view class="info-index-content">
-        如果你无法简介表达你的想法，那只能说明你不够了解它。
-        <textarea value="如果你无法简介表达你的想法，那只能说明你不够了解它。"></textarea>
+       <image src='{{info.businessLicenceUrl}}'></image>
       </view>
     </view>
     <view class="index-info">
-        <view class="info-title">
-          <image src="../../images/picture_icon.png"/>
-        医院图片
+      <view class="info-title">
+        <image src="../../images/modify_icon.png" /> 医院简介
+      </view>
+      <view class="info-index-content">
+        <textarea value="{{info.profile}}" disabled='true'></textarea>
+      </view>
+    </view>
+    <view class="index-info">
+      <view class="info-title">
+        <image src="../../images/picture_icon.png" /> 医院图片
+      </view>
+      <view class="info-index-content">
+        <view class='hospital-img-box' wx:for="{{info.imageUrl}}" wx:for-item="item" wx:key="index">
+          <image src='{{item}}'></image>
         </view>
-        <view class="info-index-content">
-          <view class="image-item">
-            <view class="image-item-info"></view>
-            <image class="remove-icon" src="../../images/remove.png" />
-          </view>
-          <view class="image-item">
-            <view class="image-item-info"></view>
-            <image class="remove-icon" src="../../images/remove.png" />
-          </view>
-          <view class="image-item">
-            <view class="image-item-info"></view>
-            <image class="remove-icon" src="../../images/remove.png" />
-          </view>
-          <view class="image-item">
-            <view class="image-item-info"></view>
-            <image class="remove-icon" src="../../images/remove.png" />
-          </view>
-        </view>
+      </view>
     </view>
   </view>
   <view class="update-btn">提交审核</view>

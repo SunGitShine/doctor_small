@@ -6,6 +6,7 @@ page {
 
 .list-page {
     height: 100%;
+    overflow: hidden;
 }
 
 .notice {
@@ -69,12 +70,12 @@ page {
 }  */
 
 .block-item {
-    padding-top: 45px;
     height: 100%;
 }
 
 .list-info {
     padding: 15px;
+    overflow: auto
 }
 
 .list-info-title {
@@ -162,7 +163,7 @@ camera {
     display: flex;
     display: -webkit-flex;
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .left-slide {

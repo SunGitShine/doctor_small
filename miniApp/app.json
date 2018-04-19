@@ -6,6 +6,7 @@
     "pages/hospitalPublish/hospitalPublish",
     "pages/infoDetail/infoDetail",
     "pages/hospitalDetail/hospitalDetail",
+    "pages/hospitalEdit/hospitalEdit",
     "pages/doctorDetail/doctorDetail", 
     "pages/doctorEdit/doctorEdit",  
     "pages/doctorRecommend/doctorRecommend",

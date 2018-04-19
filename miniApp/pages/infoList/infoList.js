@@ -5,6 +5,7 @@ Page({
         navbar: ["医生专栏", "医院专栏"],
         currentTab: 0,
         currentClassify: 0,
+        infoListHeight:300,
         msg: "this id tabBar",
         listItems: [
             {
@@ -45,6 +46,15 @@ Page({
         let _this = this;
         let id = options.id;
         _this.findSonDepartment(id);
+        //设置职位列表容器的高度
+        wx.getSystemInfo({
+          success: function (res) {
+            _this.setData({
+              infoListHeight: res.windowHeight-100
+            })
+            console.log(res.windowHeight)
+          }
+        })  
     },
 
     /**
@@ -72,5 +82,6 @@ Page({
                 
             }
         })
-    }
+    },
+    //获取职位信息
 })

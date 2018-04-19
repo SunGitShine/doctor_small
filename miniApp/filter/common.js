@@ -62,6 +62,25 @@ var common = {
             default:
                 return "其他";
         }
+    },
+    //公司规模过滤[规模，1：10人以下，2：10~50人，3：50~100人，4：100~500人，5：500人以上]
+    scaleFilter: function (num) {
+      switch (num) {
+        case 1:
+          return "10人以下";
+          break;
+        case 2:
+          return "10~50人";
+          break;
+        case 3:
+          return "50~100人";
+          break;
+        case 4:
+          return "100~500人";
+          break;
+        default:
+          return "500人以上";
+      }
     }
 
 }
@@ -71,5 +90,6 @@ module.exports = {
     sliceStringEnd: common.sliceStringEnd,
     titleFilter: common.titleFilter,
     sexFilter: common.sexFilter,
-    educationFilter: common.educationFilter
+    educationFilter: common.educationFilter,
+    scaleFilter: common.scaleFilter
 }

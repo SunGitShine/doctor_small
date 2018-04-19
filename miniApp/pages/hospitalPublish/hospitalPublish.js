@@ -38,6 +38,7 @@ Page({
     selectedEducation: "",//当前选中的学历
     selectedEducationText: "",//当前学历的text
     selectedCity: "",//当前选中的城市
+    jobTitle:"",//招聘的名字
     //职称
     title: "",
     //职称text显示
@@ -77,7 +78,11 @@ Page({
     //职位描述
     jobDescription:"",
     //职位要求
-    jobRequire:""
+    jobRequire:"",
+    //医院的ID
+    id:"",
+    //医院地址
+    address:""
   },
 
   /**
@@ -85,6 +90,9 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
+    _this.setData({
+      id: options.id
+    })
     _this.findParentDepartment();
   },
   //获取一级科室
@@ -199,7 +207,7 @@ Page({
       selectedCity: value
     })
   },
-  //生日picker改变
+  //工作时间picker改变
   jobDayChange: function (event) {
     console.log(event);
     let value = event.detail.value;
@@ -223,43 +231,78 @@ Page({
       })
     }
   },
+  //获取具体薪水
+  getMoneyVal: function (event) {
+    this.setData({
+      moneyVal: event.detail.value
+    })
+  },
   //获取职位描述
   getJobDescription: function (event) {
     this.setData({
       jobDescription: event.detail.value
     })
   },
+  //获取职位标题
+  getJobTitle: function (event) {
+    this.setData({
+      jobTitle: event.detail.value
+    })
+  },
   //获取职位要求
-  getJobRequire: function () {
+  getJobRequire: function (event) {
     this.setData({
       jobRequire: event.detail.value
     })
   },
   //发布信息
   publishInfo:function(){
+    let _this = this;
+    let params = {
+      openid: wx.getStorageSync('openid'),
+      hospitalId:_this.data.id,
+      departmentId: _this.data.departmentId,
+      departmentName:_this.data.selectedParentDepartment,
+      title: _this.data.jobTitle,
+      doctorTitle:_this.data.title,
+      education: _this.data.selectedEducation,
+      workTime: _this.data.workTime,
+      time: _this.data.jobDay,
+      moneyType: (_this.data.moneyFlag == 0) ? ('-1') : (_this.data.moneyVal),
+      jobDescription: _this.data.jobDescription,
+      jobRequire: _this.data.jobRequire,
+      province:"北京市",
+      city:"北京市"
+    };
+    console.log(params);
     wx.request({
-      url: app.globalData.commonBaseUrl +'/hospital/completeInfo.htm',
-      data:{
-        d:{
-          "openid": "18380448932",
-          "name": "csc",
-          "phone": "18380448933",
-          "logoImgUrl": "http://www.baidu.com",
-          "province": "四川省",
-          "city": "成都市",
-          "address": "中和镇xx街",
-          "scale": 4,
-          "tag": ["好医院", "社保定点医院"],
-          "businessLicenceUrl": "http://www.baidu.com",
-          "profile": "简介",
-          "imageUrl": ["http://www.baidu.com", "http://www.baidu.com"]
+      header: {
+        "accept": 'application/json',
+        "content-Type": "application/x-www-form-urlencoded"
+      },
+      url: app.globalData.commonBaseUrl + '/hospital/release.htm',
+      method: 'POST',
+      dataType: 'json', 
+      data: {
+        d: JSON.stringify(params)
+      },
+      success: function (res) {
+        if (res.data.code == 'J000000') {
+          wx.showToast({
+            title: res.data.description,
+            icon: 'none',
+            time: 1000,
+            success:function (){
+              wx.navigateBack()
+            }
+          });
+        
+        } else {
+
         }
       },
-      success:function(res){
-        wx.showToast({
-          title: res.description,
-        })
-        console.log(res);
+      fail: function (res) {
+
       }
     })
   }

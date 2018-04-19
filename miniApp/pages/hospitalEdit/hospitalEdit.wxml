@@ -1,0 +1,123 @@
+<view class="hospital-detail">
+  <view class="hospital-logo">
+    <image src="../../images/hospital_icon.png" />
+  </view>
+  <view class="hospital-detail-info">
+    <view class="index-info">
+      <view class="info-title">
+        <image src="../../images/index_icon.png" />
+        <text>基本信息</text>
+      </view>
+      <view class="info-index-content">
+        <view class="info-content-item">
+          <view class="item-info">
+            <view class='item-info-tip'>名　　称：</view>
+            <input class='item-info-in border-bottom' placeholder="请输入医院名称" bindinput="hospitalNameInput" value="{{name}}" />
+          </view>
+        </view>
+        <view class="info-content-item">
+          <view class="item-info">
+            <view class='item-info-tip'>所在城市： </view>
+            <view>
+              <picker mode="region" class='region-picker' bindchange="bindCityChange" value="{{selectedCity}}">
+                <view class="picker " wx-if="{{!selectedCity}}">点击选择</view>
+                <view class="picker " wx-if="{{selectedCity}}">{{selectedCity}}</view>
+              </picker>
+            </view>
+          </view>
+
+        </view>
+        <view class="info-content-item">
+          <view class="item-info">
+            <view class='item-info-tip'>地　　址：</view>
+            <input class='item-info-in border-bottom' placeholder="请输入医院地址" bindinput="hospitalAddressInput" value="{{address}}" />
+          </view>
+        </view>
+        <view class="info-content-item">
+          <view class="item-info">
+            <view class='item-info-tip'>联系电话：</view>
+            <input class='item-info-in border-bottom' placeholder="请输入联系电话" bindinput="hospitalPhoneInput" value="{{phone}}" />
+          </view>
+        </view>
+        <view class="info-content-item">
+          <view class="item-info">
+            <view class='item-info-tip'>规　　模：</view>
+            <view>
+              <picker class='item-info-tip-picker' mode="selector" bindchange="bindScaleChange" range="{{scaleItems}}" range-key="name">
+                <view class="picker" wx-if="{{!scale}}">点击选择</view>
+                <view class="picker" wx-if="{{scale}}">{{scaleText}}</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class="info-content-item">
+          <view class="item-info">
+            <view class='item-info-tip'>标　　签：</view>
+            <input class='item-info-in border-bottom honor-text' value='{{tag1}}' placeholder="医院标签1" bindinput='getTag1' />
+            <input class='item-info-in border-bottom honor-text ' value='{{tag2}}' placeholder="医院标签2" bindinput='getTag2' />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="index-info">
+      <view class="info-title">
+        <image src="../../images/card_icon.png" />
+        <text>医院logo</text>
+      </view>
+      <view class="info-index-content">
+        <view class='certificate-box'>
+          <view>logo：</view>
+          <view>
+            <image class='certificate-picture' wx:if="{{logoImgUrl}}" src='{{logoImgUrl}}'></image>
+          </view>
+          <image src='../../images/modify_icon2.png' bindtap='addLogoImgUrl'></image>
+        </view>
+      </view>
+    </view>
+    <view class="index-info">
+      <view class="info-title">
+        <image src="../../images/card_icon.png" />
+        <text>医院证件</text>
+      </view>
+      <view class="info-index-content">
+        <view class='certificate-box'>
+          <view>营业执照：</view>
+          <view>
+            <image class='certificate-picture' wx:if="{{businessLicenseSrc}}" src='{{businessLicenseSrc}}'></image>
+            <!-- <image class='del-img' wx:if="{{businessLicenseSrc}}" src='../../images/remove.png' bindtap='removeBusinessLicense'></image> -->
+          </view>
+          <image src='../../images/modify_icon2.png' bindtap='addBusinessLicense'></image>
+        </view>
+      </view>
+    </view>
+    <view class="index-info">
+      <view class="info-title">
+        <image src="../../images/modify_icon.png" />
+        <text>医院简介</text>
+      </view>
+      <view class="info-index-content">
+        <textarea value="{{introduce}}" placeholder='请输入医院简介' bindinput="getIntroduce"></textarea>
+      </view>
+    </view>
+    <view class="index-info">
+      <view class="info-title hospital-img-box">
+        <view class='hospital-img-name'>
+          <image src="../../images/picture_icon.png" />
+          <text> 医院图片</text>
+        </view>
+        <image src='../../images/modify_icon2.png' bindtap='addHospitalImg'></image>
+      </view>
+      <view class="info-index-content">
+        <view class='certificate-box'>
+          <view class='certificate-picture-box'>
+            <view wx:for="{{imgUrl}}" wx:for-item="item" wx:key="index">
+              <image class='certificate-picture' src='{{item}}'></image>
+              <image class='del-img' src='../../images/remove.png' data-index='{{index}}' bindtap='removeHospitalPic'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="update-btn" bindtap='submitHospitalInfo'>提交审核</view>
+</view>

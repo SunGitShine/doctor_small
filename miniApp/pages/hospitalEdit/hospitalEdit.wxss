@@ -1,0 +1,194 @@
+/* pages/hospitalDetail/hospitalDetail.wxss */
+
+hospital-detail {
+}
+
+.hospital-logo {
+  height: 160rpx;
+  background: #2ba246;
+}
+
+.hospital-logo image {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 0;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.info-title {
+  position: relative;
+    display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 15px;
+  background: #fff;
+  border-bottom: 1px solid #f1f1f1;
+}
+.hospital-img-box{
+  justify-content: space-between
+}
+.info-title text{
+  padding-left: 10px;
+}
+.info-title image {
+  width: 16px;
+  height: 14px;
+}
+
+.modify-icon {
+  position: absolute;
+  right: 10px;
+}
+
+.hospital-detail-info {
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-bottom: 48px;
+  background: #f1f1f1;
+}
+
+.index-info {
+  margin-top: 10px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+.index-info:first-child {
+  margin-top: 0;
+}
+
+.info-index-content {
+  overflow: auto;
+  padding: 10px;
+  background: #fff;
+  font-size: 12px;
+  color: #808080;
+}
+.info-index-content>textarea {
+  width: 100%;
+}
+.info-content-item {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  font-size: 12px;
+  color: #808080;
+}
+
+.item-title {
+  flex: 0 0 auto;
+}
+
+.item-input {
+  flex: 0 0 auto;
+}
+
+.image-item {
+  position: relative;
+  float: left;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 33.33%;
+  height: 100rpx;
+}
+
+.image-item-info {
+  height: 100%;
+  background: #f1f1f1;
+}
+
+.remove-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16px;
+  height: 14px;
+}
+
+.update-btn {
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  color: #fff;
+  background: #2ba246;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+}
+
+.item-info>picker {
+  padding-left: 80px;
+}
+
+.region-picker {
+  min-width: 200px;
+}
+
+.item-info-tip {
+  width: 70px;
+  height: 40px;
+}
+
+.item-info-tip-picker {
+  min-width: 200px;
+}
+
+.item-info-in {
+  flex: 1;
+  height: 40px;
+}
+
+.certificate-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.certificate-box>image {
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  transform: scale(0.8);
+}
+
+.certificate-picture {
+  width: 150px !important;
+  height: 100px !important;
+}
+
+.del-img {
+  position: relative;
+  right: 10px;
+  top: -90px;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  transform: scale(0.8);
+}
+
+.hospital-img-name {
+  display: flex;
+  align-items: center;
+}
+.certificate-picture-box,.certificate-picture-box>view{
+  width: 100%;
+  text-align:center;
+
+}
+.certificate-picture-box>view>image{
+  margin: 20px auto;
+}

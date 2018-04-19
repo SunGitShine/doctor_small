@@ -1,28 +1,37 @@
 <template name="hospitalIndex">
+  <view class="hospital-logo-box">
+    <image src="{{logoImgUrl}}" />
+    <text>{{name}}</text>
+  </view>
   <view class="hospital-info">
     <view class="hospital-publish">
       <view class="hospital-publish-itme">
-        <navigator hover-class="none" open-type="navigate" url="/pages/hospitalPublish/hospitalPublish">
-          <image src=""/>
+        <navigator hover-class="none" open-type="navigate" url="/pages/hospitalPublish/hospitalPublish?id={{id}}">
+          <image src="" />
           <view>我的发布</view>
         </navigator>
       </view>
       <view class="hospital-publish-itme">
         <navigator hover-class="none" open-type="navigate" url="/pages/doctorRecommend/doctorRecommend?currentTab=1">
-          <image src/>
+          <image src="" />
           <view>医生推荐</view>
         </navigator>
       </view>
     </view>
     <view class="hospital-info-content">
-      <navigator hover-class="none" open-type="navigate" url="/pages/hospitalDetail/hospitalDetail">
-        <view class="info-title"><image src="../../images/index_icon.png"/>基本信息</view>
-        <view class="info-content">
-          <view>名　　称：四川华美紫馨美容整形医院</view>
-          <view>地　　址：四川省成都市高新区中和镇</view>
-          <view>联系电话：028-85155025</view>
+      <view hover-class="none" bindtap='goToHospitalInfo'>
+        <view class="info-title base-info-box">
+        <view>
+          <image src="../../images/index_icon.png" />基本信息
+        </view>  
+        <view><image class='right-arrow-img' src='../../images/right-arrow.png'></image></view>
         </view>
-      </navigator>
+        <view class="info-content">
+          <view>名　　称：{{name}}</view>
+          <view>地　　址：{{city}}{{address}}</view>
+          <view>联系电话：{{phone}}</view>
+        </view>
+      </view>
     </view>
   </view>
 </template>

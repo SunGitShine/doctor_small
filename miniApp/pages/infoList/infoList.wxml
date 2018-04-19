@@ -1,33 +1,31 @@
 <import src="../../templates/infoListItem.wxml" />
 <view class="list-page">
-    <view class="navbar">
-        <view wx:for="{{navbar}}" data-idx="{{index}}" wx:key="unique" class="item {{currentTab == index?'active':''}}" bindtap="navbarTap">
-            <!-- <view class="notice" wx:if="{{count[index]>0}}">{{count[index]}}</view> -->
-            <text>{{item}}</text>
-        </view>
+  <view class="navbar">
+    <view wx:for="{{navbar}}" data-idx="{{index}}" wx:key="unique" class="item {{currentTab == index?'active':''}}" bindtap="navbarTap">
+      <!-- <view class="notice" wx:if="{{count[index]>0}}">{{count[index]}}</view> -->
+      <text>{{item}}</text>
     </view>
-    <!--项目一-->
-    <!-- <view hidden="{{currentTab !== 0}}" id="one" class="block-item">
-    <template wx:for="{{listItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab}}"/>
-  </view> -->
-
-    <!--项目二-->
-    <!-- <view hidden="{{currentTab !== 1}}" id="two" class="block-item">
-    <template wx:for="{{listDoctorItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab}}"/>
-  </view> -->
-
-    <view class="classify-wrapper">
-        <view class="left-slide">
-            <view wx:for="{{workClassify}}" data-idy="{{index}}" wx:key="unique" class="left-slide-item {{currentClassify == index?'active':''}}" bindtap="getClassify">
-                {{item.departmentName}}
-            </view>
-        </view>
-        <view class="right-slide">
-            <view class="r-s-title-bar">
-                <view class="r-s-title-icon"></view>
-                <view class="r-s-title-name">呼吸内科</view>
-            </view>
-            <template wx:for="{{listItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab}}" />
-        </view>
+  </view>
+  <view class="classify-wrapper">
+    <view class="left-slide">
+      <view wx:for="{{workClassify}}" data-idy="{{index}}" wx:key="unique" class="left-slide-item {{currentClassify == index?'active':''}}" bindtap="getClassify">
+        {{item.departmentName}}
+      </view>
     </view>
+    <view class="right-slide">
+      <view class="r-s-title-bar">
+        <view class="r-s-title-icon"></view>
+        <view class="r-s-title-name">呼吸内科</view>
+      </view>
+      <!--项目一-->
+      <view hidden="{{currentTab !== 0}}" id="one" class="block-item"  style="height:{{infoListHeight}}">
+        <template wx:for="{{listItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab}}" />
+      </view>
+
+      <!--项目二-->
+      <view hidden="{{currentTab !== 1}}" id="two" class="block-item"  style="height:{{infoListHeight}}">
+        <template wx:for="{{listDoctorItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab}}" />
+      </view>
+    </view>
+  </view>
 </view>

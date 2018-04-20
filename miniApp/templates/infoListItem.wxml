@@ -1,82 +1,74 @@
 <wxs module="common" src="../filter/common.wxs"></wxs>
 <template name="listItem">
-  <view class="list-info">
-    <navigator wx:if="{{currentTab !== 0}}" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}">
-      <view class="list-info-title">
-        {{item.title}}
-        <image class="ask-icon" src="../../images/ask_icon.png" />
-      </view>
-      <view class="list-info-route">
-        <view class="list-info-item0">
-          <image class="user-icon" src="{{item.logoImgUrl}}" />
-          <image wx:if="{{currentTab == 0}}" class="reservation-icon" src="../../images/reservation_icon.png" />
-        </view>
-        <view class="list-info-item">
-          <view class="item-tilte">
-            <text>
+    <view class="list-info">
+        <!--currentTab   0为医生专栏，1为医院专栏  -->
+        <view wx:if="{{currentTab !== 0}}" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}">
+            <navigator class="list-info-title" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}">
+                {{item.title}}
+                <image class="ask-icon" src="../../images/ask_icon.png" />
+            </navigator>
+            <view class="list-info-route">
+                <navigator class="list-info-item0" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}">
+                    <image class="user-icon" src="{{item.logoImgUrl}}" />
+                    <image wx:if="{{currentTab == 0}}" class="reservation-icon" src="../../images/reservation_icon.png" />
+                </navigator>
+                <navigator class="list-info-item" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}">
+                    <view class="item-tilte">
+                        <text>
                             <text class='list-info-text'>{{item.departmentName}}</text>
-            <text>{{common.titleFilter(item.doctorTitle)}}</text>
-            <text>{{item.workTime}}年</text>
-            </text>
-            <text class="date-tip" wx:if="{{currentTab == 0}}">{{common.sliceStringFont(item.time)}}</text>
-          </view>
-          <view class="item-content">
-            <view class='item-content-hospital-box'>
-              <view>{{item.hospitalName}}</view>
-              <view wx:if="{{item.hospitalName}}" class='item-c-hospital-line'>|</view>
-              <view>{{common.scaleFilter(item.scale)}}</view>
+                        <text>{{common.titleFilter(item.doctorTitle)}}</text>
+                        <text>{{item.workTime}}年</text>
+                        </text>
+                        <text class="date-tip" wx:if="{{currentTab == 0}}">{{common.sliceStringFont(item.time)}}</text>
+                    </view>
+                    <view class="item-content">
+                        <view class='item-content-hospital-box'>
+                            <text wx:if="{{item.hospitalName}}" class='item-c-hospital-line'>{{item.hospitalName}}|{{common.scaleFilter(item.scale)}}</text>
+                        </view>
+                    </view>
+                </navigator>
+                <navigator class="list-info-item" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}" wx:if="{{currentTab !== 0}}">
+                    <view class="item-tip">{{common.moneyTypeFilter(item.moneyType)}}
+                    </view>
+                    <view class="item-tip">{{common.sliceStringFont(item.time)}}</view>
+                </navigator>
+                <view class="list-info-item" wx:if="{{currentTab !== 0 && isRelease}}">
+                    <view class="review-box">
+                        <text class="review-no" wx:if="{{item.auditStatus != 1}}">待审核</text>
+                        <switch class="review-switch" wx:if="{{item.auditStatus == 1}}" bindchange="releaseChange" data-id='{{item.id}}' checked="{{item.status == 1}}"></switch>
+                    </view>
+                    <view class="review-del-box">
+                        <image class='review-del-img' src='../../images/del.png' bindtap='deleteRelease' data-id='{{item.id}}'></image>
+                    </view>
+                </view>
             </view>
-          </view>
-          <view wx:if="{{currentTab == 0}}" class="item-content">
-            <text>中国美容协会会长</text>
-            <text>中国十佳医师</text>
-          </view>
         </view>
-        <view class="list-info-item" wx:if="{{currentTab !== 0}}">
-          <view class="item-tip">{{common.moneyTypeFilter(item.moneyType)}}
-          </view>
-          <view class="item-tip">{{common.sliceStringFont(item.time)}}</view>
-        </view>
-      </view>
-    </navigator>
-
-    <navigator wx:if="{{currentTab == 0}}" hover-class="none" open-type="navigate" url="/pages/doctorDetail/doctorDetail?id={{item.id}}">
-      <view class="list-info-title">
-        {{item.title}}
-        <image class="ask-icon" src="../../images/ask_icon.png" />
-      </view>
-      <view class="list-info-route">
-        <view class="list-info-item0">
-          <image class="user-icon" src="{{item.logoImgUrl}}" />
-          <image wx:if="{{currentTab == 0}}" class="reservation-icon" src="../../images/reservation_icon.png" />
-        </view>
-        <view class="list-info-item">
-          <view class="item-tilte">
-            <text>
+        <!--currentTab   0为医生专栏，1为医院专栏  -->
+        <navigator wx:if="{{currentTab == 0}}" hover-class="none" open-type="navigate" url="/pages/doctorDetail/doctorDetail?openid={{item.openid}}">
+            <view class="list-info-route">
+                <view class="list-info-item0">
+                    <image class="user-icon" src="{{item.headImgUrl}}" />
+                    <image class="reservation-icon" src="../../images/reservation_icon.png" />
+                </view>
+                <view class="list-info-item">
+                    <view class="list-info-title">
+                        <text>{{item.name}}</text>
+                        <text>{{item.workTime}}年</text>
+                    </view>
+                    <view class="item-tilte">
+                        <text>
                             <text class='list-info-text'>{{item.departmentName}}</text>
-            <text>{{common.titleFilter(item.doctorTitle)}}</text>
-            <text>{{item.workTime}}年</text>
-            </text>
-            <text class="date-tip" wx:if="{{currentTab == 0}}">{{common.sliceStringFont(item.time)}}</text>
-          </view>
-          <view class="item-content">
-            <view class='item-content-hospital-box'>
-              <view>{{item.hospitalName}}</view>
-              <view wx:if="{{item.hospitalName}}" class='item-c-hospital-line'>|</view>
-              <view>{{common.scaleFilter(item.scale)}}</view>
+                        <text>{{common.titleFilter(item.doctorTitle)}}</text>
+                        </text>
+                        <text class="date-tip">{{common.sliceStringFont(item.startTime)}}~{{common.sliceStringFont(item.endTime)}}</text>
+                    </view>
+                    <view class="item-content">
+                        <view class='doctor-call-box'>
+                            <text wx:for="{{item.call}}" wx:key="index">{{item}}</text>
+                        </view>
+                    </view>
+                </view>
             </view>
-          </view>
-          <view wx:if="{{currentTab == 0}}" class="item-content">
-            <text>中国美容协会会长</text>
-            <text>中国十佳医师</text>
-          </view>
-        </view>
-        <view class="list-info-item" wx:if="{{currentTab !== 0}}">
-          <view class="item-tip">{{common.moneyTypeFilter(item.moneyType)}}
-          </view>
-          <view class="item-tip">{{common.sliceStringFont(item.time)}}</view>
-        </view>
-      </view>
-    </navigator>
-  </view>
+        </navigator>
+    </view>
 </template>

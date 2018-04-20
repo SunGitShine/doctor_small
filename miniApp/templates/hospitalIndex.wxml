@@ -6,14 +6,14 @@
   <view class="hospital-info">
     <view class="hospital-publish">
       <view class="hospital-publish-itme">
-        <navigator hover-class="none" open-type="navigate" url="/pages/hospitalPublish/hospitalPublish?id={{id}}">
-          <image src="" />
+        <navigator hover-class="none" open-type="navigate" url="/pages/hospitalPublishList/hospitalPublishList?id={{id}}">
+          <image src="../../images/push.png" />
           <view>我的发布</view>
         </navigator>
       </view>
       <view class="hospital-publish-itme">
         <navigator hover-class="none" open-type="navigate" url="/pages/doctorRecommend/doctorRecommend?currentTab=1">
-          <image src="" />
+          <image src="../../images/recommend.png" />
           <view>医生推荐</view>
         </navigator>
       </view>

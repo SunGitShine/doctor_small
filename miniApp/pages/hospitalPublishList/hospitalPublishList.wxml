@@ -1,0 +1,11 @@
+<import src="../../templates/infoListItem.wxml" />
+<navigator class='add-release-box' hover-class="none" open-type="navigate" url="/pages/hospitalPublish/hospitalPublish?id={{id}}">
+    <image src='../../images/modify_icon2.png'></image>
+</navigator>
+<view class="list-page">
+    <!--项目二-->
+    <view id="two" class="block-item">
+        <template wx:for="{{listDoctorItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab,isRelease}}" />
+        <view class='no-data-text' wx:if="{{listDoctorItems.length == 0}}">暂无...</view>
+    </view>
+</view>

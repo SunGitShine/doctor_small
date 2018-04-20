@@ -71,17 +71,21 @@ page {
 
 .block-item {
     height: 100%;
+    overflow: auto;
+    padding-bottom: 100px;
 }
 
 .list-info {
     padding: 15px;
-    overflow: auto
+    overflow: auto;
 }
 
 .list-info-title {
     font-size: 15px;
 }
-
+.list-info-title>text{
+    padding-right: 40px;
+}
 .ask-icon {
     margin-left: 25px;
     width: 80rpx;
@@ -93,6 +97,7 @@ page {
     display: flex;
     display: -webkit-flex;
     flex-direction: row;
+    flex-wrap: wrap;
     padding: 10rpx;
     border-bottom: 1px solid #f1f1f1;
 }
@@ -100,6 +105,7 @@ page {
 .user-icon {
     width: 100rpx;
     height: 100rpx;
+    border-radius: 50%;
 }
 
 .reservation-icon {
@@ -129,6 +135,17 @@ camera {
 
 .item-tilte {
     position: relative;
+    top: 5px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item-c-hospital-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .item-tilte text {
@@ -144,7 +161,7 @@ camera {
 }
 
 .item-content {
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: 12px;
     color: #808080;
 }
@@ -171,10 +188,11 @@ camera {
     -webkit-flex: 0 0 auto;
     background: #f1f1f1;
     height: 100%;
+    width: 70px;
 }
 
 .left-slide-item {
-    padding: 5px 10px 5px 5px;
+    padding: 5px 1px 5px 5px;
     font-size: 24rpx;
 }
 
@@ -191,7 +209,6 @@ camera {
 .r-s-title-bar {
     display: flex;
     align-items: center;
-
     padding: 5px 2px;
     font-size: 24rpx;
 }
@@ -204,5 +221,23 @@ camera {
 }
 
 .r-s-title-name {
-      margin-left: 10px;
+    margin-left: 10px;
+}
+
+.no-data-text {
+    text-align: center;
+    font-size: 14px;
+    padding-top: 50px;
+}
+.doctor-call-box{
+    color: #B0B0B0
+}
+.doctor-call-box>text{
+    padding-right: 20px;
+}
+.date-tip {
+    position: relative;
+    font-size: 12px;
+    color: #ff7800;
+    display: block;
 }

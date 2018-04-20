@@ -262,7 +262,7 @@ Page({
       openid: wx.getStorageSync('openid'),
       hospitalId:_this.data.id,
       departmentId: _this.data.departmentId,
-      departmentName:_this.data.selectedParentDepartment,
+      departmentName: (_this.data.selectedSonDepartment) ? (_this.data.selectedSonDepartment):(_this.data.selectedParentDepartment),
       title: _this.data.jobTitle,
       doctorTitle:_this.data.title,
       education: _this.data.selectedEducation,

@@ -6,14 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    listDoctorItems: [
-      {
-        name: "刘海波"
-      },
-      {
-        name: "谢强"
-      }
-    ],
+    listDoctorItems:[],
     currentTab:""
   },
 
@@ -28,41 +21,31 @@ Page({
     if (currentTab == "0"){
       titleName = "推荐医院";
       this.setData({ currentTab: parseInt("1") });
-      _this.findReleaseListPage();
     }else{
       titleName = "推荐医生";
       this.setData({ currentTab: parseInt("0") });
+      _this.findDoctorListPage();
     }
     wx.setNavigationBarTitle({
-      title: titleName,
+      title: titleName
     })
 
   },
-  //获取推荐医院
-  findReleaseListPage: function () {
+  //获取医院推荐的医生
+  findDoctorListPage: function () {
       let _this = this;
       let openId = wx.getStorageSync('openid');
-      let identity = _this.currentTab;
       let params = {
           pageNo: 1,
-          pageSize: 10
-      }
-      //角色是医生
-      if (identity == 1) {
-          params = Object.assign(params, {
-              doctorOpenid: openId
-          })
-      } else if (identity == 2) {
-          params = Object.assign(params, {
-              hospitalOpenid: openId
-          })
+          pageSize: 10,
+          hospitalOpenid: openId
       }
       wx.request({
           header: {
               "accept": 'application/json',
               "content-Type": "application/x-www-form-urlencoded"
           },
-          url: app.globalData.commonBaseUrl + "/hospital/findReleaseListPage.htm",
+          url: app.globalData.commonBaseUrl + "/doctor/findDoctorListPage.htm",
           method: "GET",
           dataType: "json",
           data: {

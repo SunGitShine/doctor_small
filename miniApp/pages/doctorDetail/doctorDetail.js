@@ -8,7 +8,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        info:{}
+        info:{},
+        searchFlag:false//只是查询则为true，可编辑则为false
     },
 
     /**
@@ -17,13 +18,23 @@ Page({
     onLoad: function (options) {
         let _this = this;
         //获取用户信息
-        _this.findByOpneid();
+        _this.findByOpneid(options.openid);
     },
     //获取身份
-    findByOpneid: function () {
+    findByOpneid: function (openid) {
         let _this = this;
-        let openId = wx.getStorageSync('openid');
+        let openId;
+        if (openid){
+            openId = openid;
+        }else{
+            openId = wx.getStorageSync('openid');
+        }
+        
         wx.request({
+            header: {
+                "accept": 'application/json',
+                "content-Type": "application/x-www-form-urlencoded"
+            },
             url: app.globalData.commonBaseUrl + "/common/findByOpneid.htm",
             method: "GET",
             dataType: "json",

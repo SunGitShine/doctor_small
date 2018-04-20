@@ -19,13 +19,13 @@
       </view>
       <!--项目一-->
       <view hidden="{{currentTab !== 0}}" id="one" class="block-item"  style="height:{{infoListHeight}}">
-        <template wx:for="{{listItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab}}" />
+        <template wx:for="{{listItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab,flag}}" />
         <view class='no-data-text' wx:if="{{listItems.length == 0}}">暂无...</view>
       </view>
 
       <!--项目二-->
       <view hidden="{{currentTab !== 1}}" id="two" class="block-item"  style="height:{{infoListHeight}}">
-        <template wx:for="{{listDoctorItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab}}" />
+        <template wx:for="{{listDoctorItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab,flag}}" />
         <view class='no-data-text'  wx:if="{{listDoctorItems.length == 0}}">暂无...</view>
       </view>
     </view>

@@ -2,23 +2,23 @@
 <template name="listItem">
     <view class="list-info">
         <!--currentTab   0为医生专栏，1为医院专栏  -->
-        <view wx:if="{{currentTab !== 0}}" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}">
-            <navigator class="list-info-title" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}">
+        <view wx:if="{{currentTab !== 0}}" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag={{flag}}">
+            <navigator class="list-info-title" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag={{flag}}">
                 {{item.title}}
-                <image class="ask-icon" src="../../images/ask_icon.png" />
+                <image wx:if="{{!isJob}}" class="ask-icon" src="../../images/ask_icon.png" />
             </navigator>
             <view class="list-info-route">
-                <navigator class="list-info-item0" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}">
-                    <image class="user-icon" src="{{item.logoImgUrl}}" />
-                    <image wx:if="{{currentTab == 0}}" class="reservation-icon" src="../../images/reservation_icon.png" />
+                <navigator class="list-info-item0" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag={{flag}}">
+                    <image wx:if="{{!isJob}}" class="user-icon" src="{{item.logoImgUrl}}" />
                 </navigator>
-                <navigator class="list-info-item" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}">
+                <navigator class="list-info-item" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag={{flag}}">
                     <view class="item-tilte">
                         <text>
                             <text class='list-info-text'>{{item.departmentName}}</text>
                         <text>{{common.titleFilter(item.doctorTitle)}}</text>
                         <text>{{item.workTime}}年</text>
                         </text>
+                        <text class="date-tip" wx:if="{{isJob}}">{{common.sliceStringFont(item.updateTime)}}</text>
                         <text class="date-tip" wx:if="{{currentTab == 0}}">{{common.sliceStringFont(item.time)}}</text>
                     </view>
                     <view class="item-content">
@@ -27,7 +27,7 @@
                         </view>
                     </view>
                 </navigator>
-                <navigator class="list-info-item" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}" wx:if="{{currentTab !== 0}}">
+                <navigator class="list-info-item" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag={{flag}}" wx:if="{{currentTab !== 0}}">
                     <view class="item-tip">{{common.moneyTypeFilter(item.moneyType)}}
                     </view>
                     <view class="item-tip">{{common.sliceStringFont(item.time)}}</view>

@@ -15,7 +15,14 @@ Page({
     interval: 4000,
     duration: 1000,
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    jobList:[]
+  },
+  /**
+ * 生命周期函数--监听页面加载
+ */
+  onLoad: function (options) {
+    this.findByPage();
   },
   changeIndicatorDots: function (e) {
     this.setData({
@@ -63,5 +70,38 @@ Page({
       wx.navigateTo({
           url: '../infoList/infoList?id='+id
       })
+  },
+  //猎聘专区:获取职位列表
+  findByPage: function () {
+    let _this = this;
+    let params = {
+      pageNo: 1,
+      pageSize:2
+    };
+    wx.request({
+      header: {
+        "accept": 'application/json',
+        "content-Type": "application/x-www-form-urlencoded"
+      },
+      url: app.globalData.commonBaseUrl + '/position/findByPage.htm',
+      method: 'GET',
+      dataType: 'json',
+      data: {
+        d: JSON.stringify(params)
+      },
+      success: function (res) {
+        if (res.data.code == 'J000000') {
+          _this.setData({
+            jobList: res.data.resultMap.rows
+          })
+        } else {
+
+        }
+      },
+      fail: function (res) {
+
+      }
+    })
   }
+
 })

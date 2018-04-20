@@ -15,7 +15,8 @@ Page({
         listDoctorItems: [],
         workClassify: [],
         pageNo: 1,//当前页码，默认为1
-        pageSize: 10//默认分页数为10
+        pageSize: 10,//默认分页数为10
+        flag:"in"//in为职位搜索，job为猎聘专区
     },
     /**
     * 生命周期函数--监听页面加载

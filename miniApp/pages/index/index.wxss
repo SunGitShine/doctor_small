@@ -76,6 +76,7 @@ image{
 }
 .list-col{
   background: #fff;
+  min-height: 100px;
 }
 .list-col-item{
   position: relative;

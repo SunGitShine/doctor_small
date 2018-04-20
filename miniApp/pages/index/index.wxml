@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<wxs module="common" src="../../filter/common.wxs"></wxs>
 <view class="page-wrapper">
   <view class="container">
     <view class="swiper-contain">
@@ -93,47 +94,24 @@
     </view>
   </view>
   <view class="list-title">
-    <navigator hover-class="none" open-type="navigate" url="/pages/infoList/infoList?id=2">
+    <navigator hover-class="none" open-type="navigate" url="/pages/jobList/jobList">
       <image src="../../images/t3.png"/>
       <text class="route-tip">更多>></text>
     </navigator>
   </view>
   <view class="list-col">
-    <view class="list-col-item">
-      <div>中医院招聘内科医生一名</div>
-      <div class="user-demander">
-        <text>成都市</text>
+    <view class="list-col-item" wx:for="{{jobList}}" wx:key="index">
+      <div>{{item.title}}</div>
+      
+      <navigator class="user-demander" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag=job" class="" >
+        <text>{{item.city}}</text>
         <text>|</text>
-        <text>具有资质 </text>
+        <text>{{item.doctorTitle}} </text>
         <text>|</text>
-        <text>3-4年经验</text>
-      </div>
-      <view class="user-logo">
-        <image src="../../images/timg.png" class="logo-icon"/>
-        <view class="logo-text">
-          <view>中医院</view>
-          <view>成都市</view>
-        </view>
-      </view>
-      <text class="salaries">6-8k</text>
-    </view>
-    <view class="list-col-item">
-      <div>中医院招聘内科医生一名</div>
-      <div class="user-demander">
-        <text>成都市</text>
-        <text>|</text>
-        <text>具有资质 </text>
-        <text>|</text>
-        <text>3-4年经验</text>
-      </div>
-      <view class="user-logo">
-        <image src="../../images/timg.png" class="logo-icon"/>
-        <view class="logo-text">
-          <view>中医院</view>
-          <view>成都市</view>
-        </view>
-      </view>
-      <text class="salaries">6-8k</text>
+        <text>{{item.workTime}}年经验</text>
+        <text>{{common.sliceStringFont(item.updateTime)}}</text>
+      </navigator>
+      <text class="salaries">{{common.moneyTypeFilter(item.moneyType)}}</text>
     </view>
   </view>
 </view>

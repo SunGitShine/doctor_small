@@ -7,7 +7,8 @@ Page({
    */
   data: {
       releaseId:"",
-      jobInfo:{}
+      jobInfo:{},
+      flag:""
   },
 
   /**
@@ -17,10 +18,19 @@ Page({
       console.log(options);
       let _this = this;
       _this.setData({
-          releaseId: options.id
+        releaseId: options.id
       });
-      _this.findReleaseById(options.id);
-
+      if (options.flag && options.flag == 'job'){
+        _this.findById();
+        _this.setData({
+          flag: 'job'
+        });
+      }else{
+        _this.setData({
+          flag: 'in'
+        });
+        _this.findReleaseById(options.id);
+      }
   },
   //职位详情
   findReleaseById: function (ReleaseById){
@@ -52,5 +62,36 @@ Page({
 
           }
       })
+  },
+  //猎聘专区:职位详情
+  findById: function () {
+    let _this = this;
+    let params = {
+      positionId: _this.data.releaseId
+    };
+    wx.request({
+      header: {
+        "accept": 'application/json',
+        "content-Type": "application/x-www-form-urlencoded"
+      },
+      url: app.globalData.commonBaseUrl + '/position/findById.htm',
+      method: 'GET',
+      dataType: 'json',
+      data: {
+        d: JSON.stringify(params)
+      },
+      success: function (res) {
+        if (res.data.code == 'J000000') {
+          _this.setData({
+            jobInfo: res.data.resultMap.position
+          })
+        } else {
+
+        }
+      },
+      fail: function (res) {
+
+      }
+    })
   }
 })

@@ -9,7 +9,8 @@ Page({
      */
     data: {
         info:{},
-        searchFlag:false//只是查询则为true，可编辑则为false
+        searchFlag:false,//只是查询则为true，可编辑则为false
+        showEdit:true
     },
 
     /**
@@ -19,6 +20,12 @@ Page({
         let _this = this;
         //获取用户信息
         _this.findByOpneid(options.openid);
+        //如果是从模板跳转过来，则不需要展示编辑按钮
+        if (options.resource && options.resource == 'template'){
+            _this.setData({
+                showEdit: false
+            })
+        }
     },
     //获取身份
     findByOpneid: function (openid) {

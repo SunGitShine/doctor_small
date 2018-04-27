@@ -6,12 +6,12 @@
         </view>
         <view class="block-one-info">
             <text>{{jobInfo.departmentName}}</text>
-            <text>{{jobInfo.workTime}}年</text>
+            <text>{{common.workTimeFilter(jobInfo.workTime)}}</text>
             <text>{{common.educationFilter(jobInfo.education)}}</text>
         </view>
-        <view class="block-one-logo" wx:if="{{flag != 'job'}}">
+        <navigator class="block-one-logo" wx:if="{{flag != 'job'}}" hover-class="none" open-type="navigate" url="/pages/jobInHospitalDetail/jobInHospitalDetail?openid={{jobInfo.openid}}&id={{jobInfo.id}}">
             <view class="logo-url">
-                <image src="../../images/timg.png" />
+                <image src="{{jobInfo.logoImgUrl}}" />
             </view>
             <view class="logo-info">
                 <view class="logo-info-title">{{jobInfo.hospitalName}}</view>
@@ -19,7 +19,8 @@
                     <text wx:for="{{jobInfo.tag}}" wx:key="item">{{item}}</text>
                 </view>
             </view>
-        </view>
+            <view class='more-tip'>></view>
+        </navigator>
     </view>
     <view class="page-block-one">
         <view class="block-two-title">基本要求</view>
@@ -27,7 +28,7 @@
             <view>科　　室：{{jobInfo.departmentName}}</view>
             <view>职　　称：{{common.titleFilter(jobInfo.doctorTitle)}}</view>
             <view>学　　历：{{common.educationFilter(jobInfo.education)}}</view>
-            <view>工作年限：{{jobInfo.workTime}}年</view>
+            <view>工作年限：{{common.workTimeFilter(jobInfo.workTime)}}</view>
         </view>
     </view>
     <view class="page-block-one">

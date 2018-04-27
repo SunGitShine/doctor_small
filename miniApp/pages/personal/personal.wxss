@@ -3,352 +3,408 @@
 /**index.wxss**/
 
 page {
-  position: relative;
-  height: 100%;
+    position: relative;
+    height: 100%;
 }
 
 .userinfo {
-  width: 100%;
-  height: 280rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #2ba246;
+    width: 100%;
+    height: 280rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #2ba246;
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
 }
 
 .userinfo-nickname {
-  color: #fff;
-  font-size: 25rpx;
+    color: #fff;
+    font-size: 17px;
 }
 
 .role-item {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 99;
-  width: 640rpx;
-  margin-top: -272rpx;
-  margin-left: -320rpx;
-  padding: 15px;
-  box-sizing: border-box;
-  background: #fff;
-  text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 99;
+    width: 640rpx;
+    margin-top: -272rpx;
+    margin-left: -320rpx;
+    padding: 15px;
+    box-sizing: border-box;
+    background: #fff;
+    text-align: center;
 }
 
 .role-item image {
-  display: block;
-  margin: 15px auto;
-  width: 160rpx;
-  height: 160rpx;
+    display: block;
+    margin: 15px auto;
+    width: 160rpx;
+    height: 160rpx;
 }
 
 .page-wrapper {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9;
-  background: #f1f1f1;
-  opacity: 0.8;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    background: #f1f1f1;
+    opacity: 0.8;
 }
 
 /* bind phone */
 
 .phone-item {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 99;
-  width: 640rpx;
-  margin-top: -190rpx;
-  margin-left: -320rpx;
-  padding: 15px;
-  box-sizing: border-box;
-  background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 99;
+    width: 640rpx;
+    margin-top: -190rpx;
+    margin-left: -320rpx;
+    padding: 15px;
+    box-sizing: border-box;
+    background: #fff;
 }
 
 .bind-phone {
-  display: flex;
-  display: -webkit-flex;
-  align-items: center;
-  margin-top: 15px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    margin-top: 15px;
 }
 
 .bind-title {
-  flex: 0 0 auto;
-  font-size: 12px;
+    flex: 0 0 auto;
+    font-size: 14px;
 }
 
 .bind-input {
-  flex: 1 1 auto;
-  padding: 3px 5px;
-  font-size: 12px;
-  border: 1px solid #f1f1f1;
+    flex: 0.1 1 auto;
+    padding: 3px 5px;
+    font-size: 14px;
+    border: 1px solid #f1f1f1;
 }
 
 .bind-qr {
-  flex: 0 0 auto;
-  margin-left: 5px;
-  padding: 6px;
-  font-size: 12px;
-  background: #f1f1f1;
+    flex: 0 0 auto;
+    margin-left: 5px;
+    font-size: 14px;
+    background: #f1f1f1;
+    height: 30px;
+    line-height: 30px;
 }
 
 .bind-black {
-  flex: 0 0 auto;
-  margin-left: 5px;
-  padding: 3px 5px;
-  font-size: 12px;
-  background: #fff;
-  color: #fff;
+    flex: 0 0 auto;
+    margin-left: 5px;
+    padding: 3px 5px;
+    font-size: 14px;
+    background: #fff;
+    color: red;
 }
 
 .bind-title {
-  text-align: center;
+    text-align: center;
 }
 
 .bind-btn {
-  margin-top: 25px;
+    margin-top: 25px;
 }
 
 .bind-btn button {
-  width: 100%;
-  height: 36px;
-  font-size: 15px;
-  color: #fff;
-  background: #2ba246;
+    width: 100%;
+    font-size: 17px;
+    color: #fff;
+    background: #2ba246;
 }
 
 /* hospital */
 
 .hospital-publish {
-  display: flex;
-  display: -webkit-flex;
-  padding: 5px 0;
+    display: flex;
+    display: -webkit-flex;
+    padding: 5px 0;
 }
 
 .hospital-publish-itme {
-  flex: 1 1 auto;
-  padding: 15px 0;
-  text-align: center;
-  font-size: 15px;
-  border-top: 1px solid #f1f1f1;
-  border-bottom: 1px solid #f1f1f1;
+    flex: 1 1 auto;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 17px;
+    border-top: 1px solid #f1f1f1;
+    border-bottom: 1px solid #f1f1f1;
 }
 
 .hospital-publish-itme:first-child {
-  border-right: 1px solid #f1f1f1;
+    border-right: 1px solid #f1f1f1;
 }
 
 .hospital-publish-itme image {
-  width: 40rpx;
-  height: 40rpx;
+    width: 40rpx;
+    height: 40rpx;
 }
 
 .hospital-info-content {
-  padding: 15px;
+    padding: 15px;
 }
 
 .info-title {
-  color: #2ba246;
-  font-size: 15px;
+    color: #2ba246;
+    font-size: 17px;
 }
 
 .info-title image {
-  width: 16px;
-  height: 14px;
-  margin-right: 5px;
-  vertical-align: middle;
+    width: 16px;
+    height: 14px;
+    margin-right: 5px;
+    vertical-align: middle;
 }
 
 .info-content {
-  padding-left: 25px;
-  font-size: 12px;
-  color: #808080;
+    padding-left: 25px;
+    font-size: 14px;
+    color: #808080;
 }
 
 .info-content view {
-  margin-top: 5px;
+    margin-top: 5px;
 }
 
 /* doctor */
 
 .doctor-info {
-  padding: 15px;
-  border-bottom: 1px solid #f1f1f1;
+    padding: 15px;
+    border-bottom: 1px solid #f1f1f1;
 }
 
 .doctor-info:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .doctor-info-title {
-  position: relative;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  color: #2ba246;
+    position: relative;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    color: #2ba246;
 }
 
 .doctor-info-title image {
-  width: 16px;
-  height: 14px;
-  vertical-align: middle;
+    width: 16px;
+    height: 14px;
+    vertical-align: middle;
 }
 
 .doctor-info-title>view {
-  padding-left: 10px;
+    padding-left: 10px;
 }
 
 .doctor-info-index {
-  padding-left: 25px;
-  color: #808080;
-  font-size: 12px;
+    padding-left: 25px;
+    color: #808080;
+    font-size: 14px;
 }
 
 .doctor-info-index view {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 .recommend-tip {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: #ff7800;
-  display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #ff7800;
+    display: flex;
 }
 
 .doctor-publish-index {
-  margin-top: 10px;
-  color: #808080;
-  font-size: 12px;
+    margin-top: 10px;
+    color: #808080;
+    font-size: 14px;
 }
 
 .role-bg {
 }
 
 .guide-content {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .guide-box {
-  width: 100%;
-  height: 100%;
-  text-align: center;
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    margin-top: 25%;
 }
 
 .guide-box>image {
-  width: 105px;
-  height: 76px;
-  margin: 20px;
+    width: 105px;
+    height: 76px;
+    margin: 20px;
 }
 
 .guide-box>.text {
-  font-size: 0.8rem;
-  font-weight: 500;
+    font-size: 0.8rem;
+    font-weight: 500;
 }
 
 .guide-box>.btn {
-  width: 40%;
-  margin: 40px auto;
+    width: 40%;
+    margin: 40px auto;
 }
 
 .p-role-box {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .role-bg {
-  width: 100%;
-  height: 100%;
-  background-color: #808080;
+    width: 100%;
+    height: 100%;
+    background-color: #808080;
 }
 
 .role-close-btn {
-  position: fixed;
-  bottom: 30px;
-  width: 100%;
-  text-align: center;
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
 }
 
-.role-close-btn>image {
-  width: 30px;
-  height: 30px;
-  margin: auto;
+.model-close-btn {
+    position: fixed;
+    bottom: 100px;
+    width: 100%;
+    text-align: center;
+}
+
+.role-close-btn>image, .model-close-btn>image {
+    width: 30px;
+    height: 30px;
+    margin: auto;
 }
 
 .add-picker-box {
-  background-color: #f1f1f1;
-  border: 1px dashed #808080;
-  text-align: center;
-  margin-top: 10px;
+    background-color: #f1f1f1;
+    border: 1px dashed #808080;
+    text-align: center;
+    margin-top: 10px;
 }
 
 .add-img-box {
 }
 
 .add-img-box>image {
-  width: 30px;
-  height: 30px;
-  margin: 20px auto 0;
+    width: 30px;
+    height: 30px;
+    margin: 20px auto 0;
 }
 
 .add-picker-box>.text {
-  font-size: 0.8rem;
-  padding-bottom: 20px;
+    font-size: 0.8rem;
+    padding-bottom: 20px;
 }
 
 .sitting-time-list-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .sitting-remove-icon {
-  width: 30px;
-  height: 30px;
+    width: 30px;
+    height: 30px;
 }
 
 .sitting-time-operation {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .sitting-switch-btn, .sitting-remove-icon {
-  transform: scale(0.5);
+    transform: scale(0.5);
 }
 
 .sitting-remove-icon {
-  margin-top: 3px;
+    margin-top: 3px;
 }
 
 .hospital-logo-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align:center;
-  background-color: #2AA244;
-  color: #fff;
-  padding: 20px;
-  font-size:12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #2aa244;
+    color: #fff;
+    padding: 20px;
+    font-size: 17px;
 }
-.hospital-logo-box>image{
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-top: 10px;
+
+.hospital-logo-box>image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-top: 10px;
 }
-.base-info-box{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+.base-info-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.audit-status-box {
+    color: #ff7800;
+    font-size: 16px;
+}
+
+.modal-box {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.modal-body {
+    position: relative;
+    height: 100%;
+}
+
+.modal-content {
+    /* width: 60%; */
+    margin: 0 10% 0 30%;
+    overflow: hidden;
+    border-radius: 10rpx;
+}
+
+.modal-content {
+    width: 60%;
+    height: 100%;
+}
+
+.modal-content .fenxiang {
+    width: 100%;
+    height: 40%;
+}
+
+.completeStatus-text {
+    color: #ff7800;
+    font-size: 12px;
+}
+
+.more-info {
+    padding: 0 5px;
 }

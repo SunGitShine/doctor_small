@@ -7,8 +7,8 @@
 <view class='guide-content'  wx:if="{{identity == 0 && guideShow}}">
     <view class="guide-box" wx:if="{{!roleShow}}">
         <image src="../../images/yindao.png" />
-        <view class="text">您的信息尚不完善，请先完善个人信息</view>
-        <button type="primary" class='btn' bindtap="goFillInformation"> 立即完善 </button>
+        <view class="text">您尚未绑定手机号，请先绑定手机号。</view>
+        <button type="primary" class='btn' bindtap="goFillInformation"> 立即绑定 </button>
     </view>
     <view class="role-bg" wx:if="{{roleShow}}"></view>
     <view class="role-item" wx:if="{{roleShow}}">
@@ -25,15 +25,15 @@
         <image src="../../images/delete.png" />
     </view>
 </view>
-<!-- <view class="userinfo">
-  <button wx:if="{{!hasUserInfo && canIUse}}"> 获取头像昵称 </button>
-  <block wx:else>
-    <image src="{{userInfo.avatarUrl}}" class="userinfo-avatar" background-size="cover" bindtap="takePhoto"></image>
+ <view wx:if="{{roleType ==1}}" class="userinfo">
+  <block>
+    <image src="{{userInfo.avatarUrl}}" class="userinfo-avatar" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </block>
-</view> -->
+  <view class='audit-status-box' wx:if="{{doctorData.auditStatus == 0 || doctorData.auditStatus == 2}}">{{common.statusFilter(doctorData.auditStatus)}}</view>
+</view> 
 <view wx:if="{{!typechoose}}">
-    <template is="phoneItem" />
+    <template is="phoneItem" data="{{...timer}}"/>
 </view>
 <view wx:elif="{{roleType ==1}}"><template is="doctorIndex" data="{{...doctorData}}"/></view>
 <view wx:elif="{{roleType ==2}}"><template is="hospitalIndex" data="{{...hospitalData}}"/></view>

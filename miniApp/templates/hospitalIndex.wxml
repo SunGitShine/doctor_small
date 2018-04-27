@@ -1,7 +1,9 @@
+<wxs module="common" src="../filter/common.wxs"></wxs>
 <template name="hospitalIndex">
   <view class="hospital-logo-box">
     <image src="{{logoImgUrl}}" />
     <text>{{name}}</text>
+    <view class='audit-status-box' wx:if="{{auditStatus == 0 || auditStatus == 2}}">{{common.statusFilter(auditStatus)}}</view>
   </view>
   <view class="hospital-info">
     <view class="hospital-publish">
@@ -23,6 +25,8 @@
         <view class="info-title base-info-box">
         <view>
           <image src="../../images/index_icon.png" />基本信息
+          <text class='completeStatus-text' wx:if="{{completeStatus == 0}}">(信息不完善，点击完善信息)</text>
+                    <text class='completeStatus-text' wx:if="{{auditStatus == 2}}">(信息审核不通过，点击完善信息提交再次审核)</text>
         </view>  
         <view><image class='right-arrow-img' src='../../images/right-arrow.png'></image></view>
         </view>

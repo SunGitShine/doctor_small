@@ -67,8 +67,10 @@ Page({
   //路由：跳转到职位列表
   goToJobListings: function (event) {
       let id = event.currentTarget.id;
+      let name = event.currentTarget.dataset.name;
+      let hot = event.currentTarget.dataset.hot;
       wx.navigateTo({
-          url: '../infoList/infoList?id='+id
+          url: '../infoList/infoList?id=' + id + '&name=' + name + '&hot=' + hot
       })
   },
   //猎聘专区:获取职位列表

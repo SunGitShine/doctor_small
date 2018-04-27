@@ -1,83 +1,107 @@
 /* pages/jobDetail/jobDetail.wxss */
 
-page{
-  height: 100%;
+page {
+    height: 100%;
+    background: #f1f1f1;
 }
-.hospital-page{
-  height: 100%;
-  padding: 10px;
-  background: #f1f1f1;
+
+.hospital-page {
+    padding: 10px;
 }
-.page-block-one{
-  margin-top: 10px;
-  padding: 5px;
-  background: #fff;
-  border-radius: 3px;
-  -webkit-border-radius:3px;
-  -moz-border-radius:3px;
+
+.page-block-one {
+    margin-top: 10px;
+    padding: 5px;
+    background: #fff;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
 }
-.block-one-title{
-  position: relative;
-  font-size: 15px;
+
+.block-one-title {
+    position: relative;
+    font-size: 17px;
 }
-.salaries{
-  position: absolute;
-  top: 15px;
-  right: 10px;
-  color: #ff7800;
+
+.salaries {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    color: #ff7800;
 }
-.block-one-info{
-  margin-top: 10px;
-  padding-bottom: 10px;
-  font-size: 12px;
-  color: #818181;
-  border-bottom: 1px solid #f1f1f1;
+
+.block-one-info {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    color: #818181;
+    border-bottom: 1px solid #f1f1f1;
+    padding-left: 20px;
 }
-.block-one-logo{
-  margin-top: 15px;
-  display: flex;
-  align-items: bottom;
+
+.block-one-info>text {
+    padding-right: 10px;
 }
-.logo-url{
-  flex:  0 0 auto;
+
+.block-one-logo {
+    margin-top: 15px;
+    display: flex;
+    align-items: bottom;
 }
-.logo-url image{
+
+.logo-url {
+    flex: 0 0 auto;
+}
+
+.logo-url image {
     width: 80rpx;
     height: 80rpx;
 }
-.logo-info{
-  flex:  1 1 auto;
-  padding-left: 10px
+
+.logo-info {
+    flex: 1 1 auto;
+    padding-left: 10px;
 }
-.logo-info-title{
-  font-size: 15px;
+
+.logo-info-title {
+    font-size: 17px;
 }
-.logo-info-content text{
-  margin-right: 10px;
-  padding: 0 5px;
-  font-size: 10px;
-  color: #2ba246;
-  border: 1px dotted #2ba246;
-  border-radius: 10px;
-  -webkit-border-radius:10px;
-  -moz-border-radius:10px;
+
+.logo-info-content text {
+    margin-right: 10px;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #2ba246;
+    border: 1px dotted #2ba246;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
 }
-.block-two-title{
-  padding-bottom: 10px;
-  font-size: 15px;
-  border-bottom: 1px solid #f1f1f1;
+
+.block-two-title {
+    padding-bottom: 10px;
+    font-size: 17px;
+    border-bottom: 1px solid #f1f1f1;
 }
-.block-two-info{
-  margin-top: 15px;
-  padding-left: 25px;
-  color: #818181;
-  font-size: 12px;
+
+.block-two-des {
+    margin-top: 15px;
+    padding-left: 25px;
+    font-size: 14px;
 }
-.block-two-info view{
-  margin-bottom: 10px;
+
+.block-two-info {
+    margin-top: 15px;
+    padding-left: 25px;
+    color: #818181;
+    font-size: 14px;
 }
-.block-two-des{
-  margin-top: 15px;
-  padding-left: 25px;
-  font-size: 12px;
+
+.block-two-info view {
+    margin-bottom: 10px;
+}
+
+.more-tip {
+    color: #ccc;
+    padding-right: 10px;
 }

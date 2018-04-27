@@ -12,30 +12,32 @@ Page({
         name:"",
         //电话号码
         phone:"",
+        //审核状态
+        auditStatus:0,
         //性别列表
         sexItems: [
-            { name: '0', value: '男', checked: 'true' },
-            { name: '1', value: '女'}
+            { name: '1', value: '男'},
+            { name: '0', value: '女'}
         ],
         //选中的性别
-        sex:"0",//0为男，1为女
+        sex: "1",//0为女，1为男
         //学历列表，1：大专，2：本科，3：硕士，4：博士，5：其他
         educationItems: [
             {
-                value: 4,
-                name: '博士'
-            },
-            {
-                value: 3,
-                name: '硕士'
+                value: 1,
+                name: '大专'
             },
             {
                 value: 2,
                 name: '本科'
             },
             {
-                value: 1,
-                name: '大专'
+                value: 3,
+                name: '硕士'
+            },
+            {
+                value: 4,
+                name: '博士'
             },
             {
                 value: 5,
@@ -44,6 +46,23 @@ Page({
         ],
         //工作时长
         workTime:"",
+        //工作时长显示
+        workTimeText:"",
+        //工作时长列表
+        workTimeList: [
+            {
+                name: "1~3年",
+                value: 1
+            },
+            {
+                name: "3~5年",
+                value: 2
+            },
+            {
+                name: "5年以上",
+                value: 3
+            }
+        ],
         selectedEducation: "",//当前选中的学历
         selectedEducationText:"",//当前学历的text
         selectedBirthday: "",//当前选中的生日
@@ -156,20 +175,30 @@ Page({
                         }
                         let info = res.data.resultMap.response;
                         //恢复性别数据
-                        if (info.sex == 0){
+                        if (info.sex == 1){
                             _this.setData({
                                 sexItems: [
-                                    { name: '0', value: '男', checked: 'true' },
-                                    { name: '1', value: '女' }
+                                    { name: '1', value: '男', checked: 'true' },
+                                    { name: '0', value: '女' }
                                 ],
                             })
                         }else{
-                            _this.setData({
-                                sexItems: [
-                                    { name: '0', value: '男' },
-                                    { name: '1', value: '女', checked: 'true' }
-                                ],
-                            }) 
+                            if (info.sex == null || info.sex == ""){
+                                _this.setData({
+                                    sexItems: [
+                                        { name: '1', value: '男' },
+                                        { name: '0', value: '女'}
+                                    ],
+                                }) 
+                            }else{
+                                _this.setData({
+                                    sexItems: [
+                                        { name: '1', value: '男' },
+                                        { name: '0', value: '女', checked: 'true' }
+                                    ],
+                                }) 
+                            }
+                            
                         }
                         //恢复eduExperienceList
                         let tempEdduList = [];
@@ -209,10 +238,15 @@ Page({
                         _this.setData({
                             //姓名
                             name: info.name,
+                            //头像
+                            headImgUrl: info.headImgUrl,
                             //选中的性别
-                            sex: (info.sex == 1)?('1'):('0'),//0为男，1为女
+                            sex: (info.sex == 1) ? ('1') : ('0'),//0为女，1为男
+                            //审核状态
+                            auditStatus: info.auditStatus,
                             //工作时长
-                            workTime: info.workTime,
+                            workTime: info.workTime ,
+                            workTimeText: common.workTimeFilter(info.workTime),
                             //电话号码
                             phone:info.phone,
                             selectedEducation: info.education,//当前选中的学历
@@ -342,7 +376,15 @@ Page({
     },
     //生日picker改变
     bindBirthdayChange: function (event) {
-        console.log(event);
+        let _this = this;
+        if (_this.data.auditStatus == 1) {
+            wx.showToast({
+                title: "审核通过后不可更改",
+                icon: 'none',
+                time: 500
+            });
+            return;
+        }
         let value = event.detail.value;
         this.setData({
             selectedBirthday: value
@@ -406,13 +448,45 @@ Page({
                     _this.setData({
                         departmentItems: [res.data.resultMap.parentDepartments, []],
                         parentDepartments: res.data.resultMap.parentDepartments
-                    })
+                    });
+                    _this.fixedFistNoChange();
                 }
                 //获取用户身份
                 _this.findByOpneid();
             },
             fail: function (res) {
                 console.log(res)
+            }
+        })
+    }, //解决第一次不自动触发一级科室变化导致第二列无数据
+    fixedFistNoChange: function () {
+        let _this = this;
+        let parentId = (_this.data.departmentItems[0][0]).id;
+        let params = {
+            parentId: parentId
+        };
+        wx.request({
+            header: {
+                "accept": 'application/json',
+                "content-Type": "application/x-www-form-urlencoded"
+            },
+            url: app.globalData.commonBaseUrl + '/department/findSonDepartment.htm',
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                d: JSON.stringify(params)
+            },
+            success: function (res) {
+                if (res.data.code == 'J000000') {
+                    _this.setData({
+                        departmentItems: [_this.data.parentDepartments, res.data.resultMap.sonDepartments]
+                    })
+                } else {
+
+                }
+            },
+            fail: function (res) {
+
             }
         })
     },
@@ -482,6 +556,15 @@ Page({
             }])
         })
     },
+    //刪除教育经历
+    deletEduExperience: function (event){
+        let eduExperienceList = this.data.eduExperienceList;
+        eduExperienceList.splice(event.currentTarget.dataset.index, 1);
+        this.setData({
+            eduExperienceList: eduExperienceList
+        })
+    },
+    //
     //增加工作经历
     addWorkExperience: function (event) {
         let _this = this;
@@ -495,9 +578,25 @@ Page({
             }])
         })
     },
+    //刪除工作经历
+    deletworkExperience: function (event) {
+        let workExperienceList = this.data.workExperienceList;
+        workExperienceList.splice(event.currentTarget.dataset.index, 1);
+        this.setData({
+            workExperienceList: workExperienceList
+        })
+    },
     //增加医师职称证
     addPhysician: function (event) {
         let _this = this;
+        if (_this.data.auditStatus == 1){
+            wx.showToast({
+                title: "审核通过后不可更改",
+                icon: 'none',
+                time: 500
+            }); 
+            return;
+        }
         wx.chooseImage({
             success: function (res) {
                 var tempFilePaths = res.tempFilePaths
@@ -506,7 +605,7 @@ Page({
                         "accept": 'application/json'
                     },
                     method: "GET",
-                    url: app.globalData.commonBaseUrl + '/common/upload.htm', //仅为示例，非真实的接口地址
+                    url: app.globalData.commonBaseUrl + '/common/upload.htm', 
                     filePath: tempFilePaths[0],
                     name: 'file',
                     formData: {
@@ -527,6 +626,14 @@ Page({
     //增加医师资格证
     addQualification: function (event) {
         let _this = this;
+        if (_this.data.auditStatus == 1) {
+            wx.showToast({
+                title: "审核通过后不可更改",
+                icon: 'none',
+                time: 500
+            });
+            return;
+        }
         wx.chooseImage({
             success: function (res) {
                 var tempFilePaths = res.tempFilePaths
@@ -556,6 +663,14 @@ Page({
     //增加医师执业证
     addLicense: function (event) {
         let _this = this;
+         if (_this.data.auditStatus == 1){
+            wx.showToast({
+                title: "审核通过后不可更改",
+                icon: 'none',
+                time: 500
+            }); 
+            return;
+        }
         wx.chooseImage({
             success: function (res) {
                 var tempFilePaths = res.tempFilePaths
@@ -564,7 +679,7 @@ Page({
                         "accept": 'application/json'
                     },
                     method: "GET",
-                    url: app.globalData.commonBaseUrl + '/common/upload.htm', //仅为示例，非真实的接口地址
+                    url: app.globalData.commonBaseUrl + '/common/upload.htm', 
                     filePath: tempFilePaths[0],
                     name: 'file',
                     formData: {
@@ -593,6 +708,14 @@ Page({
             }])
         })
     },
+    //刪除作品
+    deletGallery: function (event) {
+        let galleryList = this.data.galleryList;
+        galleryList.splice(event.currentTarget.dataset.index, 1);
+        this.setData({
+            galleryList: galleryList
+        })
+    },
     //添加作品的照片
     getGallery: function (event) {
         let _this = this;
@@ -604,7 +727,7 @@ Page({
                         "accept": 'application/json'
                     },
                     method: "GET",
-                    url: app.globalData.commonBaseUrl + '/common/upload.htm', //仅为示例，非真实的接口地址
+                    url: app.globalData.commonBaseUrl + '/common/upload.htm', 
                     filePath: tempFilePaths[0],
                     name: 'file',
                     formData: {
@@ -645,8 +768,26 @@ Page({
         _this.data.galleryList[index].description = event.detail.value;
         //加入基本数据里
         _this.setData({
-            workExperienceList: _this.data.galleryList
+            galleryList: _this.data.galleryList
         });
+    },
+    //获取工作时长(change)
+    workYearChange: function (event) {
+        console.log(event);
+        let _this = this;
+
+        _this.setData({
+            workTime: _this.data.workTimeList[event.detail.value].value,
+            workTimeText: _this.data.workTimeList[event.detail.value].name
+        })
+    },
+    //预览图片
+    previewImage:function(event){
+        let current = event.target.dataset.src;
+        wx.previewImage({
+            current:current,
+            urls: [current],
+        })
     },
     //提交审核
     submitDoctorInfo: function (){
@@ -674,7 +815,7 @@ Page({
             "birthday": _this.data.selectedBirthday,
             "call": [_this.data.honor1, _this.data.honor2],
             "departmentId": _this.data.departmentId,
-            "departmentName": _this.data.selectedParentDepartment,
+            "departmentName": (_this.data.selectedSonDepartment) ? (_this.data.selectedSonDepartment): (_this.data.selectedParentDepartment),
             "education": _this.data.selectedEducation,
             "educationExperience": educationExperience,
             "goodField": _this.data.goodField,
@@ -692,7 +833,114 @@ Page({
             "workTime": _this.data.workTime,
             "works": _this.data.galleryList
         }
-        console.log(params)
+       //名字验证
+        if (!params.name){
+            wx.showToast({
+                title: "请输入名字",
+                icon: 'none',
+                time: 500
+            }); 
+            return;
+        }
+        //学历验证
+        if (!params.education) {
+            wx.showToast({
+                title: "请选择学历",
+                icon: 'none',
+                time: 500
+            });
+            return;
+        }
+        //工作经验验证
+        if (!params.workTime) {
+            wx.showToast({
+                title: "请输入工作年限",
+                icon: 'none',
+                time: 500
+            });
+            return;
+        }
+        //生日验证
+        if (!params.birthday) {
+            wx.showToast({
+                title: "请选择生日",
+                icon: 'none',
+                time: 500
+            });
+            return;
+        }
+        //城市验证
+        if (!(params.city).length) {
+            wx.showToast({
+                title: "请选择城市",
+                icon: 'none',
+                time: 500
+            });
+            return;
+        }
+        //科室验证
+        if (!params.departmentId) {
+            wx.showToast({
+                title: "请选择科室",
+                icon: 'none',
+                time: 500
+            });
+            return;
+        }
+        //职称验证
+        if (!params.title) {
+            wx.showToast({
+                title: "请选择职称",
+                icon: 'none',
+                time: 500
+            });
+            return;
+        }
+        //医师执业证验证
+        if (!params.practiceCardUrl) {
+            wx.showToast({
+                title: "请上传医师执业证",
+                icon: 'none',
+                time: 500
+            });
+            return;
+        }
+        //医师职称证验证
+        if (!params.professionCardUrl) {
+            wx.showToast({
+                title: "请上传医师职称证",
+                icon: 'none',
+                time: 500
+            });
+            return;
+        }
+        //医师资格证验证
+        if (!params.qualificationCardUrl) {
+            wx.showToast({
+                title: "请上传医师资格证",
+                icon: 'none',
+                time: 500
+            });
+            return;
+        }
+        //教育经历验证
+        if (!(params.educationExperience).length){
+            wx.showToast({
+                title: "请填写教育经历",
+                icon: 'none',
+                time: 500
+            });
+            return;
+        }
+        //工作经历验证
+        if (!(params.workExperience).length) {
+            wx.showToast({
+                title: "请填写教育经历",
+                icon: 'none',
+                time: 500
+            });
+            return;
+        }
         wx.request({
             header: {
                 "accept": 'application/json',
@@ -709,16 +957,19 @@ Page({
                     wx.showToast({
                         title: res.data.description,
                         icon: 'none',
-                        time:2000
+                        time:2000 
                     });  
-                    wx.navigateTo({
-                        url: '../doctorDetail/doctorDetail'
+                    wx.navigateBack({
+                        delta: 2
                     })
                 } else {
                     wx.showToast({
                         title: res.data.description,
                         icon: 'none'
                     });  
+                    wx.navigateBack({
+                        delta: 2
+                    })
                 }
             },
             fail: function (res) {

@@ -1,6 +1,6 @@
 <import src="../../templates/infoListItem.wxml" />
 <navigator class='add-release-box' hover-class="none" open-type="navigate" url="/pages/hospitalPublish/hospitalPublish?id={{id}}">
-    <image src='../../images/modify_icon2.png'></image>
+    <image src='../../images/addpush.png'></image>
 </navigator>
 <view class="list-page">
     <!--项目二-->

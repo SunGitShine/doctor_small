@@ -11,9 +11,9 @@ hospital-detail {
 .hospital-logo image {
   display: block;
   margin: 0 auto;
-  padding: 10px 0;
-  width: 80rpx;
-  height: 80rpx;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
 
 .info-title {
@@ -21,7 +21,7 @@ hospital-detail {
     display: flex;
   align-items: center;
   padding: 10px;
-  font-size: 15px;
+  font-size: 17px;
   background: #fff;
   border-bottom: 1px solid #f1f1f1;
 }
@@ -64,7 +64,7 @@ hospital-detail {
   overflow: auto;
   padding: 10px;
   background: #fff;
-  font-size: 12px;
+  font-size: 14px;
   color: #808080;
 }
 .info-index-content>textarea {
@@ -74,7 +74,7 @@ hospital-detail {
   display: flex;
   display: -webkit-flex;
   align-items: center;
-  font-size: 12px;
+  font-size: 14px;
   color: #808080;
 }
 
@@ -112,7 +112,7 @@ hospital-detail {
   padding: 10px;
   width: 100%;
   text-align: center;
-  font-size: 15px;
+  font-size: 17px;
   color: #fff;
   background: #2ba246;
 }
@@ -141,6 +141,7 @@ hospital-detail {
 .item-info-tip {
   width: 70px;
   height: 40px;
+  color: #000;
 }
 
 .item-info-tip-picker {
@@ -156,13 +157,13 @@ hospital-detail {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: #000;
 }
 
 .certificate-box>image {
   width: 20px;
   height: 20px;
   margin: 10px;
-  transform: scale(0.8);
 }
 
 .certificate-picture {

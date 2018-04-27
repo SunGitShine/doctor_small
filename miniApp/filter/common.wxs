@@ -30,15 +30,15 @@ var common = {
                 return "主任医师";
                 break;
             default:
-                return "医师";
+                return "";
         }
     },
     //性别过滤
     sexFilter: function (num){
         if(num == 0){
-            return "男";
+            return "女";
         }else{
-            return "女"
+            return "男"
         }
     },
     //学历过滤[1：大专，2：本科，3：硕士，4：博士，5：其他]
@@ -60,13 +60,13 @@ var common = {
                 return "其他";
                 break;
             default:
-                return "其他";
+                return "";
         }  
     },
     //工资过滤
     moneyTypeFilter: function (num){
         if(num == '-1'){
-            return "面议";
+            return "商议";
         }else{
             return num; 
         }
@@ -89,6 +89,38 @@ var common = {
             default:
                 return "500人以上";
         }
+    },
+    //审核状态[0：未处理，1：已通过，2：未通过]
+    statusFilter: function (num) {
+        switch (num) {
+            case 0:
+                return "审核未处理";
+                break;
+            case 1:
+                return "审核已通过";
+                break;
+            case 2:
+                return "审核未通过";
+                break;
+            default:
+                return "审核未处理";
+        }
+    },
+    //工作年限[1:1~3年，2:3~5年，3:5年以上]
+    workTimeFilter: function (num) {
+        switch (num) {
+            case 1:
+                return "1~3年";
+                break;
+            case 2:
+                return "3~5年";
+                break;
+            case 3:
+                return "5年以上";
+                break;
+            default:
+                return "";
+        }
     }
 
 }
@@ -100,5 +132,7 @@ module.exports = {
     sexFilter: common.sexFilter,
     educationFilter: common.educationFilter,
     moneyTypeFilter: common.moneyTypeFilter,
-    scaleFilter: common.scaleFilter
+    scaleFilter: common.scaleFilter,
+    statusFilter: common.statusFilter,
+    workTimeFilter: common.workTimeFilter
 }

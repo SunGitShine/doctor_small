@@ -1,29 +1,32 @@
 /* pages/hospitalPublish/hospitalPublish.wxss */
 .publish-page{
-  margin-bottom: 45px;
+  /* margin-bottom: 45px; */
 }
 .publish-title{
   position: relative;
   padding: 10px;
-  font-size: 15px;
+  font-size: 17px;
   background: #fff;
+  display: flex;
 }
 .publish-title image{
   width: 20px;
   height: 20px;
+  padding-right: 10px;
 }
 .publish-content{
   padding-left: 35px;
   padding-right: 35px;
-  font-size: 15px;
+  font-size: 17px;
 }
 .content-item{
   display: flex;
   display: -webkit-flex;
   padding:5px 0;
-  font-size: 12px;
+  font-size: 14px;
   align-items: center;
   border-bottom: 1px solid #f1f1f1;
+  height: 50px;
 }
 .item-icon{
   flex:  0 0 auto;
@@ -33,15 +36,21 @@
 .item-title{
   flex:  0 0 auto;
   padding: 0 10px;
+  width: 60px;
+}
+.base-title{
+    width: 40px;
 }
 .item-input{
   flex:  0 0 auto;
+  width: 80%;
+  height: 30px;
 }
 .content-item-money{
   margin-top: 10rpx;
   display: flex;
   display: -webkit-flex;
-  font-size: 12px;
+  font-size: 14px;
 }
 .item-title-money{
   flex:  0 0 auto; 
@@ -58,18 +67,18 @@
 }
 .section textarea{
   width: 100%;
-  background: #f1f1f1;
+  background:#fff;
+  border: 1px solid #f1f1f1;
 }
 .update-btn{
-  position: fixed;
-  bottom: 0;
+  /* position: fixed; */
   padding: 10px;
-  width: 100%;
   text-align: center;
-  font-size: 15px;
+  font-size: 17px;
   color: #fff;
   background: #2ba246;
   z-index: 99;
+  margin-top: 20px;
 }
 .parentDepartment-picker{
     display: flex;

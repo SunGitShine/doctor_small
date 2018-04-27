@@ -1,15 +1,13 @@
 <view class="publish-page">
   <view class="publish-title">
-    <image src="../../images/index_icon.png" /> 基本信息要求
+    <image src="../../images/index_icon.png" /> 基本要求
   </view>
   <view class="publish-content">
     <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png" />
-      <text class="item-title">标题</text>
+      <text class="item-title base-title">标题</text>
       <input class="item-input"  value='{{jobTitle}}' bindinput='getJobTitle' />
     </view>
     <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png" />
       <text class="item-title">科室</text>
       <view>
         <picker mode="multiSelector" bindchange="bindDepartmentChange" range="{{departmentItems}}" bindcolumnchange="bindFirstDepartmentChange" range-key="{{'departmentName'}}">
@@ -20,7 +18,6 @@
       </view>
     </view>
     <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png" />
       <text class="item-title">职称</text>
       <view>
         <picker mode="selector" bindchange="bindTitleChange" range="{{titleItems}}" range-key="{{'name'}}">
@@ -30,7 +27,6 @@
       </view>
     </view>
     <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png" />
       <text class="item-title">学历</text>
       <view>
         <picker mode="selector" bindchange="bindEducationChange" range="{{educationItems}}" range-key="name">
@@ -40,27 +36,21 @@
       </view>
     </view>
     <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png" />
       <text class="item-title">工作年限</text>
-      <input class='item-info-in work-year-input' value='{{workTime}}' bindinput='getWorkYear' />年
+      <view>
+        <picker mode="selector" bindchange="workYearChange" range="{{workTimeList}}" range-key="name">
+          <view class="picker education-picher" wx-if="{{!workTime}}">点击选择</view>
+          <view class="picker education-picher" wx-if="{{workTime}}">{{workTimeText}}</view>
+        </picker>
+      </view>
+      <!-- <input class='item-info-in work-year-input' value='{{workTime}}' bindinput='getWorkYear' />年 -->
     </view>
     <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png" />
       <text class="item-title">时间</text>
       <view class='job-picker-box'>
         <picker mode="date" bindchange="jobDayChange" data-index='{{index}}'>
           <view class="picker" wx:if="{{!jobDay}}">点击选择</view>
           <view class="picker" wx:if="{{jobDay}}">{{jobDay}}</view>
-        </picker>
-      </view>
-    </view>
-    <view class="content-item">
-      <image class="item-icon" src="../../images/modify_icon2.png" />
-      <text class="item-title">地点</text>
-      <view>
-        <picker mode="region" class='region-picker' bindchange="bindCityChange" value="{{selectedCity}}">
-          <view class="picker " wx-if="{{!selectedCity}}">点击选择</view>
-          <view class="picker " wx-if="{{selectedCity}}">{{selectedCity}}</view>
         </picker>
       </view>
     </view>
@@ -76,7 +66,7 @@
           <radio value="{{item.value}}" checked="{{item.checked}}" />{{item.name}}
         </label>
       </radio-group>
-       <input class="item-input-money" value="" disabled='{{moneyInputDisable}}' value='{{moneyVal}}' bindinput='getMoneyVal'/>
+       <input class="item-input-money" wx:if="{{!moneyInputDisable}}" disabled='{{moneyInputDisable}}' value='{{moneyVal}}' bindinput='getMoneyVal'/>
     </view>
   </view>
   <view class="publish-title">

@@ -5,7 +5,8 @@
         <view bindtap='goToDoctorInfo'>
             <view class="doctor-info-title">
                 <image src="../../images/index_icon.png" />
-                <view>基本信息</view>
+                <view>基本信息 <text class='completeStatus-text' wx:if="{{completeStatus == 0}}">(信息不完善，点击完善信息)</text>
+                <text class='completeStatus-text' wx:if="{{auditStatus == 2}}">(信息审核不通过，点击完善信息提交再次审核)</text></view>
             </view>
             <view class="doctor-info-index">
                 <view>姓　　名：{{name}}</view>
@@ -14,7 +15,7 @@
             </view>
         </view>
     </view>
-    <view class="doctor-info">
+    <view class="doctor-info" wx:if="{{completeStatus == 1 && auditStatus == 1}}">
         <view class="doctor-info-title">
             <image src="../../images/index_icon.png" />
             <view>我的发布</view>
@@ -40,13 +41,15 @@
         </view>
     </view>
     <view class="doctor-info">
-        <navigator hover-class="none" url="/pages/doctorRecommend/doctorRecommend?currentTab=0">
+        <navigator hover-class="none" url="/pages/hospitalRecommend/hospitalRecommend?currentTab=0">
             <view class="doctor-info-title">
                 <image src="../../images/index_icon.png" />
                 <view>推荐医院</view>
                 <view class="recommend-tip">
-                    <view>{{iTotalDisplayRecords}}</view>
+                    <view wx:if="{{iTotalDisplayRecords}}">{{iTotalDisplayRecords}}</view>
                     <view wx:if="{{iTotalDisplayRecords}}">家</view>
+                    <view wx:if="{{iTotalDisplayRecords}}" class='more-info'>更多>></view>
+                    <view wx:else class='more-info'>暂无推荐</view>
                 </view>
             </view>
             <view>

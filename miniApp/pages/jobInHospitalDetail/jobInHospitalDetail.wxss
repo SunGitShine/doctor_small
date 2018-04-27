@@ -1,0 +1,91 @@
+/* pages/jobDetail/jobDetail.wxss */
+
+page {
+    height: 100%;
+     background: #f1f1f1;
+}
+
+.hospital-page {
+    padding: 10px;
+}
+
+.page-block-one {
+    margin-top: 10px;
+    padding: 5px;
+    background: #fff;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+.logo-img-box {
+    width: 30px;
+    height: 30px;
+}
+
+.logo-img-box>image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.hospital-info-box {
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+.hospital-info-box>view{
+    padding-bottom: 5px;
+}
+.hospital-info-name {
+    font-size: 17px;
+}
+
+.hospital-info {
+    padding-left: 10px;
+}
+
+.hospital-tag-phone {
+    padding-left: 50px;
+    font-size: 14px;
+}
+.hospital-tag-phone>view{
+    padding-bottom: 5px;
+}
+.hospital-tag-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.hospital-tag {
+    padding: 2px 5px;
+    border: 1px dashed #60a072;
+    color: #60a072;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+.hospital-address-scale>text{
+    padding-right: 10px;
+}
+.block-two-title{
+  padding-bottom: 10px;
+  font-size: 17px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.block-two-info{
+  margin-top: 15px;
+  padding-left: 25px;
+  color: #818181;
+  font-size: 14px;
+}
+.block-two-info view{
+  margin-bottom: 10px;
+}
+.block-two-des{
+  margin-top: 15px;
+  padding-left: 25px;
+  font-size: 14px;
+}

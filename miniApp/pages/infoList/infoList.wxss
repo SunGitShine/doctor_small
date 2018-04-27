@@ -6,7 +6,7 @@ page {
 
 .list-page {
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .notice {
@@ -20,7 +20,7 @@ page {
     float: left;
     /* margin-top: 8rpx;*/
     top: 5rpx;
-    font-size: 15rpx;
+    font-size: 17rpx;
     right: 30rpx;
     line-height: 30rpx;
 }
@@ -43,7 +43,7 @@ page {
     padding: 5px;
     text-align: center;
     line-height: 60rpx;
-    font-size: 12px;
+    font-size: 14px;
     color: #666;
     background: #fff;
     font-family: Microsoft YaHei;
@@ -51,7 +51,7 @@ page {
 
 .navbar .item.active {
     color: #2ba246;
-    font-size: 12px;
+    font-size: 14px;
     font-family: Microsoft YaHei;
 }
 
@@ -81,11 +81,14 @@ page {
 }
 
 .list-info-title {
-    font-size: 15px;
+    font-size: 17px;
 }
-.list-info-title>text{
+
+.list-info-title>text {
     padding-right: 40px;
+    font-size: 14px;
 }
+
 .ask-icon {
     margin-left: 25px;
     width: 80rpx;
@@ -123,6 +126,7 @@ page {
     flex: 1 1 auto;
     font-size: 30rpx;
     padding-left: 16rpx;
+    width: 30%;
 }
 
 camera {
@@ -138,8 +142,10 @@ camera {
     top: 5px;
     font-size: 12px;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+     /* text-overflow: ellipsis;
+    white-space: nowrap;  */
+    display: flex;
+    justify-content: space-between;
 }
 
 .item-c-hospital-line {
@@ -149,14 +155,14 @@ camera {
 }
 
 .item-tilte text {
-    padding-right: 10px;
+     padding-right: 10px; 
 }
 
 .date-tip {
     /* position: absolute; */
     top: 0;
-    right: 0;
-    font-size: 12px;
+    right: 5px;
+    font-size: 14px;
     color: #ff7800;
 }
 
@@ -167,12 +173,12 @@ camera {
 }
 
 .item-content text {
-    padding-right: 10px;
+    padding-right: 5px;
 }
 
 .item-tip {
-    text-align: right;
-    font-size: 12px;
+    text-align: center;
+    font-size: 14px;
     color: #ff7800;
 }
 
@@ -229,15 +235,19 @@ camera {
     font-size: 14px;
     padding-top: 50px;
 }
-.doctor-call-box{
-    color: #B0B0B0
+
+.doctor-call-box {
+    color: #b0b0b0;
 }
-.doctor-call-box>text{
+
+.doctor-call-box>text {
     padding-right: 20px;
 }
+
 .date-tip {
     position: relative;
     font-size: 12px;
     color: #ff7800;
     display: block;
+    margin-top: 10px;
 }

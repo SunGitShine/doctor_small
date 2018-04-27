@@ -6,7 +6,7 @@ page {
 
 .list-page {
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .notice {
@@ -20,7 +20,7 @@ page {
     float: left;
     /* margin-top: 8rpx;*/
     top: 5rpx;
-    font-size: 15rpx;
+    font-size: 17rpx;
     right: 30rpx;
     line-height: 30rpx;
 }
@@ -43,7 +43,7 @@ page {
     padding: 5px;
     text-align: center;
     line-height: 60rpx;
-    font-size: 12px;
+    font-size: 14px;
     color: #666;
     background: #fff;
     font-family: Microsoft YaHei;
@@ -51,7 +51,7 @@ page {
 
 .navbar .item.active {
     color: #2ba246;
-    font-size: 12px;
+    font-size: 14px;
     font-family: Microsoft YaHei;
 }
 
@@ -71,8 +71,7 @@ page {
 
 .block-item {
     height: 100%;
-    overflow: auto;
-    padding-bottom: 100px;
+    /* overflow: auto; */
 }
 
 .list-info {
@@ -81,7 +80,7 @@ page {
 }
 
 .list-info-title {
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .ask-icon {
@@ -134,7 +133,7 @@ camera {
 .item-tilte {
     position: relative;
     top: 5px;
-    font-size: 12px;
+    font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -154,13 +153,13 @@ camera {
     /* position: absolute; */
     top: 0;
     right: 0;
-    font-size: 12px;
+    font-size: 14px;
     color: #ff7800;
 }
 
 .item-content {
     margin-top: 10px;
-    font-size: 12px;
+    font-size: 14px;
     color: #808080;
 }
 
@@ -170,7 +169,7 @@ camera {
 
 .item-tip {
     text-align: right;
-    font-size: 12px;
+    font-size: 14px;
     color: #ff7800;
 }
 
@@ -230,7 +229,7 @@ camera {
 .review-box{
     text-align: center;
     width: 50px;
-    font-size: 12px;
+    font-size: 14px;
     color: #DA6363
 }
 .review-no{

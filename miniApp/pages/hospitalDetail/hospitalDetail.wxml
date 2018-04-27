@@ -2,6 +2,7 @@
 <view class="hospital-detail">
   <view class="hospital-logo">
     <image src="{{info.logoImgUrl}}" />
+     <view>{{info.name}}</view>
   </view>
   <view class="hospital-detail-info">
     <view class="index-info">

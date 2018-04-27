@@ -17,7 +17,11 @@ Page({
         doctorData: {},//医生个人中心
         hospitalData: {},//医院个人中心
         sittingStartTime: "",//坐诊开始时间
-        sittingEndTime: ""//坐诊结束时间
+        sittingEndTime: "",//坐诊结束时间
+        timer:{
+            codeTime: 60,//验证码倒计时
+            codeTimeShow: false//倒计时显示
+        } 
     },
     /*生命周期函数--监听页面加载*/
     onLoad: function (option) {
@@ -40,7 +44,6 @@ Page({
             // 在没有 open-type=getUserInfo 版本的兼容处理
             wx.getUserInfo({
                 success: res => {
-
                     app.globalData.userInfo = res.userInfo;
                     this.setData({
                         userInfo: res.userInfo,
@@ -204,8 +207,9 @@ Page({
             phoneNum: e.detail.value
         })
     },
-    //获取二维码
+    //获取y验证码
     getSmsCode: function () {
+        let _this = this;
         var phoneReg = /^1[3|4|5|8][0-9]\d{4,8}$/;
         if (phoneReg.test(this.data.phoneNum)) {
             wx.request({
@@ -213,6 +217,7 @@ Page({
                 data: { d: { "phone": this.data.phoneNum } },
                 success: function (res) {
                     console.log(res);
+                    _this.setTimer(_this);
                 }
             })
         } else {
@@ -254,9 +259,16 @@ Page({
             },
             success: function (res) {
                 if (res.data.code == 'J000000') {
-                    wx.navigateTo({
-                        url: '../doctorEdit/doctorEdit'
-                    })
+                    if (_this.data.roleType == 1){
+                        wx.navigateTo({
+                            url: '../doctorEdit/doctorEdit'
+                        })
+                    }else{
+                        wx.navigateTo({
+                            url: '../hospitalEdit/hospitalEdit'
+                        })
+                    }
+
                 } else {
                     wx.showToast({
                         title: res.data.description,
@@ -265,7 +277,10 @@ Page({
                 }
             },
             fail: function (res) {
-
+                wx.showToast({
+                    title: res.data.description,
+                    icon: 'none'
+                })
             }
         })
         //this.setData({ typechoose: true })
@@ -277,6 +292,19 @@ Page({
         })
     },
     //关闭身份选择框
+    closeChoosePhoneModel: function () {
+        this.setData({
+            roleShow: false,
+            typechoose:true,
+            roleType:"",
+            guideShow: true,
+            timer:{
+                codeTime: 60,//验证码倒计时
+                codeTimeShow: false//倒计时显示
+            }
+        })
+    },
+    //关闭手机绑定弹出框
     closeChooseRole: function () {
         this.setData({
             roleShow: false
@@ -285,12 +313,6 @@ Page({
     //选择身份
     chooseRole: function (e) {
         let typeNum = e.currentTarget.dataset.idx;
-        // if (typeNum == 1){
-        //     wx.navigateTo({
-        //         url: '../doctorEdit/doctorEdit'
-        //     })
-        // }
-    
         this.setData({
             roleType: typeNum,
             roleShow: true,
@@ -362,7 +384,7 @@ Page({
         let openId = wx.getStorageSync('openid');
         let params = {
             pageNo: 1,
-            pageSize: 10
+            pageSize: 2
         }
         //角色是医生
         if (identity == 1){
@@ -388,7 +410,7 @@ Page({
             success: function (res) {
                 if (res.data.code == 'J000000' && res.data.resultMap) {
                     _this.setData({
-                      hospitalData: Object.assign(_this.data.hospitalData, {
+                        doctorData: Object.assign(_this.data.doctorData, {
                             iTotalDisplayRecords: res.data.resultMap.iTotalDisplayRecords,
                             listDoctorItems: res.data.resultMap.rows
                         })
@@ -433,5 +455,27 @@ Page({
           url: '../hospitalDetail/hospitalDetail'
         })
       }
+    },
+    //倒计时
+    setTimer: function (that) {
+        let count = that.data.timer.codeTime;
+        if (count == 1 || count < 1) {
+            that.setData({
+               timer:{
+                   codeTime: 60,
+                   codeTimeShow: false
+               }
+            });
+            return;
+        }
+        setTimeout(function(){
+            that.setData({
+                timer:{
+                    codeTime: count-1,
+                    codeTimeShow: true
+                }
+            })
+            that.setTimer(that);
+        },1000)
     }
 })

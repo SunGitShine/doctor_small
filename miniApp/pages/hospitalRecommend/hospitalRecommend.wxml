@@ -1,0 +1,4 @@
+<import src="../../templates/infoListItem.wxml"/>
+<view class="recommend-page">
+    <template wx:for="{{listDoctorItems}}" data-idx="{{index}}" wx:key="unique" is="listItem" data="{{item,currentTab}}"/>
+</view>

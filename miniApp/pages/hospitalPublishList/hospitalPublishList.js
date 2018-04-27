@@ -12,7 +12,9 @@ Page({
         currentTab:1,
         id:"",
         isRelease:true,//模板判断标致
-        reviewSwitch:false//模板发布开关状态
+        reviewSwitch:false,//模板发布开关状态
+        iTotalDisplayRecords:0,
+        test:"test"
     },
 
     /**
@@ -30,9 +32,50 @@ Page({
         let _this = this;
         let openId = wx.getStorageSync('openid');
         let params = {
-            pageNo: 1,
-            pageSize: 10,
-            hospitalOpenid: openId
+            hospitalOpenid: openId,
+            pageNo: _this.data.pageNo,
+            pageSize:10
+        }
+        wx.request({
+            header: {
+                "accept": 'application/json',
+                "content-Type": "application/x-www-form-urlencoded"
+            },
+            url: app.globalData.commonBaseUrl + '/hospital/findReleaseListPage.htm',
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                 d: JSON.stringify(params)
+            },
+            success: function (res) {
+                if (res.data.code == 'J000000') {
+                    _this.setData({
+                        listDoctorItems: (_this.data.listDoctorItems).concat(res.data.resultMap.rows),
+                        iTotalDisplayRecords: res.data.resultMap.iTotalDisplayRecords
+                    });
+                } else {
+                    wx.showToast({
+                        title: res.data.description,
+                        icon: 'none'
+                    });
+                }
+            },
+            fail: function (res) {
+
+            }
+        })
+    },
+    //刷新职位列表
+    refreshReleaseListPage: function () {
+        let _this = this;
+        let openId = wx.getStorageSync('openid');
+        _this.setData({
+            pageNo:1 
+        })
+        let params = {
+            hospitalOpenid: openId,
+            pageNo: _this.data.pageNo,
+            pageSize: 10
         }
         wx.request({
             header: {
@@ -48,7 +91,8 @@ Page({
             success: function (res) {
                 if (res.data.code == 'J000000') {
                     _this.setData({
-                        listDoctorItems: res.data.resultMap.rows
+                        listDoctorItems: res.data.resultMap.rows,
+                        iTotalDisplayRecords: res.data.resultMap.iTotalDisplayRecords
                     });
                 } else {
                     wx.showToast({
@@ -87,7 +131,7 @@ Page({
                         icon: 'none'
                     });
                     //刷新列表
-                    _this.findReleaseListPage();
+                    _this.refreshReleaseListPage();
                 } else {
                     wx.showToast({
                         title: res.data.description,
@@ -140,7 +184,40 @@ Page({
                                     title: "删除成功",
                                     icon: 'none'
                                 });
-                                _this.findReleaseListPage();
+                                let openId = wx.getStorageSync('openid');
+                                let params = {
+                                    hospitalOpenid: openId,
+                                    pageNo: 1,
+                                    pageSize: 10
+                                }
+                                wx.request({
+                                    header: {
+                                        "accept": 'application/json',
+                                        "content-Type": "application/x-www-form-urlencoded"
+                                    },
+                                    url: app.globalData.commonBaseUrl + '/hospital/findReleaseListPage.htm',
+                                    method: 'GET',
+                                    dataType: 'json',
+                                    data: {
+                                        d: JSON.stringify(params)
+                                    },
+                                    success: function (res) {
+                                        if (res.data.code == 'J000000') {
+                                            _this.setData({
+                                                listDoctorItems: res.data.resultMap.rows,
+                                                iTotalDisplayRecords: res.data.resultMap.iTotalDisplayRecords
+                                            });
+                                        } else {
+                                            wx.showToast({
+                                                title: res.data.description,
+                                                icon: 'none'
+                                            });
+                                        }
+                                    },
+                                    fail: function (res) {
+
+                                    }
+                                })
                             } else {
                                 wx.showToast({
                                     title: res.data.description,
@@ -158,5 +235,23 @@ Page({
             }
         })
         
+    },
+    //上拉刷新
+    onReachBottom: function () {
+        if ((this.data.pageNo) * 10 + 1 > this.data.iTotalDisplayRecords) return;
+        let _this = this;
+        let nextPage = _this.data.pageNo + 1;
+        _this.setData({
+            pageNo: nextPage
+        });
+        _this.findReleaseListPage();
+    },
+    //更新name
+    changeData: function (data) {
+        this.setData({
+            listDoctorItems: data.listDoctorItems,
+            iTotalDisplayRecords: data.iTotalDisplayRecords,
+            pageNo:2
+        })
     }
 })

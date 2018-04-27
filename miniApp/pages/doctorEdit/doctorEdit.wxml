@@ -1,6 +1,7 @@
 <view class="doctor-page">
     <view class="doctor-info">
-        <image src="../../images/doctor/doctor_01.png" />
+        <image wx:if="{{headImgUrl}}" src="{{headImgUrl}}" />
+        <image wx:else src="../../images/doctor/doctor_01.png" />
     </view>
     <view class="doctor-item">
         <view class="doctor-item-title">
@@ -10,14 +11,14 @@
         <view class="doctor-item-info">
             <view class="item-info">
                 <view class='item-info-tip'>姓　　名： </view>
-                <input class='item-info-in border-bottom' placeholder="请输入姓名" bindinput ="userNameInput" value="{{name}}"/>
+                <input class='item-info-in border-bottom' disabled='{{auditStatus == 1}}' placeholder="请输入姓名" bindinput="userNameInput" value="{{name}}" />
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>性　　别： </view>
                 <radio-group class="radio-group" bindchange="sexRadioChange">
                     <label class="radio item-info-in sex-label" wx:key="item" wx:for="{{sexItems}}">
                         <view class='sex-text'>{{item.value}}</view>
-                        <radio value="{{item.name}}" checked="{{item.checked}}" />
+                        <radio value="{{item.name}}" checked="{{item.checked}}" disabled='{{auditStatus == 1}}' />
                     </label>
                 </radio-group>
             </view>
@@ -32,12 +33,17 @@
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>工作年限： </view>
-                <input class='item-info-in work-year-input' value='{{workTime}}' bindinput='getWorkYear' />年
+                <view>
+                    <picker mode="selector" bindchange="workYearChange" range="{{workTimeList}}" range-key="name">
+                        <view class="picker education-picher" wx-if="{{!workTime}}">点击选择</view>
+                        <view class="picker education-picher" wx-if="{{workTime}}">{{workTimeText}}</view>
+                    </picker>
+                </view>
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>出生年月： </view>
                 <view>
-                    <picker mode="date" bindchange="bindBirthdayChange" value="{{selectedBirthday}}">
+                    <picker mode="date" bindchange="bindBirthdayChange" value="{{selectedBirthday}}" disabled='{{auditStatus == 1}}'>
                         <view class="picker " wx-if="{{!selectedBirthday}}">点击选择</view>
                         <view class="picker " wx-if="{{selectedBirthday}}">{{selectedBirthday}}</view>
                     </picker>
@@ -47,29 +53,29 @@
                 <view class='item-info-tip'>所在城市： </view>
                 <view>
                     <picker mode="region" class='region-picker' bindchange="bindCityChange" value="{{selectedCity}}">
-                        <view class="picker " wx-if="{{!selectedCity}}">点击选择</view>
-                        <view class="picker " wx-if="{{selectedCity}}">{{selectedCity}}</view>
+                        <view class="picker " wx-if="{{!selectedCity[0]}}">点击选择</view>
+                        <view class="picker " wx-if="{{selectedCity[0]}}">{{selectedCity}}</view>
                     </picker>
                 </view>
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>联系电话： </view>
-                <input class='item-info-in' placeholder="请输联系电话" disabled focus="{{focus}}"  value='{{phone}}'/>
+                <input class='item-info-in' placeholder="请输联系电话" disabled focus="{{focus}}" value='{{phone}}' />
             </view>
-            <view class="item-info"> 
+            <view class="item-info">
                 <view class='item-info-tip'>科　　室： </view>
                 <view>
-                    <picker mode="multiSelector" bindchange="bindDepartmentChange" range="{{departmentItems}}" bindcolumnchange="bindFirstDepartmentChange" range-key="{{'departmentName'}}">
+                    <picker mode="multiSelector" bindchange="bindDepartmentChange" range="{{departmentItems}}" bindcolumnchange="bindFirstDepartmentChange" range-key="{{'departmentName'}}" disabled='{{auditStatus == 1}}'>
                         <view class="picker" wx-if="{{!selectedParentDepartment}}">点击选择</view>
                         <view class="picker parentDepartment-picker" wx-if="{{selectedParentDepartment}}">{{selectedParentDepartment}}
-                        <view wx-if="{{selectedSonDepartment}}">></view>{{selectedSonDepartment}}</view>
+                            <view wx-if="{{selectedSonDepartment}}">></view>{{selectedSonDepartment}}</view>
                     </picker>
                 </view>
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>职　　称： </view>
                 <view>
-                    <picker mode="selector" bindchange="bindTitleChange" range="{{titleItems}}"  range-key="{{'name'}}">
+                    <picker mode="selector" bindchange="bindTitleChange" range="{{titleItems}}" range-key="{{'name'}}" disabled='{{auditStatus == 1}}'>
                         <view class="picker" wx-if="{{!titleText}}">点击选择</view>
                         <view class="picker" wx-if="{{titleText}}">{{titleText}}</view>
                     </picker>
@@ -83,12 +89,12 @@
         </view>
     </view>
     <view class="doctor-item">
-        <view class="doctor-item-title has-add-icon-box">
+        <view class="doctor-item-title has-add-icon-box" bindtap='addEduExperience'>
             <view class='has-add-text'>
                 <image class="icon-btn" src="../../images/doctor/doctor_04.png" />
                 <view class='edu-experience-add-text padding-left-10'>教育经历：</view>
             </view>
-            <image class='edu-experience-add-icon' src="../../images/modify_icon2.png" bindtap='addEduExperience'></image>
+            <image class='edu-experience-add-icon' src="../../images/modify_icon2.png" ></image>
         </view>
         <view class="doctor-item-info experience-info-box" wx:for="{{eduExperienceList}}" wx:key="item">
             <image class="icon-tip" src="../../images/doctor/doctor_07.png" />
@@ -102,19 +108,22 @@
                 <view class='single-experience-box'>
                     <view class="experience-info">
                         <input class='border-bottom ' placeholder="请输入学校" bindinput='getSchool' data-index="{{index}}" value='{{item.school}}'></input>
-                        <input class='border-bottom ' placeholder="请输入专业" bindinput='getMajor' data-index="{{index}}"  value='{{item.major}}'></input>
+                        <input class='border-bottom ' placeholder="请输入专业" bindinput='getMajor' data-index="{{index}}" value='{{item.major}}'></input>
                     </view>
                 </view>
+            </view>
+            <view class='remove-btn-box' data-index='{{index}}' bindtap='deletEduExperience'>
+                <image src='../../images/remove.png'></image>
             </view>
         </view>
     </view>
     <view class="doctor-item">
-        <view class="doctor-item-title has-add-icon-box">
+        <view class="doctor-item-title has-add-icon-box" bindtap='addWorkExperience'>
             <view class='has-add-text'>
                 <image class="icon-btn" src="../../images/doctor/doctor_05.png" />
                 <view class='edu-experience-add-text padding-left-10'>工作经历：</view>
             </view>
-            <image class='edu-experience-add-icon' src="../../images/modify_icon2.png" bindtap='addWorkExperience'></image>
+            <image class='edu-experience-add-icon' src="../../images/modify_icon2.png" ></image>
         </view>
         <view class="doctor-item-info experience-info-box" wx:for="{{workExperienceList}}" wx:key="item">
             <image class="icon-tip" src="../../images/doctor/doctor_07.png" />
@@ -132,6 +141,9 @@
                     </view>
                 </view>
             </view>
+            <view class='remove-btn-box' data-index='{{index}}' bindtap='deletworkExperience'>
+                <image src='../../images/remove.png'></image>
+            </view>
         </view>
     </view>
     <view class="doctor-item">
@@ -143,18 +155,20 @@
             <view class="card-content">
                 <view class='certificate-box'>
                     <view>医师职称证：</view>
-                    <image class='certificate-picture' wx:if="{{physicianSrc}}" src='{{physicianSrc}}'></image>
+                    <view>
+                    <image class='certificate-picture' data-src="{{physicianSrc}}" bindtap="previewImage" mode="widthFix" wx:if="{{physicianSrc}}" src='{{physicianSrc}}'></image>
+                    </view>
                     <image src='../../images/modify_icon2.png' bindtap='addPhysician'></image>
                 </view>
                 <view class='certificate-box'>
                     <view>医师资格证：</view>
-                     <image class='certificate-picture' wx:if="{{qualificationSrc}}" src='{{qualificationSrc}}'></image>
-                    <image  src='../../images/modify_icon2.png' bindtap='addQualification'></image>
+                    <image class='certificate-picture' data-src="{{qualificationSrc}}" bindtap="previewImage" mode="widthFix" wx:if="{{qualificationSrc}}" src='{{qualificationSrc}}'></image>
+                    <image src='../../images/modify_icon2.png' bindtap='addQualification'></image>
                 </view>
                 <view class='certificate-box'>
                     <view>医师执业证：</view>
-                     <image class='certificate-picture' wx:if="{{licenseSrc}}" src='{{licenseSrc}}'></image>
-                    <image  src='../../images/modify_icon2.png' bindtap='addLicense'></image>
+                    <image class='certificate-picture' data-src="{{licenseSrc}}" bindtap="previewImage" mode="widthFix" wx:if="{{licenseSrc}}" src='{{licenseSrc}}'></image>
+                    <image src='../../images/modify_icon2.png' bindtap='addLicense'></image>
                 </view>
             </view>
         </view>
@@ -162,7 +176,7 @@
     <view class="doctor-item">
         <view class="doctor-item-title has-add-icon-box">
             <view class='has-add-text'>
-               <image class="icon-btn" src="../../images/doctor/doctor_08.png" />
+                <image class="icon-btn" src="../../images/doctor/doctor_08.png" />
                 <view class='edu-experience-add-text padding-left-10'>作品展示：</view>
             </view>
             <image class='edu-experience-add-icon' src="../../images/modify_icon2.png" bindtap='addGallery'></image>
@@ -172,13 +186,16 @@
             <view class='gallery-seelct-box'>
                 <view class='experience-picker-box'>
                     <view bindtap="getGallery" data-index='{{index}}' wx:if="{{!item.url}}">点击选择图片</view>
-                    <image class='gallery-img' wx:if="{{item.url}}" src="{{item.url}}"></image>
+                    <image class='gallery-img' data-src="{{item.url}}" bindtap="previewImage" wx:if="{{item.url}}" src="{{item.url}}"></image>
                 </view>
                 <view class='single-experience-box'>
                     <view class="experience-info">
                         <input class='border-bottom ' placeholder="请输入介绍" bindinput='getGalleryDescription' data-index="{{index}}" value='{{item.description}}'></input>
                     </view>
                 </view>
+            </view>
+            <view class='remove-btn-box' data-index='{{index}}' bindtap='deletGallery'>
+                <image src='../../images/remove.png'></image>
             </view>
         </view>
     </view>
@@ -188,7 +205,7 @@
             <view class='padding-left-10'>擅长领域：</view>
         </view>
         <view class="doctor-item-info">
-            <textarea  placeholder="请输入擅长领域，控制在100字以内" bindinput="getGoodField" value='{{goodField}}'/>
+            <textarea placeholder="请输入擅长领域，控制在100字以内" bindinput="getGoodField" value='{{goodField}}' />
         </view>
     </view>
     <view class="doctor-item">
@@ -197,8 +214,8 @@
             <view class='padding-left-10'>个人简介</view>
         </view>
         <view class="doctor-item-info">
-              <textarea placeholder="请输入个人简历，控制在100字以内"  bindinput="getProfile" value='{{profile}}'/>
+            <textarea placeholder="请输入个人简历，控制在100字以内" bindinput="getProfile" value='{{profile}}' />
         </view>
     </view>
-    <view class='submit-doctor-btn' bindtap='submitDoctorInfo' >提交审核</view>
+    <view class='submit-doctor-btn' bindtap='submitDoctorInfo'>提交审核</view>
 </view>

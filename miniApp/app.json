@@ -11,7 +11,9 @@
     "pages/doctorDetail/doctorDetail",
     "pages/doctorEdit/doctorEdit",
     "pages/doctorRecommend/doctorRecommend",
+    "pages/hospitalRecommend/hospitalRecommend",
     "pages/jobDetail/jobDetail",
+    "pages/jobInHospitalDetail/jobInHospitalDetail",
     "pages/jobList/jobList",
     "pages/logs/logs"
   ],

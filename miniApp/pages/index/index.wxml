@@ -18,12 +18,12 @@
     </navigator>
   </view>
   <view class="list-wrapper">
-    <view class="list-item-hot">
+    <view class="list-item-hot" id='3' data-name='整型美容' data-hot="29" bindtap="goToJobListings">
       <image src="../../images/hot_icon.png" class="hot-icon"/>
       <image src="../../images/meirongneike.png" class="index-icon"/>
       <text>美容外科</text>    
     </view>
-    <view class="list-item-hot">
+    <view class="list-item-hot" id='3' data-name='整型美容' data-hot="30" bindtap="goToJobListings">
     <image src="../../images/hot_icon.png" class="hot-icon"/>
       <image src="../../images/meirong.png" class="index-icon"/>
       <text>美容皮肤</text>
@@ -41,23 +41,23 @@
         <block>
           <swiper-item>
             <view class="list-wrapper">
-              <view class="list-item" id='1' bindtap="goToJobListings">
+              <view class="list-item" id='1' data-name='内科' bindtap="goToJobListings">
                 <image src="../../images/neike.png"/>
                 <text>内科</text>
               </view>
-              <view class="list-item" id='5' bindtap="goToJobListings">
+              <view class="list-item" id='5' data-name='骨科' bindtap="goToJobListings">
                 <image src="../../images/guke.png"/>
                 <text>骨科</text>
               </view>
-              <view class="list-item" id='7' bindtap="goToJobListings">
+              <view class="list-item" id='7'  data-name='眼科' bindtap="goToJobListings">
                 <image src="../../images/yanke.png"/>
                 <text>眼科</text>
               </view>
-              <view class="list-item" id='2' bindtap="goToJobListings">
+              <view class="list-item" id='2'  data-name='外科' bindtap="goToJobListings">
                 <image src="../../images/waike.png"/>
                 <text>外科</text>
               </view>
-              <view class="list-item" id='6' bindtap="goToJobListings">
+              <view class="list-item" id='6' data-name='耳鼻喉科' bindtap="goToJobListings">
                 <image src="../../images/erbihou.png"/>
                 <text>耳鼻喉科</text>
               </view>
@@ -67,23 +67,23 @@
         <block>
           <swiper-item>
             <view class="list-wrapper">
-              <view class="list-item"  id='9' bindtap="goToJobListings">
+              <view class="list-item"  id='9' data-name='皮肤科' bindtap="goToJobListings">
                 <image src="../../images/pifu.png"/>
                 <text>皮肤科</text>
               </view>
-              <view class="list-item"  id='8' bindtap="goToJobListings">
+              <view class="list-item"  id='8' data-name='妇产科' bindtap="goToJobListings">
                 <image src="../../images/fuchan.png"/>
                 <text>妇产科</text>
               </view>
-              <view class="list-item"  id='10' bindtap="goToJobListings">
+              <view class="list-item"  id='10' data-name='男科' bindtap="goToJobListings">
                 <image src="../../images/nanke.png"/>
                 <text>男科</text>
               </view>
-              <view class="list-item" id='4' bindtap="goToJobListings">
+              <view class="list-item" id='4' data-name='儿科' bindtap="goToJobListings">
                 <image src="../../images/erke.png"/>
                 <text>儿科</text>
               </view>
-              <view class="list-item" id='3' bindtap="goToJobListings">
+              <view class="list-item" id='3' data-name='整型美容' bindtap="goToJobListings">
                 <image src="../../images/zhengxing.png"/>
                 <text>整型美容</text>
               </view>
@@ -96,19 +96,19 @@
   <view class="list-title">
     <navigator hover-class="none" open-type="navigate" url="/pages/jobList/jobList">
       <image src="../../images/t3.png"/>
-      <text class="route-tip">更多>></text>
+      <text class="route-tip">更多 >></text>
     </navigator>
   </view>
   <view class="list-col">
     <view class="list-col-item" wx:for="{{jobList}}" wx:key="index">
-      <div>{{item.title}}</div>
+      <navigator hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag=job">{{item.title}}</navigator>
       
-      <navigator class="user-demander" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag=job" class="" >
+      <navigator class="user-demander" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag=job">
         <text>{{item.city}}</text>
         <text>|</text>
-        <text>{{item.doctorTitle}} </text>
+        <text>{{common.titleFilter(item.doctorTitle)}} </text>
         <text>|</text>
-        <text>{{item.workTime}}年经验</text>
+        <text>{{common.workTimeFilter(item.workTime)}}经验</text>
         <text>{{common.sliceStringFont(item.updateTime)}}</text>
       </navigator>
       <text class="salaries">{{common.moneyTypeFilter(item.moneyType)}}</text>

@@ -23,7 +23,7 @@
 }
 
 .list-info {
-    padding: 15px 0;
+    padding: 17px 0;
 }
 
 .list-info-title {
@@ -79,7 +79,6 @@
     font-size: 14px;
     margin-top: 5px;
     padding-right: 10px;
-    height: 30px;
 }
 
 .list-info-text {
@@ -126,7 +125,4 @@
 .doctor-call-box>text{
     font-size: 14px;
     padding-right: 10px;
-}
-.recommend-workTime{
-    font-size: 14px;
 }

@@ -1,242 +1,249 @@
 /* pages/doctorDetail/doctorDetail.wxss */
 
 .doctor-page {
-  background: #f1f1f1;
+    background: #f1f1f1;
 }
 
 .doctor-info {
-  display: flex;
-  display: -webkit-flex;
-  padding: 15px;
-  color: #fff;
-  background: #2ba246;
+    display: flex;
+    display: -webkit-flex;
+    padding: 15px;
+    color: #fff;
+    background: #2ba246;
 }
 
 .doctor-info image {
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 80rpx;
-  -webkit-border-radius: 80rpx;
-  -moz-border-radius: 80rpx;
-  margin: auto;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 80rpx;
+    -webkit-border-radius: 80rpx;
+    -moz-border-radius: 80rpx;
+    margin: auto;
 }
 
 .doctor-content {
-  flex: 1 1 auto;
-  padding-left: 15px;
-  font-size: 15px;
+    flex: 1 1 auto;
+    padding-left: 15px;
+    font-size: 17px;
 }
 
 .doctor-content view {
-  margin-top: 5px;
+    margin-top: 5px;
 }
 
 .job-title {
-  font-size: 12px;
+    font-size: 14px;
 }
 
 .border-tip {
-  margin-right: 5px;
-  padding: 0 5px;
-  font-size: 12px;
-  border: 1px dotted #fff;
-  border-radius: 12px;
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
+    margin-right: 5px;
+    padding: 0 5px;
+    font-size: 14px;
+    border: 1px dotted #fff;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
 }
 
 .icon-btn {
-  width: 16px;
-  height: 14px;
-  vertical-align: middle;
+    width: 16px;
+    height: 14px;
+    vertical-align: middle;
 }
 
 .doctor-item {
-  padding: 15px;
-  background: #fff;
-  margin: 20px auto;
-  width: 84%;
-  border-radius: 3px;
+    padding: 15px;
+    background: #fff;
+    margin: 20px auto;
+    width: 84%;
+    border-radius: 3px;
 }
 
 .doctor-item-title {
-  font-size: 14px;
-  display: flex;
-  align-items: center;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
 }
 
 .doctor-item-info {
-  margin-top: 10px;
-  padding-left: 15px;
-  padding-bottom: 15px;
-  font-size: 12px;
-  color: #818181;
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    font-size: 14px;
+    color: #818181;
 }
 
 .border-bottom {
-  border-bottom: 1px solid #f3f3f3;
+    border-bottom: 1px solid #f3f3f3;
 }
 
 .item-info {
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-  height: 40px;
-  line-height: 40px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    height: 40px;
+    line-height: 40px;
 }
 
 .item-info>picker {
-  padding-left: 80px;
+    padding-left: 80px;
 }
 
 .region-picker {
-  min-width: 200px;
+    min-width: 100px;
 }
 
 .item-info-tip {
-  width: 100px;
-  height: 40px;
+    width: 100px;
+    height: 40px;
 }
 
 .item-info-in {
-  flex: 1;
-  height: 40px;
+    flex: 1;
+    height: 40px;
 }
 
 .card-content {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 .card-info {
-  width: 200rpx;
-  height: 100rpx;
-  vertical-align: middle;
-  background: #888;
+    width: 200rpx;
+    height: 100rpx;
+    vertical-align: middle;
+    background: #888;
 }
 
 .icon-tip {
-  width: 25rpx;
-  height: 100rpx;
+    width: 25rpx;
+    height: 100rpx;
 }
 
 .sex-label {
-  display: inline-block;
-  margin-right: 20px;
+    display: inline-block;
+    margin-right: 20px;
 }
 
 .sex-label radio {
-  transform: scale(0.6);
+    transform: scale(0.6);
 }
 
 .sex-text {
-  display: inline-block;
-  padding-right: 10px;
+    display: inline-block;
+    padding-right: 10px;
 }
 
 .education-picher {
-  width: 200px;
+    min-width: 100px;
 }
 
 .work-year-input {
-  flex: 0.2;
-  text-align: center;
-  border-bottom: 1px solid #f3f3f3;
+    flex: 0.2;
+    text-align: center;
+    border-bottom: 1px solid #f3f3f3;
 }
 
 .honor-text {
-  color: #f4a21a;
-  margin-right: 10px;
-  text-align: center;
+    color: #f4a21a;
+    margin-right: 10px;
+    text-align: center;
 }
 
 .experience-info-box {
-  display: flex;
+    display: flex;
 }
 
 .experience-info {
-  flex: 1;
-  display: flex;
-  align-items: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
 .single-experience-box {
-  display: flex;
+    display: flex;
 }
 
 .experience-picker-box {
-  flex: 0.4;
-  text-align: center;
+    flex: 0.4;
+    text-align: center;
 }
 
 .experience-info>input {
-  margin: 10px 10px;
-  width: 100%;
-  text-align: center;
+    margin: 10px 10px;
+    width: 100%;
+    text-align: center;
 }
 
 .edu-experience-add-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  transform: scale(0.8);
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }
 
 .has-add-icon-box {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .has-add-text {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .padding-left-10 {
-  padding-left: 10px;
+    padding-left: 10px;
 }
 
 .certificate-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .certificate-box>image {
-  width: 20px;
-  height: 20px;
-  margin: 10px;
-  transform: scale(0.8);
+    width: 20px;
+    height: 20px;
+    margin: 10px;
 }
 
 .gallery-seelct-box {
-  flex: 1;
+    flex: 1;
 }
 
 .gallery-img {
-  max-width: 150px;
-  max-height: 100px;
+    max-width: 150px;
+    max-height: 100px;
 }
 
 .certificate-picture {
-  width: 150px !important;
-  height: 100px !important;
+    width: 100px !important;
 }
 
 .submit-doctor-btn {
-  background-color: #2ba245;
-  color: #fff;
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
+    background-color: #2ba245;
+    color: #fff;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
 }
 
 .parentDepartment-picker {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .del-img {
-  position: relative;
-  right: 25%;
-  top: -40px;
+    position: relative;
+    right: 25%;
+    top: -40px;
+}
+
+.remove-btn-box {
+    height: 100rpx;
+    padding-top: 22px;
+}
+
+.remove-btn-box>image {
+    width: 20px;
+    height: 20px;
 }

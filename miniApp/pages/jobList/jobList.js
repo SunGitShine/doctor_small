@@ -12,7 +12,8 @@ Page({
         currentTab:1,
         id:"",
         isJob:true,//标识：猎聘专区模板
-        flag:'job'
+        flag:'job',
+        iTotalDisplayRecords:0
     },
 
     /**
@@ -26,7 +27,7 @@ Page({
     findByPage: function () {
       let _this = this;
       let params = {
-        pageNo: 1,
+          pageNo: _this.data.pageNo,
         pageSize: 10
       };
       wx.request({
@@ -43,7 +44,8 @@ Page({
         success: function (res) {
           if (res.data.code == 'J000000') {
             _this.setData({
-              listDoctorItems: res.data.resultMap.rows
+                listDoctorItems: (_this.data.listDoctorItems).concat(res.data.resultMap.rows),
+              iTotalDisplayRecords: res.data.resultMap.iTotalDisplayRecords
             })
           } else {
 
@@ -54,5 +56,15 @@ Page({
         }
       })
     },
+    //上拉刷新
+    onReachBottom: function () {
+        if ((this.data.pageNo) * 10 + 1 > this.data.iTotalDisplayRecords) return;
+        let _this = this;
+        let nextPage = _this.data.pageNo + 1;
+        _this.setData({
+            pageNo: nextPage
+        });
+        _this.findByPage();
+    }
 
 })

@@ -1,5 +1,6 @@
 {
-  "navigationBarBackgroundColor": "#2ba246",
-  "navigationBarTitleText": "推荐医生",
-  "navigationBarTextStyle": "#fff"
+    "navigationBarBackgroundColor": "#2ba246",
+    "navigationBarTitleText": "推荐医生",
+    "navigationBarTextStyle": "#fff",
+    "onReachBottomDistance": true
 }

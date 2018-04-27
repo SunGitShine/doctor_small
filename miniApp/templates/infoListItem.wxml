@@ -11,12 +11,12 @@
                 <navigator class="list-info-item0" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag={{flag}}">
                     <image wx:if="{{!isJob}}" class="user-icon" src="{{item.logoImgUrl}}" />
                 </navigator>
-                <navigator class="list-info-item" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag={{flag}}">
+                <navigator class="list-info-item release-content-item" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag={{flag}}">
                     <view class="item-tilte">
                         <text>
                             <text class='list-info-text'>{{item.departmentName}}</text>
                         <text>{{common.titleFilter(item.doctorTitle)}}</text>
-                        <text>{{item.workTime}}年</text>
+                        <text>{{common.workTimeFilter(item.workTime)}}</text>
                         </text>
                         <text class="date-tip" wx:if="{{isJob}}">{{common.sliceStringFont(item.updateTime)}}</text>
                         <text class="date-tip" wx:if="{{currentTab == 0}}">{{common.sliceStringFont(item.time)}}</text>
@@ -44,7 +44,7 @@
             </view>
         </view>
         <!--currentTab   0为医生专栏，1为医院专栏  -->
-        <navigator wx:if="{{currentTab == 0}}" hover-class="none" open-type="navigate" url="/pages/doctorDetail/doctorDetail?openid={{item.openid}}">
+        <navigator wx:if="{{currentTab == 0}}" hover-class="none" open-type="navigate" url="/pages/doctorDetail/doctorDetail?openid={{item.openid}}&resource=template">
             <view class="list-info-route">
                 <view class="list-info-item0">
                     <image class="user-icon" src="{{item.headImgUrl}}" />
@@ -53,19 +53,23 @@
                 <view class="list-info-item">
                     <view class="list-info-title">
                         <text>{{item.name}}</text>
-                        <text>{{item.workTime}}年</text>
+                        <text class='recommend-workTime'>{{common.workTimeFilter(item.workTime)}}</text>
                     </view>
                     <view class="item-tilte">
                         <text>
-                            <text class='list-info-text'>{{item.departmentName}}</text>
-                        <text>{{common.titleFilter(item.doctorTitle)}}</text>
+                            <text class='list-info-text department-name-text'>{{item.departmentName}}</text>
+                            <text>{{common.titleFilter(item.doctorTitle)}}</text>
+                            <text class="item-content">
+                                <text class='doctor-call-box'>
+                                    <text wx:for="{{item.call}}" wx:key="index">{{item}}</text>
+                                </text>
+                            </text>
                         </text>
-                        <text class="date-tip">{{common.sliceStringFont(item.startTime)}}~{{common.sliceStringFont(item.endTime)}}</text>
+
                     </view>
-                    <view class="item-content">
-                        <view class='doctor-call-box'>
-                            <text wx:for="{{item.call}}" wx:key="index">{{item}}</text>
-                        </view>
+                    <view class="date-tip">
+                        <view>{{common.sliceStringFont(item.startTime)}}至{{common.sliceStringFont(item.endTime)}}</view>
+
                     </view>
                 </view>
             </view>

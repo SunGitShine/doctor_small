@@ -1,6 +1,7 @@
 <view class="hospital-detail">
   <view class="hospital-logo">
-    <image src="../../images/hospital_icon.png" />
+    <image wx:if="{{logoImgUrl}}" src="{{logoImgUrl}}" />
+    <image wx:else src="../../images/hospital_icon.png" />
   </view>
   <view class="hospital-detail-info">
     <view class="index-info">
@@ -12,16 +13,16 @@
         <view class="info-content-item">
           <view class="item-info">
             <view class='item-info-tip'>名　　称：</view>
-            <input class='item-info-in border-bottom' placeholder="请输入医院名称" bindinput="hospitalNameInput" value="{{name}}" />
+            <input class='item-info-in border-bottom' placeholder="请输入医院名称" bindinput="hospitalNameInput" value="{{name}}"   disabled='{{auditStatus == 1}}'/>
           </view>
         </view>
         <view class="info-content-item">
           <view class="item-info">
             <view class='item-info-tip'>所在城市： </view>
             <view>
-              <picker mode="region" class='region-picker' bindchange="bindCityChange" value="{{selectedCity}}">
-                <view class="picker " wx-if="{{!selectedCity}}">点击选择</view>
-                <view class="picker " wx-if="{{selectedCity}}">{{selectedCity}}</view>
+              <picker mode="region" class='region-picker' bindchange="bindCityChange" value="{{selectedCity}}" disabled='{{auditStatus == 1}}'>
+                <view class="picker " wx-if="{{!selectedCity[0]}}">点击选择</view>
+                <view class="picker " wx-if="{{selectedCity[0]}}">{{selectedCity}}</view>
               </picker>
             </view>
           </view>
@@ -30,20 +31,20 @@
         <view class="info-content-item">
           <view class="item-info">
             <view class='item-info-tip'>地　　址：</view>
-            <input class='item-info-in border-bottom' placeholder="请输入医院地址" bindinput="hospitalAddressInput" value="{{address}}" />
+            <input class='item-info-in border-bottom' placeholder="请输入医院地址" bindinput="hospitalAddressInput" value="{{address}}" disabled='{{auditStatus == 1}}'/>
           </view>
         </view>
         <view class="info-content-item">
           <view class="item-info">
             <view class='item-info-tip'>联系电话：</view>
-            <input class='item-info-in border-bottom' placeholder="请输入联系电话" bindinput="hospitalPhoneInput" value="{{phone}}" />
+            <input class='item-info-in border-bottom' placeholder="请输入联系电话" bindinput="hospitalPhoneInput" value="{{phone}}" disabled='{{auditStatus == 1}}'/>
           </view>
         </view>
         <view class="info-content-item">
           <view class="item-info">
             <view class='item-info-tip'>规　　模：</view>
             <view>
-              <picker class='item-info-tip-picker' mode="selector" bindchange="bindScaleChange" range="{{scaleItems}}" range-key="name">
+              <picker class='item-info-tip-picker' mode="selector" bindchange="bindScaleChange" range="{{scaleItems}}" range-key="name" disabled='{{auditStatus == 1}}'>
                 <view class="picker" wx-if="{{!scale}}">点击选择</view>
                 <view class="picker" wx-if="{{scale}}">{{scaleText}}</view>
               </picker>
@@ -109,8 +110,8 @@
       </view>
       <view class="info-index-content">
         <view class='certificate-box'>
-          <view class='certificate-picture-box'>
-            <view wx:for="{{imgUrl}}" wx:for-item="item" wx:key="index">
+          <view class='certificate-picture-box'>  
+            <view wx:for="{{imgUrl}}"  wx:key="index">
               <image class='certificate-picture' src='{{item}}'></image>
               <image class='del-img' src='../../images/remove.png' data-index='{{index}}' bindtap='removeHospitalPic'></image>
             </view>

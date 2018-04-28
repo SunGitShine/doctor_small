@@ -27,7 +27,9 @@ Page({
             { name: "10~50人", value: 2 },
             { name: "50~100人", value: 3 },
             { name: "100~500人", value: 4 }
-        ]
+        ],
+        //提交按钮文字
+        btnText:"提交审核"
     },
 
     /**
@@ -59,7 +61,13 @@ Page({
                                 res.data.resultMap.response[key] = "";
                             }
                         }
+                        
                         let info = res.data.resultMap.response;
+                        if (info.auditStatus == 1) {
+                            this.setData({
+                                btnText: "更改信息"
+                            })
+                        }
                         _this.setData({
                             //医院名字
                             name: info.name,

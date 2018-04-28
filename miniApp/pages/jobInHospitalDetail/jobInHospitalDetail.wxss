@@ -88,4 +88,5 @@ page {
   margin-top: 15px;
   padding-left: 25px;
   font-size: 14px;
+  padding-bottom: 20px;
 }

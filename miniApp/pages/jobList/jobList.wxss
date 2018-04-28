@@ -168,7 +168,7 @@ camera {
 }
 
 .item-tip {
-    text-align: right;
+    text-align: center;
     font-size: 14px;
     color: #ff7800;
 }

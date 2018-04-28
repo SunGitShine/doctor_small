@@ -1,7 +1,6 @@
 <view class="hospital-detail">
   <view class="hospital-logo">
     <image wx:if="{{logoImgUrl}}" src="{{logoImgUrl}}" />
-    <image wx:else src="../../images/hospital_icon.png" />
   </view>
   <view class="hospital-detail-info">
     <view class="index-info">
@@ -91,16 +90,7 @@
         </view>
       </view>
     </view>
-    <view class="index-info">
-      <view class="info-title">
-        <image src="../../images/modify_icon.png" />
-        <text>医院简介</text>
-      </view>
-      <view class="info-index-content">
-        <textarea value="{{introduce}}" placeholder='请输入医院简介' maxlength='12' bindinput="getIntroduce"></textarea>
-      </view>
-    </view>
-    <view class="index-info">
+      <view class="index-info">
       <view class="info-title hospital-img-box" bindtap='addHospitalImg'>
         <view class='hospital-img-name'>
           <image src="../../images/picture_icon.png" />
@@ -119,6 +109,15 @@
         </view>
       </view>
     </view>
+    <view class="index-info">
+      <view class="info-title">
+        <image src="../../images/modify_icon.png" />
+        <text>医院简介</text>
+      </view>
+      <view class="info-index-content">
+        <textarea value="{{introduce}}" placeholder='请输入医院简介,限制500字' maxlength='500' bindinput="getIntroduce"></textarea>
+      </view>
+    </view>
   </view>
-  <view class="update-btn" bindtap='submitHospitalInfo'>提交审核</view>
+  <view class="update-btn" bindtap='submitHospitalInfo'>{{btnText}}</view>
 </view>

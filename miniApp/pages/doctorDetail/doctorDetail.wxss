@@ -14,6 +14,10 @@
 
 .doctor-photo {
     flex: 0 0 auto;
+    margin-top: 30px;
+    position: relative;
+    top: 0;
+    right: -20px;
 }
 
 .doctor-photo image {
@@ -108,9 +112,11 @@
     margin-bottom: 5px;
     width: 250px;
 }
-.item-info>text{
+
+.item-info>text {
     display: inline-block;
 }
+
 .card-content {
     margin-top: 10px;
 }
@@ -168,7 +174,6 @@
     align-content: center;
     justify-content: center;
     width: 80%;
-    text-align: center;
 }
 
 .single-info-box>view {
@@ -182,7 +187,8 @@
 .single-info-time>image {
     width: 100px;
 }
-.phone-box{
+
+.phone-box {
     display: flex;
     align-content: center;
 }

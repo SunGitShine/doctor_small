@@ -67,7 +67,8 @@
                         {{item.time}}
                     </view>
                     <view class='single-info-text'>
-                        {{item.school}} {{item.major}}
+                        <text>{{item.school}}</text>
+                        <text>{{item.major}}</text>
                     </view>
                 </view>
             </view>

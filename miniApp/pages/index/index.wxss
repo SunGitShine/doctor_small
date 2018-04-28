@@ -28,8 +28,8 @@ image{
     justify-content: center;
 }
 .list-title image{
-  width: 148px;
-  height: 18px;
+  width: 120px;
+  height: 15px;
 }
 .icon-wrapper{
   margin-bottom: 10px;
@@ -132,5 +132,5 @@ image{
   right: 10px;
   top: 5px;
   color: #2ba246;
-  font-size: 17px;
+  font-size: 15px;
 }

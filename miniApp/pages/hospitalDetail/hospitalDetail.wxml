@@ -43,15 +43,7 @@
        <image src='{{info.businessLicenceUrl}}' data-src="{{info.businessLicenceUrl}}" bindtap="previewImage"></image>
       </view>
     </view>
-    <view class="index-info">
-      <view class="info-title">
-        <image src="../../images/modify_icon.png" /> 医院简介
-      </view>
-      <view class="info-index-content">
-        <textarea value="{{info.profile}}" disabled='true'></textarea>
-      </view>
-    </view>
-    <view class="index-info">
+     <view class="index-info">
       <view class="info-title">
         <image src="../../images/picture_icon.png" /> 医院图片
       </view>
@@ -59,6 +51,14 @@
         <view class='hospital-img-box' wx:for="{{info.imageUrl}}" wx:for-item="item" wx:key="index">
           <image src='{{item}}' data-src="{{item}}" bindtap="previewImage" ></image>
         </view>
+      </view>
+    </view>
+    <view class="index-info">
+      <view class="info-title">
+        <image src="../../images/modify_icon.png" /> 医院简介
+      </view>
+      <view class="info-index-content">
+        <textarea value="{{info.profile}}" disabled='true'></textarea>
       </view>
     </view>
   </view>

@@ -58,7 +58,7 @@
                 <view class="recommend-tip">
                     <view wx:if="{{iTotalDisplayRecords}}">{{iTotalDisplayRecords}}</view>
                     <view wx:if="{{iTotalDisplayRecords}}">家</view>
-                    <view wx:if="{{iTotalDisplayRecords}}" class='more-info'>更多>></view>
+                    <view wx:if="{{iTotalDisplayRecords}}" class='more-info'>更多></view>
                     <view wx:else class='more-info'>暂无推荐</view>
                 </view>
             </view>

@@ -173,6 +173,7 @@ camera {
     font-size: 14px;
     color: #ff7800;
     padding-top: 5px;
+    text-align: center;
 }
 
 .classify-wrapper {

@@ -1,7 +1,23 @@
 <view class="doctor-page">
     <view class="doctor-info">
         <image wx:if="{{headImgUrl}}" src="{{headImgUrl}}" />
-        <image wx:else src="../../images/doctor/doctor_01.png" />
+    </view>
+         <view class="doctor-item">
+        <view class="doctor-item-title">
+            <image class="icon-btn" src="../../images/doctor/doctor_06.png" />
+            <view class='padding-left-10'>更改头像：</view>
+        </view>
+        <view class="doctor-item-info">
+            <view class="card-content">
+                <view class='certificate-box'>
+                    <view>上传个人照片：</view>
+                    <view>
+                    <image class='certificate-picture head-img' data-src="{{headSrc}}" bindtap="previewImage" wx:if="{{headSrc}}" src='{{headSrc}}'></image>
+                    </view>
+                    <image src='../../images/modify_icon2.png' bindtap='addHeadImg'></image>
+                </view>
+            </view>
+        </view>
     </view>
     <view class="doctor-item">
         <view class="doctor-item-title">
@@ -207,30 +223,13 @@
             </view>
         </view>
     </view>
-     <view class="doctor-item">
-        <view class="doctor-item-title">
-            <image class="icon-btn" src="../../images/doctor/doctor_06.png" />
-            <view class='padding-left-10'>更改头像：</view>
-        </view>
-        <view class="doctor-item-info">
-            <view class="card-content">
-                <view class='certificate-box'>
-                    <view>上传个人照片：</view>
-                    <view>
-                    <image class='certificate-picture head-img' data-src="{{headSrc}}" bindtap="previewImage" wx:if="{{headSrc}}" src='{{headSrc}}'></image>
-                    </view>
-                    <image src='../../images/modify_icon2.png' bindtap='addHeadImg'></image>
-                </view>
-            </view>
-        </view>
-    </view>
     <view class="doctor-item">
         <view class="doctor-item-title">
             <image class="icon-btn" src="../../images/doctor/doctor_09.png" />
             <view class='padding-left-10'>擅长领域：</view>
         </view>
         <view class="doctor-item-info">
-            <textarea placeholder="请输入擅长领域，控制在100字以内" bindinput="getGoodField" value='{{goodField}}' maxlength='100'/>
+            <textarea placeholder="请输入擅长领域，控制在500字以内" bindinput="getGoodField" value='{{goodField}}' maxlength='500'/>
         </view>
     </view>
     <view class="doctor-item">
@@ -239,7 +238,7 @@
             <view class='padding-left-10'>个人简介</view>
         </view>
         <view class="doctor-item-info">
-            <textarea placeholder="请输入个人简历，控制在100字以内" bindinput="getProfile" value='{{profile}}' maxlength='100'/>
+            <textarea placeholder="请输入个人简历，控制在500字以内" bindinput="getProfile" value='{{profile}}' maxlength='500'/>
         </view>
     </view>
     <view class='submit-doctor-btn' bindtap='submitDoctorInfo'>{{submitBtnText}}</view>

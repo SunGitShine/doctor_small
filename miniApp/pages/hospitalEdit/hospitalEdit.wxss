@@ -193,7 +193,7 @@ hospital-detail {
   margin: 20px auto;
 }
 .hospital-img-add{
-    margin: 20px;
+    margin: 10px;
 }
 .logo-img-box{
     width: 100px;

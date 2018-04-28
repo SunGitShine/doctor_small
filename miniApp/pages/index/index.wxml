@@ -96,7 +96,7 @@
   <view class="list-title">
     <navigator hover-class="none" open-type="navigate" url="/pages/jobList/jobList">
       <image src="../../images/t3.png"/>
-      <text class="route-tip">更多 >></text>
+      <text class="route-tip">更多 ></text>
     </navigator>
   </view>
   <view class="list-col">

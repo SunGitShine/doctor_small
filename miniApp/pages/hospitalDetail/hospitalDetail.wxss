@@ -68,7 +68,9 @@ hospital-detail {
     color: #808080;
     text-align: center;
 }
-
+.info-index-content>textarea{
+    width: 100%;
+}
 .hospital-img-box {
     display: flex;
     align-content: center;

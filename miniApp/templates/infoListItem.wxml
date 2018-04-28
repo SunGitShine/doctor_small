@@ -18,7 +18,6 @@
                         <text>{{common.titleFilter(item.doctorTitle)}}</text>
                         <text>{{common.workTimeFilter(item.workTime)}}</text>
                         </text>
-                        <text class="date-tip" wx:if="{{isJob}}">{{common.sliceStringFont(item.updateTime)}}</text>
                         <text class="date-tip" wx:if="{{currentTab == 0}}">{{common.sliceStringFont(item.time)}}</text>
                     </view>
                     <view class="item-content">
@@ -28,8 +27,8 @@
                     </view>
                 </navigator>
                 <navigator class="list-info-item" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag={{flag}}" wx:if="{{currentTab !== 0}}">
-                    <view class="item-tip">{{common.moneyTypeFilter(item.moneyType)}}
-                    </view>
+                    <view class="item-tip">{{common.moneyTypeFilter(item.moneyType)}}</view>
+                    <view class="item-tip" wx:if="{{isJob}}">{{common.sliceStringFont(item.updateTime)}}</view>
                     <view class="item-tip">{{common.sliceStringFont(item.time)}}</view>
                 </navigator>
                 <view class="list-info-item" wx:if="{{currentTab !== 0 && isRelease}}">

@@ -209,8 +209,8 @@ Page({
                         if (info.educationExperience){
                             for (let i = 0; i < (info.educationExperience).length; i++) {
                                 tempEdduList.push({
-                                    start: (info.educationExperience[i].time).split('~')[0],
-                                    end: (info.educationExperience[i].time).split('~')[1],
+                                    start: (info.educationExperience[i].time).split('至')[0],
+                                    end: (info.educationExperience[i].time).split('至')[1],
                                     school: info.educationExperience[i].school,
                                     major: info.educationExperience[i].major
                                 })
@@ -222,8 +222,8 @@ Page({
                         if (info.workExperience){
                            for (let i = 0; i < (info.workExperience).length; i++) {
                                tempWorkList.push({
-                                   start: (info.workExperience[i].time).split('~')[0],
-                                   end: (info.workExperience[i].time).split('~')[1],
+                                   start: (info.workExperience[i].time).split('至')[0],
+                                   end: (info.workExperience[i].time).split('至')[1],
                                    hospital: info.workExperience[i].company,
                                    department: info.workExperience[i].department
                                })
@@ -859,7 +859,7 @@ Page({
             educationExperience.push({
                 "major": _this.data.eduExperienceList[i].major,
                 "school": _this.data.eduExperienceList[i].school,
-                "time": _this.data.eduExperienceList[i].start + "~" + _this.data.eduExperienceList[i].end
+                "time": _this.data.eduExperienceList[i].start + "至" + _this.data.eduExperienceList[i].end
             })
         }
         //工作经历
@@ -868,7 +868,7 @@ Page({
             workExperience.push({
                 "department": _this.data.workExperienceList[j].department,
                 "company": _this.data.workExperienceList[j].hospital,
-                "time": _this.data.workExperienceList[j].start + "~" + _this.data.workExperienceList[j].end
+                "time": _this.data.workExperienceList[j].start + "至" + _this.data.workExperienceList[j].end
             })
         }
         let params = {

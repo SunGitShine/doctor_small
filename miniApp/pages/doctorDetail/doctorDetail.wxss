@@ -1,144 +1,188 @@
 /* pages/doctorDetail/doctorDetail.wxss */
-.doctor-page{
-  background: #f1f1f1;
+
+.doctor-page {
+    background: #f1f1f1;
 }
-.doctor-info{
-  display: flex;
-  display: -webkit-flex;
-  padding: 15px;
-  color: #fff;
-  background: #2ba246;
+
+.doctor-info {
+    display: flex;
+    display: -webkit-flex;
+    padding: 15px;
+    color: #fff;
+    background: #2ba246;
 }
-.doctor-photo{
-  flex: 0 0 auto;
+
+.doctor-photo {
+    flex: 0 0 auto;
 }
-.doctor-photo image{
-  width: 100rpx;
-  height: 100rpx;
-  border-radius:80rpx; 
-  -webkit-border-radius:80rpx; 
-  -moz-border-radius:80rpx; 
+
+.doctor-photo image {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 80rpx;
+    -webkit-border-radius: 80rpx;
+    -moz-border-radius: 80rpx;
 }
-.doctor-content{
-  flex: 1 1 auto;
-  padding-left: 15px;
-  font-size: 17px;
+
+.doctor-content {
+    flex: 1 1 auto;
+    padding-left: 15px;
+    font-size: 17px;
 }
-.doctor-content view{
-  margin-top: 5px;
+
+.doctor-content view {
+    margin-top: 5px;
 }
-.doctor-namee{
+
+.doctor-namee {
     padding-left: 0px;
 }
-.doc-call-text{
+
+.doc-call-text {
     padding-left: 20px;
 }
-.job-title{
-  font-size: 14px;
-  padding-left: 20px;
+
+.job-title {
+    font-size: 14px;
+    padding-left: 20px;
 }
-.border-tip{
-  margin-right: 5px;
-  padding: 0 5px;
-  font-size: 14px;
-  border: 1px dotted #fff;
-  border-radius:12px; 
-  -webkit-border-radius:12px; 
-  -moz-border-radius:12px; 
+
+.border-tip {
+    margin-right: 5px;
+    padding: 0 5px;
+    font-size: 14px;
+    border: 1px dotted #fff;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
 }
-.icon-btn{
-  width: 16px;
-  height: 14px;
-  vertical-align:middle;
+
+.icon-btn {
+    width: 16px;
+    height: 14px;
+    vertical-align: middle;
 }
+
 .doctor-item {
     padding: 15px;
     background: #fff;
-    margin:20px auto 0 20px;
+    margin: 20px auto 0 20px;
     width: 84%;
     border-radius: 3px;
 }
-.doctor-time-during{
+
+.doctor-time-during {
     font-size: 14px;
 }
-.doctor-time-during>text{
+
+.doctor-time-during>text {
     padding-left: 10px;
 }
-.doctor-time-icon{
+
+.doctor-time-icon {
     display: flex;
     align-items: center;
 }
-.doctor-time-icon>text{
+
+.doctor-time-icon>text {
     padding-left: 10px;
 }
-.doctor-time-tip{
+
+.doctor-time-tip {
     padding-left: 25px;
 }
-.doctor-item-title{
-  font-size: 17px;
+
+.doctor-item-title {
+    font-size: 17px;
 }
-.doctor-item-info{
-  margin-top: 10px;
-  padding-left: 15px;
-  padding-bottom: 15px;
-  font-size: 14px;
-  color: #818181;
+
+.doctor-item-info {
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    font-size: 14px;
+    color: #818181;
 }
-.item-info{
-  margin-bottom: 5px;
-  width: 250px;
+
+.item-info {
+    margin-bottom: 5px;
+    width: 250px;
 }
-.card-content{
-  margin-top: 10px;
+.item-info>text{
+    display: inline-block;
 }
-.card-info{
-   width: 200px; 
-  /* height: 150px; */
-  vertical-align: middle;
-  background: #888;
+.card-content {
+    margin-top: 10px;
 }
-.icon-tip{
-  width: 25rpx;
-  height: 100rpx;
+
+.card-info {
+    width: 100px;
+    /* height: 150px; */
+    vertical-align: middle;
+    background: #888;
+    margin-left: 30px;
 }
-.doctor-item-title{
+
+.icon-tip {
+    width: 25rpx;
+    height: 100rpx;
+}
+
+.doctor-item-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.doctor-i-t-text{
+
+.doctor-i-t-text {
     display: flex;
     align-items: center;
     justify-content: center;
-   
 }
-.doctor-i-t-text>view{
- padding-left: 10px;
+
+.doctor-i-t-text>view {
+    padding-left: 10px;
 }
-.doctor-i-t-img{
+
+.doctor-i-t-img {
     width: 50px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.doctor-i-t-img>image{
+
+.doctor-i-t-img>image {
     width: 15px;
     height: 15px;
 }
-.doctor-i-i-item{
+
+.doctor-i-i-item {
     display: flex;
 }
-.single-info-box{
-   padding-left: 20px;
+
+.single-info-box {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 80%;
+    text-align: center;
 }
-.single-info-box>view{
+
+.single-info-box>view {
     padding: 2px;
 }
-.single-info-text>text{
-    padding-right:50px;
+
+.single-info-text>text {
+    padding-right: 50px;
 }
-.single-info-time>image{
-    width: 200px;
-    height: 150px;
+
+.single-info-time>image {
+    width: 100px;
+}
+.phone-box{
+    display: flex;
+    align-content: center;
 }

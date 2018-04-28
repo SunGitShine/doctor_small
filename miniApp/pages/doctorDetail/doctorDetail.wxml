@@ -9,7 +9,7 @@
             <view class='doctor-namee'>{{info.name}}</view>
             <view class="job-title">{{info.departmentName}}　　{{common.titleFilter(info.title)}}</view>
             <view class='doc-call-text'>
-                <text class="border-tip" wx:for="{{info.call}}" wx:key="item">{{item}}</text>
+                <text wx:if="{{item}}" class="border-tip" wx:for="{{info.call}}" wx:key="item">{{item}}</text>
             </view>
         </view>
     </view>
@@ -41,7 +41,14 @@
             <view class="item-info"><text>工作年限：</text>{{common.workTimeFilter(info.workTime)}}</view>
             <view class="item-info"><text>出生年月：</text>{{common.sliceStringFont(info.birthday)}}</view>
             <view class="item-info"><text>所在城市：</text>{{info.province}}{{info.city}}</view>
-            <view class="item-info"><text>联系电话：</text>{{info.phone}}</view>
+            <view class="item-info phone-box">
+                <text>联系电话：</text>
+                <text wx:if="{{showEdit}}">{{info.phone}}</text>
+                <text wx:else>
+                    <text wx:if="{{auditStatus == 1}}">{{info.phone}}</text>
+                    <text wx:if="{{auditStatus != 1 || completeStatus == 0}}">{{common.phoneFilter(info.phone)}}</text>
+                </text>
+            </view>
             <view class="item-info"><text>科　　室：</text>{{info.departmentName}}</view>
         </view>
     </view>
@@ -51,13 +58,10 @@
                 <image class="icon-btn" src="../../images/doctor/doctor_04.png" />
                 <view>教育经历：</view>
             </view>
-            <!-- <view wx:if="{{showEdit}}" class='doctor-i-t-img' bindtap='goToEdit'>
-                <image src='../../images/detail_icon.png'></image>
-            </view> -->
         </view>
         <view class="doctor-item-info">
             <view wx:for="{{info.educationExperience}}" wx:key="item" class='doctor-i-i-item'>
-                <image class="icon-tip" src="../../images/doctor/doctor_07.png" />
+                <image class="icon-tip" src="../../images/doctor/doctor_07.png"/>
                 <view class='single-info-box'>
                     <view class='single-info-time'>
                         {{item.time}}
@@ -75,9 +79,6 @@
                 <image class="icon-btn" src="../../images/doctor/doctor_05.png" />
                 <view> 工作经历：</view>
             </view>
-            <!-- <view wx:if="{{showEdit}}" class='doctor-i-t-img' bindtap='goToEdit'>
-                <image src='../../images/detail_icon.png'></image>
-            </view> -->
         </view>
         <view class="doctor-item-info">
             <view wx:for="{{info.workExperience}}" wx:key="item" class='doctor-i-i-item'>
@@ -107,15 +108,15 @@
         <view class="doctor-item-info">
             <view class="card-content">
                 医师职称证：
-                <image class="card-info" src="{{info.professionCardUrl}}" mode='widthFix' />
+                <image class="card-info" src="{{info.professionCardUrl}}" data-src='{{info.professionCardUrl}}'  mode='widthFix' bindtap='previewImage' />
             </view>
             <view class="card-content">
                 医师资格证：
-                <image class="card-info" src="{{info.qualificationCardUrl}}" mode='widthFix' />
+                <image class="card-info" src="{{info.qualificationCardUrl}}" data-src='{{info.qualificationCardUrl}}'  mode='widthFix' bindtap='previewImage' />
             </view>
             <view class="card-content">
                 医师执业证：
-                <image class="card-info" src="{{info.practiceCardUrl}}" mode='widthFix' />
+                <image class="card-info" src="{{info.practiceCardUrl}}" data-src='{{info.practiceCardUrl}}'  mode='widthFix' bindtap='previewImage' />
             </view>
         </view>
     </view>
@@ -134,7 +135,7 @@
                 <image class="icon-tip" src="../../images/doctor/doctor_07.png" />
                 <view class='single-info-box'>
                     <view class='single-info-time'>
-                        <image src='{{item.url}}'></image>
+                        <image src='{{item.url}}' data-src='{{item.url}}'  mode='widthFix' bindtap='previewImage'></image>
                     </view>
                     <view class='single-info-text'>
                         {{item.description}}

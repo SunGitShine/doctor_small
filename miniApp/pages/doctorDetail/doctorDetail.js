@@ -10,7 +10,9 @@ Page({
     data: {
         info:{},
         searchFlag:false,//只是查询则为true，可编辑则为false
-        showEdit:true
+        showEdit:true,
+        auditStatus:"",
+        completeStatus:""
     },
 
     /**
@@ -26,6 +28,11 @@ Page({
                 showEdit: false
             })
         }
+        //获取用户的审核状态和信息完善程度
+        _this.setData({
+            completeStatus: wx.getStorageSync('completeStatus'),
+            auditStatus: wx.getStorageSync('auditStatus')
+        })  
     },
     //获取身份
     findByOpneid: function (openid) {
@@ -77,6 +84,14 @@ Page({
                     }
                 }
             }
+        })
+    },
+    //预览图片
+    previewImage: function (event) {
+        let current = event.target.dataset.src;
+        wx.previewImage({
+            current: current,
+            urls: [current],
         })
     },
     //跳转到编辑

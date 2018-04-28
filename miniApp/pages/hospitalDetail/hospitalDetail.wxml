@@ -40,7 +40,7 @@
         <image src="../../images/card_icon.png" /> 医院证件
       </view>
       <view class="info-index-content">
-       <image src='{{info.businessLicenceUrl}}'></image>
+       <image src='{{info.businessLicenceUrl}}' data-src="{{info.businessLicenceUrl}}" bindtap="previewImage"></image>
       </view>
     </view>
     <view class="index-info">
@@ -55,9 +55,9 @@
       <view class="info-title">
         <image src="../../images/picture_icon.png" /> 医院图片
       </view>
-      <view class="info-index-content">
+      <view class="info-index-content hospital-img-box">
         <view class='hospital-img-box' wx:for="{{info.imageUrl}}" wx:for-item="item" wx:key="index">
-          <image src='{{item}}'></image>
+          <image src='{{item}}' data-src="{{item}}" bindtap="previewImage" ></image>
         </view>
       </view>
     </view>

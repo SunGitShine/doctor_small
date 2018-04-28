@@ -27,8 +27,8 @@
 </view>
  <view wx:if="{{roleType ==1}}" class="userinfo">
   <block>
-    <image src="{{userInfo.avatarUrl}}" class="userinfo-avatar" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <image src="{{doctorData.headImgUrl}}" class="userinfo-avatar" background-size="cover"></image>
+    <text class="userinfo-nickname">{{doctorData.name}}</text>
   </block>
   <view class='audit-status-box' wx:if="{{doctorData.auditStatus == 0 || doctorData.auditStatus == 2}}">{{common.statusFilter(doctorData.auditStatus)}}</view>
 </view> 

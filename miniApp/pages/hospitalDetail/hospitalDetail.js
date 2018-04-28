@@ -70,6 +70,14 @@ Page({
       }
     })
   },
+  //预览图片
+  previewImage: function (event) {
+      let current = event.target.dataset.src;
+      wx.previewImage({
+          current: current,
+          urls: [current],
+      })
+  },
   //跳转到编辑
   goToEdit: function () {
     wx.navigateTo({

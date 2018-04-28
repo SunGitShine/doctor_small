@@ -11,7 +11,7 @@
         <view class="doctor-item-info">
             <view class="item-info">
                 <view class='item-info-tip'>姓　　名： </view>
-                <input class='item-info-in border-bottom' disabled='{{auditStatus == 1}}' placeholder="请输入姓名" bindinput="userNameInput" value="{{name}}" />
+                <input class='item-info-in border-bottom' disabled='{{auditStatus == 1}}' placeholder="请输入姓名" bindinput="userNameInput" value="{{name}}" maxlength='12'/>
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>性　　别： </view>
@@ -60,7 +60,7 @@
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>联系电话： </view>
-                <input class='item-info-in' placeholder="请输联系电话" disabled focus="{{focus}}" value='{{phone}}' />
+                <input class='item-info-in' placeholder="请输联系电话" disabled focus="{{focus}}" value='{{phone}}' maxlength='12'/>
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>科　　室： </view>
@@ -83,8 +83,8 @@
             </view>
             <view class="item-info">
                 <view class='item-info-tip'>荣誉称号： </view>
-                <input class='item-info-in border-bottom honor-text' value='{{honor1}}' placeholder="荣誉称号1" bindinput='getHonor1' />
-                <input class='item-info-in border-bottom honor-text ' value='{{honor2}}' placeholder="荣誉称号2" bindinput='getHonor2' />
+                <input class='item-info-in border-bottom honor-text' value='{{honor1}}' placeholder="荣誉称号1" bindinput='getHonor1' maxlength='12'/>
+                <input class='item-info-in border-bottom honor-text ' value='{{honor2}}' placeholder="荣誉称号2" bindinput='getHonor2' maxlength='12'/>
             </view>
         </view>
     </view>
@@ -100,15 +100,19 @@
             <image class="icon-tip" src="../../images/doctor/doctor_07.png" />
             <view>
                 <view class='experience-picker-box'>
-                    <picker mode="date" bindchange="eduExperienceDayChange" data-index='{{index}}'>
-                        <view class="picker" wx:if="{{!item.start}}">点击选择教育时间</view>
-                        <view class="picker" wx:if="{{item.start}}">{{item.start}}~{{item.end}}</view>
+                    <picker mode="date"  value="{{item.start}}" bindchange="eduExperienceDayChangeStart" data-index='{{index}}'>
+                        <view class="picker" wx:if="{{!item.start}}">选择开始时间</view>
+                        <view class="picker" wx:if="{{item.start}}">{{item.start}}</view>
+                    </picker>
+                     <picker mode="date"  value="{{item.end}}" bindchange="eduExperienceDayChangeEnd" data-index='{{index}}'>
+                        <view class="picker" wx:if="{{!item.end}}">选择结束时间</view>
+                        <view class="picker" wx:if="{{item.end}}">{{item.end}}</view>
                     </picker>
                 </view>
                 <view class='single-experience-box'>
                     <view class="experience-info">
-                        <input class='border-bottom ' placeholder="请输入学校" bindinput='getSchool' data-index="{{index}}" value='{{item.school}}'></input>
-                        <input class='border-bottom ' placeholder="请输入专业" bindinput='getMajor' data-index="{{index}}" value='{{item.major}}'></input>
+                        <input class='border-bottom ' placeholder="请输入学校" bindinput='getSchool' data-index="{{index}}" maxlength='12' value='{{item.school}}'></input>
+                        <input class='border-bottom ' placeholder="请输入专业" bindinput='getMajor' data-index="{{index}}" maxlength='12' value='{{item.major}}'></input>
                     </view>
                 </view>
             </view>
@@ -129,15 +133,19 @@
             <image class="icon-tip" src="../../images/doctor/doctor_07.png" />
             <view>
                 <view class='experience-picker-box'>
-                    <picker mode="date" bindchange="workExperienceDayChange" data-index='{{index}}'>
-                        <view class="picker" wx:if="{{!item.start}}">点击选择工作时间</view>
-                        <view class="picker" wx:if="{{item.start}}">{{item.start}}~{{item.end}}</view>
+                    <picker mode="date"  value="{{item.start}}" bindchange="workExperienceDayChangeStart" data-index='{{index}}'>
+                        <view class="picker" wx:if="{{!item.start}}">选择开始时间</view>
+                        <view class="picker" wx:if="{{item.start}}">{{item.start}}</view>
+                    </picker>
+                     <picker mode="date"  value="{{item.end}}" bindchange="workExperienceDayChangeEnd" data-index='{{index}}'>
+                        <view class="picker" wx:if="{{!item.end}}">选择结束时间</view>
+                        <view class="picker" wx:if="{{item.end}}">{{item.end}}</view>
                     </picker>
                 </view>
                 <view class='single-experience-box'>
                     <view class="experience-info">
-                        <input class='border-bottom ' placeholder="请输入医院" value='{{item.hospital}}' bindinput='getHospital' data-index="{{index}}"></input>
-                        <input class='border-bottom ' placeholder="请输入科室" value='{{item.department}}' bindinput='getDepartment' data-index="{{index}}"></input>
+                        <input class='border-bottom ' placeholder="请输入医院" value='{{item.hospital}}' bindinput='getHospital' maxlength='12' data-index="{{index}}"></input>
+                        <input class='border-bottom ' placeholder="请输入科室" value='{{item.department}}' bindinput='getDepartment' maxlength='12' data-index="{{index}}"></input>
                     </view>
                 </view>
             </view>
@@ -186,7 +194,7 @@
             <view class='gallery-seelct-box'>
                 <view class='experience-picker-box'>
                     <view bindtap="getGallery" data-index='{{index}}' wx:if="{{!item.url}}">点击选择图片</view>
-                    <image class='gallery-img' data-src="{{item.url}}" bindtap="previewImage" wx:if="{{item.url}}" src="{{item.url}}"></image>
+                    <image class='gallery-img' data-src="{{item.url}}" bindtap="previewImage" wx:if="{{item.url}}" src="{{item.url}}" mode='widthFix'></image>
                 </view>
                 <view class='single-experience-box'>
                     <view class="experience-info">
@@ -199,13 +207,30 @@
             </view>
         </view>
     </view>
+     <view class="doctor-item">
+        <view class="doctor-item-title">
+            <image class="icon-btn" src="../../images/doctor/doctor_06.png" />
+            <view class='padding-left-10'>更改头像：</view>
+        </view>
+        <view class="doctor-item-info">
+            <view class="card-content">
+                <view class='certificate-box'>
+                    <view>上传个人照片：</view>
+                    <view>
+                    <image class='certificate-picture head-img' data-src="{{headSrc}}" bindtap="previewImage" wx:if="{{headSrc}}" src='{{headSrc}}'></image>
+                    </view>
+                    <image src='../../images/modify_icon2.png' bindtap='addHeadImg'></image>
+                </view>
+            </view>
+        </view>
+    </view>
     <view class="doctor-item">
         <view class="doctor-item-title">
             <image class="icon-btn" src="../../images/doctor/doctor_09.png" />
             <view class='padding-left-10'>擅长领域：</view>
         </view>
         <view class="doctor-item-info">
-            <textarea placeholder="请输入擅长领域，控制在100字以内" bindinput="getGoodField" value='{{goodField}}' />
+            <textarea placeholder="请输入擅长领域，控制在100字以内" bindinput="getGoodField" value='{{goodField}}' maxlength='100'/>
         </view>
     </view>
     <view class="doctor-item">
@@ -214,8 +239,8 @@
             <view class='padding-left-10'>个人简介</view>
         </view>
         <view class="doctor-item-info">
-            <textarea placeholder="请输入个人简历，控制在100字以内" bindinput="getProfile" value='{{profile}}' />
+            <textarea placeholder="请输入个人简历，控制在100字以内" bindinput="getProfile" value='{{profile}}' maxlength='100'/>
         </view>
     </view>
-    <view class='submit-doctor-btn' bindtap='submitDoctorInfo'>提交审核</view>
+    <view class='submit-doctor-btn' bindtap='submitDoctorInfo'>{{submitBtnText}}</view>
 </view>

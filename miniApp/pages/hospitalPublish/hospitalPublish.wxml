@@ -5,7 +5,7 @@
   <view class="publish-content">
     <view class="content-item">
       <text class="item-title base-title">标题</text>
-      <input class="item-input"  value='{{jobTitle}}' bindinput='getJobTitle' />
+      <input class="item-input" maxlength='12'  value='{{jobTitle}}' bindinput='getJobTitle' />
     </view>
     <view class="content-item">
       <text class="item-title">科室</text>
@@ -43,7 +43,6 @@
           <view class="picker education-picher" wx-if="{{workTime}}">{{workTimeText}}</view>
         </picker>
       </view>
-      <!-- <input class='item-info-in work-year-input' value='{{workTime}}' bindinput='getWorkYear' />年 -->
     </view>
     <view class="content-item">
       <text class="item-title">时间</text>
@@ -66,7 +65,7 @@
           <radio value="{{item.value}}" checked="{{item.checked}}" />{{item.name}}
         </label>
       </radio-group>
-       <input class="item-input-money" wx:if="{{!moneyInputDisable}}" disabled='{{moneyInputDisable}}' value='{{moneyVal}}' bindinput='getMoneyVal'/>
+       <input class="item-input-money" wx:if="{{!moneyInputDisable}}" disabled='{{moneyInputDisable}}' value='{{moneyVal}}' bindinput='getMoneyVal' maxlength='12'/>
     </view>
   </view>
   <view class="publish-title">

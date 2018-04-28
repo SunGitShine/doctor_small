@@ -244,6 +244,14 @@ Page({
             selectedCity: value
         })
     },
+    //预览图片
+    previewImage: function (event) {
+        let current = event.target.dataset.src;
+        wx.previewImage({
+            current: current,
+            urls: [current],
+        })
+    },
     //提交审核
     submitHospitalInfo: function () {
         let _this = this;

@@ -13,7 +13,7 @@
         <view class="info-content-item">
           <view class="item-info">
             <view class='item-info-tip'>名　　称：</view>
-            <input class='item-info-in border-bottom' placeholder="请输入医院名称" bindinput="hospitalNameInput" value="{{name}}"   disabled='{{auditStatus == 1}}'/>
+            <input class='item-info-in border-bottom' placeholder="请输入医院名称" bindinput="hospitalNameInput" value="{{name}}" maxlength='12'  disabled='{{auditStatus == 1}}'/>
           </view>
         </view>
         <view class="info-content-item">
@@ -31,13 +31,13 @@
         <view class="info-content-item">
           <view class="item-info">
             <view class='item-info-tip'>地　　址：</view>
-            <input class='item-info-in border-bottom' placeholder="请输入医院地址" bindinput="hospitalAddressInput" value="{{address}}" disabled='{{auditStatus == 1}}'/>
+            <input class='item-info-in border-bottom' placeholder="请输入医院地址" bindinput="hospitalAddressInput" value="{{address}}" maxlength='12' disabled='{{auditStatus == 1}}'/>
           </view>
         </view>
         <view class="info-content-item">
           <view class="item-info">
             <view class='item-info-tip'>联系电话：</view>
-            <input class='item-info-in border-bottom' placeholder="请输入联系电话" bindinput="hospitalPhoneInput" value="{{phone}}" disabled='{{auditStatus == 1}}'/>
+            <input class='item-info-in border-bottom' placeholder="请输入联系电话" bindinput="hospitalPhoneInput" value="{{phone}}" maxlength='12' disabled='{{auditStatus == 1}}'/>
           </view>
         </view>
         <view class="info-content-item">
@@ -54,8 +54,8 @@
         <view class="info-content-item">
           <view class="item-info">
             <view class='item-info-tip'>标　　签：</view>
-            <input class='item-info-in border-bottom honor-text' value='{{tag1}}' placeholder="医院标签1" bindinput='getTag1' />
-            <input class='item-info-in border-bottom honor-text ' value='{{tag2}}' placeholder="医院标签2" bindinput='getTag2' />
+            <input class='item-info-in border-bottom honor-text' value='{{tag1}}' placeholder="医院标签1" bindinput='getTag1' maxlength='12' />
+            <input class='item-info-in border-bottom honor-text ' value='{{tag2}}' placeholder="医院标签2" bindinput='getTag2' maxlength='12' />
           </view>
         </view>
       </view>
@@ -68,8 +68,8 @@
       <view class="info-index-content">
         <view class='certificate-box'>
           <view>logo：</view>
-          <view>
-            <image class='certificate-picture' wx:if="{{logoImgUrl}}" src='{{logoImgUrl}}'></image>
+          <view class='logo-img-box'>
+            <image class='certificate-picture logo-img' wx:if="{{logoImgUrl}}" data-src='{{logoImgUrl}}' bindtap='previewImage' src='{{logoImgUrl}}' mode='widthFix'></image>
           </view>
           <image src='../../images/modify_icon2.png' bindtap='addLogoImgUrl'></image>
         </view>
@@ -84,7 +84,7 @@
         <view class='certificate-box'>
           <view>营业执照：</view>
           <view>
-            <image class='certificate-picture' wx:if="{{businessLicenseSrc}}" src='{{businessLicenseSrc}}'></image>
+            <image class='certificate-picture' wx:if="{{businessLicenseSrc}}" data-src='{{businessLicenseSrc}}' bindtap='previewImage' src='{{businessLicenseSrc}}' mode='widthFix'></image>
             <!-- <image class='del-img' wx:if="{{businessLicenseSrc}}" src='../../images/remove.png' bindtap='removeBusinessLicense'></image> -->
           </view>
           <image src='../../images/modify_icon2.png' bindtap='addBusinessLicense'></image>
@@ -97,22 +97,22 @@
         <text>医院简介</text>
       </view>
       <view class="info-index-content">
-        <textarea value="{{introduce}}" placeholder='请输入医院简介' bindinput="getIntroduce"></textarea>
+        <textarea value="{{introduce}}" placeholder='请输入医院简介' maxlength='12' bindinput="getIntroduce"></textarea>
       </view>
     </view>
     <view class="index-info">
-      <view class="info-title hospital-img-box">
+      <view class="info-title hospital-img-box" bindtap='addHospitalImg'>
         <view class='hospital-img-name'>
           <image src="../../images/picture_icon.png" />
           <text> 医院图片</text>
         </view>
-        <image src='../../images/modify_icon2.png' bindtap='addHospitalImg'></image>
+        <image src='../../images/modify_icon2.png' class='hospital-img-add'></image>
       </view>
       <view class="info-index-content">
         <view class='certificate-box'>
           <view class='certificate-picture-box'>  
             <view wx:for="{{imgUrl}}"  wx:key="index">
-              <image class='certificate-picture' src='{{item}}'></image>
+              <image class='certificate-picture' data-src='{{item}}' bindtap='previewImage'  src='{{item}}'></image>
               <image class='del-img' src='../../images/remove.png' data-index='{{index}}' bindtap='removeHospitalPic'></image>
             </view>
           </view>

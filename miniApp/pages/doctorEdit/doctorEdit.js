@@ -13,7 +13,7 @@ Page({
         //电话号码
         phone:"",
         //审核状态
-        auditStatus:0,
+        auditStatus:0, 
         //性别列表
         sexItems: [
             { name: '1', value: '男'},
@@ -129,7 +129,11 @@ Page({
                 name: "主任医师",
                 value: 4
             }
-        ]
+        ],
+        //个人头像
+        headSrc:"",
+        //提交审核按钮
+        submitBtnText:"提交审核"
     },
 
     /**
@@ -235,6 +239,16 @@ Page({
                                })
                            }
                        }
+                       //审核通过和未审核通过的提交按钮
+                        if (info.auditStatus == 1){
+                            _this.setData({
+                                submitBtnText:"更改信息"
+                            })  
+                        }else{
+                            _this.setData({
+                                submitBtnText: "提交审核"
+                            }) 
+                        }
                         _this.setData({
                             //姓名
                             name: info.name,
@@ -270,6 +284,8 @@ Page({
                             qualificationSrc: info.qualificationCardUrl,
                             //医师执业证url
                             licenseSrc: info.practiceCardUrl,
+                            //头像
+                            headSrc: info.headImgUrl,
                             //擅长领域
                             goodField: info.goodField,
                             //个人简绍
@@ -399,32 +415,48 @@ Page({
         })
     },
     //教育时间
-    eduExperienceDayChange: function (event) {
+    eduExperienceDayChangeStart: function (event) {
         console.log(event);
         let _this = this;
         let index = event.currentTarget.dataset.index;
         //设置picker得到的值
-        if (!_this.data.eduExperienceList[index].start || _this.data.eduExperienceList[index].start == "undefined") {
-            _this.data.eduExperienceList[index].start = event.detail.value;
-        } else {
-            _this.data.eduExperienceList[index].end = event.detail.value;
-        }
+        _this.data.eduExperienceList[index].start = event.detail.value;
         //加入基本数据里
         _this.setData({
             eduExperienceList: _this.data.eduExperienceList
         });
     },
-    //工作时间
-    workExperienceDayChange: function (event) {
+    //教育时间
+    eduExperienceDayChangeEnd: function (event) {
         console.log(event);
         let _this = this;
         let index = event.currentTarget.dataset.index;
         //设置picker得到的值
-        if (!_this.data.workExperienceList[index].start || _this.data.workExperienceList[index].start == "undefined") {
-            _this.data.workExperienceList[index].start = event.detail.value;
-        } else {
-            _this.data.workExperienceList[index].end = event.detail.value;
-        }
+        _this.data.eduExperienceList[index].end = event.detail.value;
+        //加入基本数据里
+        _this.setData({
+            eduExperienceList: _this.data.eduExperienceList
+        });
+    },
+    //工作开始时间change
+    workExperienceDayChangeStart: function (event) {
+        console.log(event);
+        let _this = this;
+        let index = event.currentTarget.dataset.index;
+        //设置picker得到的值
+        _this.data.workExperienceList[index].start = event.detail.value;
+        //加入基本数据里
+        _this.setData({
+            workExperienceList: _this.data.workExperienceList
+        });
+    },
+    //工作结束时间change
+    workExperienceDayChangeEnd: function (event) {
+        console.log(event);
+        let _this = this;
+        let index = event.currentTarget.dataset.index;
+        //设置picker得到的值
+        _this.data.workExperienceList[index].end = event.detail.value;
         //加入基本数据里
         _this.setData({
             workExperienceList: _this.data.workExperienceList
@@ -697,6 +729,35 @@ Page({
             }
         })
     },
+    //更改头像
+    addHeadImg: function (event) {
+        let _this = this;
+        wx.chooseImage({
+            success: function (res) {
+                var tempFilePaths = res.tempFilePaths
+                wx.uploadFile({
+                    header: {
+                        "accept": 'application/json'
+                    },
+                    method: "GET",
+                    url: app.globalData.commonBaseUrl + '/common/upload.htm',
+                    filePath: tempFilePaths[0],
+                    name: 'file',
+                    formData: {
+                        'upload': 'upload'
+                    },
+                    success: function (result) {
+                        let tempData = JSON.parse(result.data);
+                        if (tempData.code == 'J000000' && tempData.resultMap) {
+                            _this.setData({
+                                headSrc: tempData.resultMap.picPath
+                            })
+                        }
+                    }
+                })
+            }
+        })
+    },
     //增加作品展示
     addGallery: function (event) {
         let _this = this;
@@ -819,7 +880,7 @@ Page({
             "education": _this.data.selectedEducation,
             "educationExperience": educationExperience,
             "goodField": _this.data.goodField,
-            "headImgUrl": app.globalData.userInfo.avatarUrl,
+            "headImgUrl": (_this.data.headSrc) ? (_this.data.headSrc): (app.globalData.userInfo.avatarUrl),
             "name": _this.data.name,
             "practiceCardUrl": _this.data.licenseSrc,
             "professionCardUrl": _this.data.physicianSrc,
@@ -932,6 +993,41 @@ Page({
             });
             return;
         }
+        for (let i = 0; i < (_this.data.eduExperienceList).length; i++) {
+            if (!_this.data.eduExperienceList[i].major){
+                wx.showToast({
+                    title: "请填写教育经历的专业",
+                    icon: 'none',
+                    time: 500
+                });
+                return;
+            }
+            if (!_this.data.eduExperienceList[i].school) {
+                wx.showToast({
+                    title: "请填写教育经历的学校",
+                    icon: 'none',
+                    time: 500
+                });
+                return;
+            }
+            if (!_this.data.eduExperienceList[i].start) {
+                wx.showToast({
+                    title: "请选择教育经历的开始时间",
+                    icon: 'none',
+                    time: 500
+                });
+                return;
+            }
+            if (!_this.data.eduExperienceList[i].end) {
+                wx.showToast({
+                    title: "请选择教育经历的结束时间",
+                    icon: 'none',
+                    time: 500
+                });
+                return;
+            }
+        }
+        
         //工作经历验证
         if (!(params.workExperience).length) {
             wx.showToast({
@@ -940,6 +1036,40 @@ Page({
                 time: 500
             });
             return;
+        }
+        for (let i = 0; i < (_this.data.workExperienceList).length; i++) {
+            if (!_this.data.workExperienceList[i].department) {
+                wx.showToast({
+                    title: "请填写工作经历的科室(部门)",
+                    icon: 'none',
+                    time: 500
+                });
+                return;
+            }
+            if (!_this.data.workExperienceList[i].hospital) {
+                wx.showToast({
+                    title: "请填写工作经历的医院(公司)",
+                    icon: 'none',
+                    time: 500
+                });
+                return;
+            }
+            if (!_this.data.workExperienceList[i].start) {
+                wx.showToast({
+                    title: "请选择工作经历的开始时间",
+                    icon: 'none',
+                    time: 500
+                });
+                return;
+            }
+            if (!_this.data.workExperienceList[i].end) {
+                wx.showToast({
+                    title: "请选择工作经历的结束时间",
+                    icon: 'none',
+                    time: 500
+                });
+                return;
+            }
         }
         wx.request({
             header: {

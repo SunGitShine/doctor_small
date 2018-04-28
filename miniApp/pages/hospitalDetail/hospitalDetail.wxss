@@ -17,11 +17,13 @@ hospital-detail {
     height: 60px;
     border-radius: 50%;
 }
-.hospital-logo view{
+
+.hospital-logo view {
     text-align: center;
     font-size: 14px;
     color: #fff;
 }
+
 .info-title {
     position: relative;
     padding: 10px;
@@ -64,10 +66,19 @@ hospital-detail {
     background: #fff;
     font-size: 14px;
     color: #808080;
+    text-align: center;
+}
+
+.hospital-img-box {
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 .info-index-content>image {
-    width: 100%;
+    max-width: 150px;
+    max-height: 150px;
+    margin: 5px;
 }
 
 .info-content-item {
@@ -124,8 +135,17 @@ hospital-detail {
     height: 100px !important;
 }
 
+.hospital-img-box {
+    text-align: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
 .hospital-img-box>image {
-    width: 100%;
+    max-width: 100px;
+    max-height: 100px;
+    margin: 5px;
 }
 
 .tag-text {

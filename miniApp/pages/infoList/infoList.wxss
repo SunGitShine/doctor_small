@@ -76,12 +76,16 @@ page {
 }
 
 .list-info {
-    padding: 15px;
+    padding: 5px;
     overflow: auto;
 }
 
 .list-info-title {
+    padding-left: 20px;
     font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
 }
 
 .list-info-title>text {
@@ -142,7 +146,7 @@ camera {
     top: 5px;
     font-size: 12px;
     overflow: hidden;
-     /* text-overflow: ellipsis;
+    /* text-overflow: ellipsis;
     white-space: nowrap;  */
     display: flex;
     justify-content: space-between;
@@ -155,7 +159,7 @@ camera {
 }
 
 .item-tilte text {
-     padding-right: 10px; 
+    padding-right: 5px;
 }
 
 .date-tip {
@@ -250,4 +254,8 @@ camera {
     color: #ff7800;
     display: block;
     margin-top: 10px;
+}
+
+.release-content-item {
+    width: 45%;
 }

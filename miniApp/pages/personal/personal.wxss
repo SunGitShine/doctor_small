@@ -408,3 +408,11 @@ page {
 .more-info {
     padding: 0 5px;
 }
+.select-time-box{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.select-time-box>picker{
+    margin-left: 10px;
+}

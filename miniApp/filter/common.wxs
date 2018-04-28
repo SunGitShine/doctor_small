@@ -121,8 +121,17 @@ var common = {
             default:
                 return "";
         }
+    },
+    //电话过滤
+    phoneFilter: function (num){
+        console.log(num);
+        if (num){
+            var myphone = num.substring(3, 8);
+            console.log(myphone);
+            var lphone = num.replace(myphone, "****");  
+            return lphone
+        }
     }
-
 }
 
 module.exports = {
@@ -134,5 +143,6 @@ module.exports = {
     moneyTypeFilter: common.moneyTypeFilter,
     scaleFilter: common.scaleFilter,
     statusFilter: common.statusFilter,
-    workTimeFilter: common.workTimeFilter
+    workTimeFilter: common.workTimeFilter,
+    phoneFilter: common.phoneFilter
 }

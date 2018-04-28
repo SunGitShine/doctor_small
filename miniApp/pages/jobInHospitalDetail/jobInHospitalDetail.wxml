@@ -14,7 +14,6 @@
             </view>
         </view>
         <view class='hospital-tag-phone'>
-            <view class='hospital-phone'>028-123123123</view>
             <view class='hospital-tag-box'>
                 <text  wx:for="{{hospitalInfo.tag}}"  wx:key="index" class='hospital-tag'>{{item}}</text>
             </view>

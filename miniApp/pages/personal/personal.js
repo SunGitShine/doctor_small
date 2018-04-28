@@ -74,6 +74,26 @@ Page({
             _this.switchChange();
         }
     },
+    //时间选择--开始时间
+    bindDateChangeStart: function (e) {
+        let _this = this;
+        let time = e.detail.value;
+        this.setData({
+            doctorData: Object.assign(_this.data.doctorData, {
+                startTime: time
+            })
+        })
+    },
+    //时间选择--结束时间
+    bindDateChangeEnd: function (e) {
+        let _this = this;
+        let time = e.detail.value;
+        this.setData({
+            doctorData: Object.assign(_this.data.doctorData, {
+                endTime: time
+            })
+        })
+    },
     //发布坐诊时间
     switchChange: function (event) {
         console.log(event);
@@ -114,7 +134,19 @@ Page({
     updateReleseStatus: function (event) {
         console.log(event);
         let _this = this;
-        let status = (event.detail.value)?('1'):('0')
+        let status = (event.detail.value)?('1'):('0');
+        if (!_this.data.doctorData.doctorReleseId){
+            wx.showToast({
+                title: "请先发布坐诊时间，才能更新",
+                icon: 'none'
+            });
+            this.setData({
+                doctorData:Object.assign(_this.data.doctorData, {
+                    status: false
+                })
+            })
+            return;
+        } 
         let params = {
             doctorReleseId: _this.data.doctorData.doctorReleseId,
             status: status
@@ -150,10 +182,17 @@ Page({
         })
     },
     //删除坐诊时间
-    deleteSittingTime: function () {
+    deleteSittingTime: function (event) {
         console.log(event);
         let _this = this;
         let doctorReleseId = _this.data.doctorData.doctorReleseId;
+        if (!doctorReleseId){
+            wx.showToast({
+                title: "请先发布坐诊时间，才能删除",
+                icon: 'none'
+            });
+            return;
+        } 
         let params = {
             "doctorReleseId": doctorReleseId
         }
@@ -345,6 +384,13 @@ Page({
                         _this.setData({
                             guideShow: true
                         })
+                    }
+                    if (res.data.resultMap.response && res.data.resultMap.response.completeStatus){
+                        wx.setStorageSync('completeStatus', res.data.resultMap.response.completeStatus);
+                        wx.setStorageSync('auditStatus', res.data.resultMap.response.auditStatus);
+                    }else{
+                        wx.setStorageSync('completeStatus', '');
+                        wx.setStorageSync('auditStatus', '');
                     }
                     //医生
                     if (res.data.resultMap.identity == 1) {

@@ -32,8 +32,8 @@ hospital-detail {
   padding-left: 10px;
 }
 .info-title image {
-  width: 16px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
 }
 
 .modify-icon {
@@ -110,7 +110,6 @@ hospital-detail {
 
 .update-btn {
   padding: 10px;
-  width: 100%;
   text-align: center;
   font-size: 17px;
   color: #fff;
@@ -167,7 +166,7 @@ hospital-detail {
 }
 
 .certificate-picture {
-  width: 150px !important;
+  width: 100px !important;
   height: 100px !important;
 }
 
@@ -192,4 +191,18 @@ hospital-detail {
 }
 .certificate-picture-box>view>image{
   margin: 20px auto;
+}
+.hospital-img-add{
+    margin: 20px;
+}
+.logo-img-box{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+.logo-img{
+   
 }

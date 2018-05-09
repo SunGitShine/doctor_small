@@ -83,9 +83,9 @@
                 <image src="../../images/erke.png"/>
                 <text>儿科</text>
               </view>
-              <view class="list-item" id='3' data-name='整型美容' bindtap="goToJobListings">
+              <view class="list-item" id='3' data-name='整型美容'>
                 <image src="../../images/zhengxing.png"/>
-                <text>整型美容</text>
+                <text>更多科室待开放</text>
               </view>
             </view>
           </swiper-item>

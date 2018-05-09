@@ -6,9 +6,11 @@ Page({
   data: {
     motto: 'Hello World',
     imgUrls:[
-      '../../images/swiper/1.jpg',
-      '../../images/swiper/2.jpg',
-      '../../images/swiper/3.jpg'
+        '../../images/swiper/4.jpg',
+        '../../images/swiper/1.jpg',
+        '../../images/swiper/2.jpg',
+        '../../images/swiper/3.jpg'
+      
     ],
     indicatorDots: true,
     autoplay: true,

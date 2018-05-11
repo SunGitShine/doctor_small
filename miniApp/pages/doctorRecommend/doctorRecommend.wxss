@@ -90,8 +90,8 @@
 }
 .date-tip {
     position: relative;
-    top: -20px;
-    right:-20px;
+    /* top: -20px; */
+    /* right:-20px; */
     font-size: 14px;
     color: #ff7800;
     display: block;
@@ -122,8 +122,15 @@
 }
 .doctor-call-box{
     color: #BFBFBF;
+    padding-left: 10px;
+}
+.doctor-call-text{
+    display: inline-block;
+    font-size: 14px;
+    padding-left: 10px;  
 }
 .doctor-call-box>text{
+    display: inline-block;
     font-size: 14px;
     padding-right: 10px;
 }

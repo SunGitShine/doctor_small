@@ -82,7 +82,7 @@ App({
             avatarUrl: "../../images/hospital_icon.png",
             nickName: "Kevin"
         },
-        commonBaseUrl: "http://112.74.57.165:8080/share_doctor",//http://112.74.57.165:8080/share_doctor，http://172.30.22.121:8080/share_doctor,https://doctor.wusiyunxieye.com/
+        commonBaseUrl: "https://doctor.wusiyunxieye.com",//http://112.74.57.165:8080/share_doctor，http://172.30.22.121:8080/share_doctor,https://doctor.wusiyunxieye.com/
         userOpenId: ""
     }
 })

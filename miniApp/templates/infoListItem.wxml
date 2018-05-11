@@ -60,7 +60,7 @@
                             <text>{{common.titleFilter(item.doctorTitle)}}</text>
                             <text class="item-content">
                                 <text class='doctor-call-box'>
-                                    <text wx:for="{{item.call}}" wx:key="index">{{item}}</text>
+                                    <text class='doctor-call-text' wx:for="{{item.call}}" wx:key="index">{{item}}</text>
                                 </text>
                             </text>
                         </text>

@@ -2,7 +2,7 @@
 
 page {
     height: 100%;
-     background: #f1f1f1;
+    background: #f1f1f1;
 }
 
 .hospital-page {
@@ -36,11 +36,15 @@ page {
     display: flex;
     align-items: center;
 }
-.hospital-info-box>view{
+
+.hospital-info-box>view {
     padding-bottom: 5px;
 }
+
 .hospital-info-name {
     font-size: 17px;
+    display: flex;
+    align-items: center;
 }
 
 .hospital-info {
@@ -51,9 +55,11 @@ page {
     padding-left: 50px;
     font-size: 14px;
 }
-.hospital-tag-phone>view{
+
+.hospital-tag-phone>view {
     padding-bottom: 5px;
 }
+
 .hospital-tag-box {
     display: flex;
     align-items: center;
@@ -67,26 +73,31 @@ page {
     border-radius: 15px;
     margin-right: 10px;
 }
-.hospital-address-scale>text{
+
+.hospital-address-scale>text {
     padding-right: 10px;
 }
-.block-two-title{
-  padding-bottom: 10px;
-  font-size: 17px;
-  border-bottom: 1px solid #f1f1f1;
+
+.block-two-title {
+    padding-bottom: 10px;
+    font-size: 17px;
+    border-bottom: 1px solid #f1f1f1;
 }
-.block-two-info{
-  margin-top: 15px;
-  padding-left: 25px;
-  color: #818181;
-  font-size: 14px;
+
+.block-two-info {
+    margin-top: 15px;
+    padding-left: 25px;
+    color: #818181;
+    font-size: 14px;
 }
-.block-two-info view{
-  margin-bottom: 10px;
+
+.block-two-info view {
+    margin-bottom: 10px;
 }
-.block-two-des{
-  margin-top: 15px;
-  padding-left: 25px;
-  font-size: 14px;
-  padding-bottom: 20px;
+
+.block-two-des {
+    margin-top: 15px;
+    padding-left: 25px;
+    font-size: 14px;
+    padding-bottom: 20px;
 }

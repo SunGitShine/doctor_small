@@ -1,117 +1,127 @@
 <!--index.wxml-->
 <wxs module="common" src="../../filter/common.wxs"></wxs>
 <view class="page-wrapper">
-  <view class="container">
-    <view class="swiper-contain">
-      <swiper class="img-swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#fff" indicator-active-color="#2ba246">
-        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
-          <swiper-item>
-            <image src="{{item}}" class="slide-image" width="355" height="180"/>
-          </swiper-item>
-        </block>
-      </swiper>
+    <view class="container">
+        <view class="swiper-contain">
+            <swiper class="img-swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#fff" indicator-active-color="#2ba246">
+                <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+                    <swiper-item>
+                        <image src="{{item}}" class="slide-image" width="355" height="180" />
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
     </view>
-  </view>
-  <view class="list-title">
-    <navigator hover-class="none" open-type="navigate" url="/pages/infoList/infoList?id=0">
-      <image src="../../images/t1.png"/>
-    </navigator>
-  </view>
-  <view class="list-wrapper">
-    <view class="list-item-hot" id='3' data-name='整型美容' data-hot="29" bindtap="goToJobListings">
-      <image src="../../images/hot_icon.png" class="hot-icon"/>
-      <image src="../../images/meirongneike.png" class="index-icon"/>
-      <text>美容外科</text>    
+    <view class="list-title">
+        <navigator hover-class="none" open-type="navigate" url="/pages/infoList/infoList?id=0">
+            <image src="../../images/t1.png" />
+        </navigator>
     </view>
-    <view class="list-item-hot" id='3' data-name='整型美容' data-hot="30" bindtap="goToJobListings">
-    <image src="../../images/hot_icon.png" class="hot-icon"/>
-      <image src="../../images/meirong.png" class="index-icon"/>
-      <text>美容皮肤</text>
+    <view class="list-wrapper">
+        <view class="list-item-hot" id='3' data-name='整型美容' data-hot="29" bindtap="goToJobListings">
+            <image src="../../images/hot_icon.png" class="hot-icon" />
+            <image src="../../images/meirongneike.png" class="index-icon" />
+            <text>美容外科</text>
+        </view>
+        <view class="list-item-hot" id='3' data-name='整型美容' data-hot="30" bindtap="goToJobListings">
+            <image src="../../images/hot_icon.png" class="hot-icon" />
+            <image src="../../images/meirong.png" class="index-icon" />
+            <text>美容皮肤</text>
+        </view>
     </view>
-  </view>
-  <view class="list-title">
-    <navigator hover-class="none" open-type="navigate" url="/pages/infoList/infoList?id=1">
-      <image src="../../images/t2.png"/>
-      <text></text>
-    </navigator>
-  </view>
-  <view class="icon-wrapper">
-    <view class="swiper-contain">
-      <swiper class="icon-swiper" indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#f1f1f1" indicator-active-color="#2ba246">
-        <block>
-          <swiper-item>
-            <view class="list-wrapper">
-              <view class="list-item" id='1' data-name='内科' bindtap="goToJobListings">
-                <image src="../../images/neike.png"/>
-                <text>内科</text>
-              </view>
-              <view class="list-item" id='5' data-name='骨科' bindtap="goToJobListings">
-                <image src="../../images/guke.png"/>
-                <text>骨科</text>
-              </view>
-              <view class="list-item" id='7'  data-name='眼科' bindtap="goToJobListings">
-                <image src="../../images/yanke.png"/>
-                <text>眼科</text>
-              </view>
-              <view class="list-item" id='2'  data-name='外科' bindtap="goToJobListings">
-                <image src="../../images/waike.png"/>
-                <text>外科</text>
-              </view>
-              <view class="list-item" id='6' data-name='耳鼻喉科' bindtap="goToJobListings">
-                <image src="../../images/erbihou.png"/>
-                <text>耳鼻喉科</text>
-              </view>
-            </view>
-          </swiper-item>
-        </block>
-        <block>
-          <swiper-item>
-            <view class="list-wrapper">
-              <view class="list-item"  id='9' data-name='皮肤科' bindtap="goToJobListings">
-                <image src="../../images/pifu.png"/>
-                <text>皮肤科</text>
-              </view>
-              <view class="list-item"  id='8' data-name='妇产科' bindtap="goToJobListings">
-                <image src="../../images/fuchan.png"/>
-                <text>妇产科</text>
-              </view>
-              <view class="list-item"  id='10' data-name='男科' bindtap="goToJobListings">
-                <image src="../../images/nanke.png"/>
-                <text>男科</text>
-              </view>
-              <view class="list-item" id='4' data-name='儿科' bindtap="goToJobListings">
-                <image src="../../images/erke.png"/>
-                <text>儿科</text>
-              </view>
-              <view class="list-item" id='3' data-name='整型美容'>
-                <image src="../../images/zhengxing.png"/>
-                <text>更多科室待开放</text>
-              </view>
-            </view>
-          </swiper-item>
-        </block>
-      </swiper>
+    <view class="list-title">
+        <navigator hover-class="none" open-type="navigate" url="/pages/infoList/infoList?id=1">
+            <image src="../../images/t2.png" />
+            <text></text>
+        </navigator>
     </view>
-  </view>
-  <view class="list-title">
-    <navigator hover-class="none" open-type="navigate" url="/pages/jobList/jobList">
-      <image src="../../images/t3.png"/>
-      <text class="route-tip">更多 ></text>
-    </navigator>
-  </view>
-  <view class="list-col">
-    <view class="list-col-item" wx:for="{{jobList}}" wx:key="index">
-      <navigator hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag=job">{{item.title}}</navigator>
-      
-      <navigator class="user-demander" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag=job">
-        <text>{{item.city}}</text>
-        <text>|</text>
-        <text>{{common.titleFilter(item.doctorTitle)}} </text>
-        <text>|</text>
-        <text>{{common.workTimeFilter(item.workTime)}}经验</text>
-        <text>{{common.sliceStringFont(item.updateTime)}}</text>
-      </navigator>
-      <text class="salaries">{{common.moneyTypeFilter(item.moneyType)}}</text>
+    <view class="icon-wrapper">
+        <view class="swiper-contain">
+            <swiper class="icon-swiper" indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#f1f1f1" indicator-active-color="#2ba246">
+                <block>
+                    <swiper-item>
+                        <view class="list-wrapper">
+                            <view class="list-item" id='1' data-name='内科' bindtap="goToJobListings">
+                                <image src="../../images/neike.png" />
+                                <text>内科</text>
+                            </view>
+                            <view class="list-item" id='5' data-name='骨科' bindtap="goToJobListings">
+                                <image src="../../images/guke.png" />
+                                <text>骨科</text>
+                            </view>
+                            <view class="list-item" id='7' data-name='眼科' bindtap="goToJobListings">
+                                <image src="../../images/yanke.png" />
+                                <text>眼科</text>
+                            </view>
+                            <view class="list-item" id='2' data-name='外科' bindtap="goToJobListings">
+                                <image src="../../images/waike.png" />
+                                <text>外科</text>
+                            </view>
+                        </view>
+                    </swiper-item>
+                </block>
+                <block>
+                    <swiper-item>
+                        <view class="list-wrapper">
+                            <view class="list-item" id='6' data-name='耳鼻喉科' bindtap="goToJobListings">
+                                <image src="../../images/erbihou.png" />
+                                <text>耳鼻喉科</text>
+                            </view>
+                            <view class="list-item" id='9' data-name='皮肤科' bindtap="goToJobListings">
+                                <image src="../../images/pifu.png" />
+                                <text>皮肤科</text>
+                            </view>
+                            <view class="list-item" id='8' data-name='妇产科' bindtap="goToJobListings">
+                                <image src="../../images/fuchan.png" />
+                                <text>妇产科</text>
+                            </view>
+                            <view class="list-item" id='10' data-name='男科' bindtap="goToJobListings">
+                                <image src="../../images/nanke.png" />
+                                <text>男科</text>
+                            </view>
+                        </view>
+                    </swiper-item>
+                </block>
+                <block>
+                    <swiper-item>
+                        <view class="list-wrapper">
+                            <view class="list-item" id='4' data-name='儿科' bindtap="goToJobListings">
+                                <image src="../../images/erke.png" />
+                                <text>儿科</text>
+                            </view>
+                            <view class="list-item" id='37' data-name='口腔科' bindtap="goToJobListings">
+                                <image src="../../images/mouth.png" />
+                                <text>口腔科</text>
+                            </view>
+                            <view class="list-item" id='3' data-name='整型美容'>
+                                <image src="../../images/more.png" />
+                                <text>更多科室待开放</text>
+                            </view>
+                        </view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
     </view>
-  </view>
+    <view class="list-title">
+        <navigator hover-class="none" open-type="navigate" url="/pages/jobList/jobList">
+            <image src="../../images/t3.png" />
+            <text class="route-tip">更多 ></text>
+        </navigator>
+    </view>
+    <view class="list-col">
+        <view class="list-col-item" wx:for="{{jobList}}" wx:key="index">
+            <navigator hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag=job">{{item.title}}</navigator>
+
+            <navigator class="user-demander" hover-class="none" open-type="navigate" url="/pages/jobDetail/jobDetail?id={{item.id}}&flag=job">
+                <text>{{item.city}}</text>
+                <text>|</text>
+                <text>{{common.titleFilter(item.doctorTitle)}} </text>
+                <text>|</text>
+                <text>{{common.workTimeFilter(item.workTime)}}经验</text>
+                <text>{{common.sliceStringFont(item.updateTime)}}</text>
+            </navigator>
+            <text class="salaries">{{common.moneyTypeFilter(item.moneyType)}}</text>
+        </view>
+    </view>
 </view>

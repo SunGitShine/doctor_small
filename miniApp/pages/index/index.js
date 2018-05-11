@@ -6,10 +6,12 @@ Page({
   data: {
     motto: 'Hello World',
     imgUrls:[
-        '../../images/swiper/4.jpg',
-        '../../images/swiper/1.jpg',
-        '../../images/swiper/2.jpg',
-        '../../images/swiper/3.jpg'
+        '../../images/swiper/banner.jpg',
+        '../../images/swiper/banner.jpg',
+        '../../images/swiper/banner.jpg'
+        // '../../images/swiper/1.jpg',
+        // '../../images/swiper/2.jpg',
+        // '../../images/swiper/3.jpg'
       
     ],
     indicatorDots: true,
@@ -80,7 +82,7 @@ Page({
     let _this = this;
     let params = {
       pageNo: 1,
-      pageSize:2
+      pageSize:4
     };
     wx.request({
       header: {

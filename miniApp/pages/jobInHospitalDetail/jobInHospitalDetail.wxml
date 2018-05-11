@@ -7,10 +7,15 @@
             </view>
             <view class='hospital-info'>
                 <view class='hospital-info-name'>{{hospitalInfo.name}}</view>
-                <view class='hospital-address-scale'>
-                <text>{{hospitalInfo.city}}{{hospitalInfo.city}}{{hospitalInfo.address}}</text>
-                <text>{{common.scaleFilter(hospitalInfo.scale)}}</text>
+                <view>
+                    <text>{{hospitalInfo.city}}{{hospitalInfo.city}}{{hospitalInfo.address}}</text>
+                    <text>{{common.scaleFilter(hospitalInfo.scale)}}</text>
                 </view>
+                  <view class='hospital-info-name'>
+                    <text wx:if="{{auditStatus == 1}}">{{hospitalInfo.phone}}</text>
+                    <text wx:if="{{auditStatus != 1 || completeStatus == 0}}">{{common.phoneFilter(hospitalInfo.phone)}}</text>
+                    <button wx:if="{{auditStatus != 1 || completeStatus == 0}}" type="default" size="mini" bindtap="viewPhone"> 查看联系方式 </button>
+                  </view>
             </view>
         </view>
         <view class='hospital-tag-phone'>

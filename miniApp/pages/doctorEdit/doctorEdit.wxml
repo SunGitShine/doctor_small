@@ -98,7 +98,7 @@
                 </view>
             </view>
             <view class="item-info">
-                <view class='item-info-tip'>荣誉称号： </view>
+                <view class='item-info-tip'>荣誉称号及主攻板块： </view>
                 <input class='item-info-in border-bottom honor-text' value='{{honor1}}' placeholder="荣誉称号1" bindinput='getHonor1' maxlength='12'/>
                 <input class='item-info-in border-bottom honor-text ' value='{{honor2}}' placeholder="荣誉称号2" bindinput='getHonor2' maxlength='12'/>
             </view>

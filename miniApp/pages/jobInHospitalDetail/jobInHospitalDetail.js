@@ -23,7 +23,9 @@ Page({
   onLoad: function (options) {
      this.setData({
          openid: options.openid,
-         releaseId: options.id
+         releaseId: options.id,
+         completeStatus: wx.getStorageSync('completeStatus'),
+         auditStatus: wx.getStorageSync('auditStatus')
      });
      //通过openid获取医院的相关信息
      this.findByOpneid();
@@ -92,6 +94,14 @@ Page({
           fail: function (res) {
 
           }
+      })
+  },
+  //查看联系方式
+  viewPhone: function (){
+      wx.showModal({
+          title: '提示',
+          content: '请您完善个人信息，通过审核即可查看,有疑问请联系17775577785',
+          success: function (res) {}
       })
   }
 })

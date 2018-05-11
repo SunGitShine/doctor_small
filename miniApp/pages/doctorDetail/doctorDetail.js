@@ -99,5 +99,13 @@ Page({
         wx.navigateTo({
             url: '../doctorEdit/doctorEdit'
         })
+    },
+    //查看联系方式
+    viewPhone: function () {
+        wx.showModal({
+            title: '提示',
+            content: '请您完善个人信息，通过审核即可查看,有疑问请联系17775577785',
+            success: function (res) { }
+        })
     }
 })

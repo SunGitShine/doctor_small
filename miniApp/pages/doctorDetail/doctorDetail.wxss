@@ -110,11 +110,13 @@
 
 .item-info {
     margin-bottom: 5px;
-    width: 250px;
+    width: 270px;
 }
 
 .item-info>text {
     display: inline-block;
+    height: 25px;
+    line-height: 25px;
 }
 
 .card-content {

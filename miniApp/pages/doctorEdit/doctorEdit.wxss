@@ -97,7 +97,10 @@
     width: 100px;
     height: 40px;
 }
-
+.item-info-tip>view{
+    height: 20px;
+    line-height: 20px;
+}
 .item-info-in {
     flex: 1;
     height: 40px;

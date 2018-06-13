@@ -64,7 +64,7 @@ Page({
                         
                         let info = res.data.resultMap.response;
                         if (info.auditStatus == 1) {
-                            this.setData({
+                            _this.setData({
                                 btnText: "更改信息"
                             })
                         }

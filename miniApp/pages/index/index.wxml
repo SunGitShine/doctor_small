@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <wxs module="common" src="../../filter/common.wxs"></wxs>
+ <view><button wx:if="{{authSetting}}" class='user-info-btn' open-type="getUserInfo" bindgetuserinfo="getuserinfoFun">授权</button></view>
 <view class="page-wrapper">
     <view class="container">
         <view class="swiper-contain">

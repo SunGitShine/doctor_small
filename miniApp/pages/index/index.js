@@ -20,13 +20,33 @@ Page({
     duration: 1000,
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    jobList:[]
+    jobList:[],
+    authSetting:false
   },
   /**
  * 生命周期函数--监听页面加载
  */
   onLoad: function (options) {
+      if (app.authSetting) {
+          this.setData({
+              authSetting: false
+          })
+      } else {
+          this.setData({
+              authSetting: true
+          })
+      }
     this.findByPage();
+  },
+  getuserinfoFun: function (e) {
+      if (e.detail.userInfo) {
+          app.globalData.userInfo = e.detail.userInfo;
+          this.setData({
+              userInfo: e.detail.userInfo,
+              hasUserInfo: true,
+              authSetting: false
+          })
+      }
   },
   changeIndicatorDots: function (e) {
     this.setData({
